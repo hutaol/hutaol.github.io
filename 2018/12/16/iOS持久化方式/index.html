@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="一、前言JavaScript不例外，我们从Hello, world开始 12345678910&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;script&amp;gt;    alert(&amp;apos;Hello, world&amp;apos;);  &amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;  ...&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; 由&amp;l">
+<meta name="description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。 ####一、沙盒目录结构和各个目录的路径获取方法  AppName.app:  应用程序包目录   Documents：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript">
-<meta property="og:url" content="https://hutaol.github.io/2018/11/07/hello-worid-javascript/index.html">
+<meta property="og:title" content="iOS持久化方式">
+<meta property="og:url" content="https://hutaol.github.io/2018/12/16/iOS持久化方式/index.html">
 <meta property="og:site_name" content="鸟语花香">
-<meta property="og:description" content="一、前言JavaScript不例外，我们从Hello, world开始 12345678910&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;script&amp;gt;    alert(&amp;apos;Hello, world&amp;apos;);  &amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;  ...&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; 由&amp;l">
+<meta property="og:description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。 ####一、沙盒目录结构和各个目录的路径获取方法  AppName.app:  应用程序包目录   Documents：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T17:55:55.862Z">
+<meta property="og:updated_time" content="2018-12-16T15:40:25.532Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript">
-<meta name="twitter:description" content="一、前言JavaScript不例外，我们从Hello, world开始 12345678910&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;script&amp;gt;    alert(&amp;apos;Hello, world&amp;apos;);  &amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;  ...&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; 由&amp;l">
+<meta name="twitter:title" content="iOS持久化方式">
+<meta name="twitter:description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。 ####一、沙盒目录结构和各个目录的路径获取方法  AppName.app:  应用程序包目录   Documents：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://hutaol.github.io/2018/11/07/hello-worid-javascript/">
+  <link rel="canonical" href="https://hutaol.github.io/2018/12/16/iOS持久化方式/">
 
 
 
 
 
-  <title>JavaScript | 鸟语花香</title>
+  <title>iOS持久化方式 | 鸟语花香</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/11/07/hello-worid-javascript/">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/12/16/iOS持久化方式/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henry">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript</h1>
+          <h1 class="post-title" itemprop="name headline">iOS持久化方式</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T13:15:56+08:00">
-                2018-11-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-16T22:34:06+08:00">
+                2018-12-16
               </time>
             
 
@@ -294,8 +294,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -331,15 +331,36 @@
       
 
       
-        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>不例外，我们从<code>Hello, world</code>开始</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    alert(&apos;Hello, world&apos;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>由<code>&lt;script&gt;...&lt;/script&gt;</code>包含的代码就是JavaScript代码，它将直接被浏览器执行。</p>
-<h3 id="如何运行JavaScirpt"><a href="#如何运行JavaScirpt" class="headerlink" title="如何运行JavaScirpt"></a>如何运行JavaScirpt</h3><p>先创建一个<code>helloworid.html</code>文件，把代码复制到文件中，保存，用浏览器打开，就能看到一个<code>Hello，world</code>弹窗效果啦。<br><strong>恭喜你，编程的第一步就从此开始，走向人生巅峰，谱写你的辉煌传奇！</strong></p>
-<h2 id="二、基础"><a href="#二、基础" class="headerlink" title="二、基础"></a>二、基础</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><p>每一个语句以<code>;</code>结束，语句块<code>{...}</code>,但JavaScript并不强制要求在每个语句的结尾加<code>;</code>，浏览器中负责执行JavaScript代码的引擎会自动在每个语句的结尾补上<code>;</code></p>
-<p>*<em>让JavaScript引擎自动加分号在某些情况下会改变程序的语义，导致运行结果与期望不一致</em></p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以<code>//</code>开头直到行末的字符被视为行注释，注释是给开发人员看到，JavaScript引擎会自动忽略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 这是一行注释</span><br><span class="line">alert(&apos;hello&apos;); // 这也是注释</span><br></pre></td></tr></table></figure></p>
-<p>块注释<code>/*...*/</code>把多行字符包裹起来，把一大“块”视为一个注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* 从这里开始是块注释</span><br><span class="line">仍然是注释</span><br><span class="line">仍然是注释</span><br><span class="line">注释结束 */</span><br></pre></td></tr></table></figure></p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3>
+        <h3 id="iOS持久化方式"><a href="#iOS持久化方式" class="headerlink" title="iOS持久化方式"></a>iOS持久化方式</h3><blockquote>
+<p>1.NSUserDefaults<br>2.NSKeyedArchiver<br>3.沙盒Document<br>4.sqlite3<br>5.KeyChain</p>
+</blockquote>
+<p>持久化分为两类：沙盒内和沙盒外。</p>
+<p>####一、沙盒目录结构和各个目录的路径获取方法</p>
+<blockquote>
+<p><strong>AppName.app</strong>:  应用程序包目录</p>
+</blockquote>
+<blockquote>
+<p><strong>Documents</strong>：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会被iTunes同步。</p>
+</blockquote>
+<blockquote>
+<p><strong>Library</strong>：有两个子目录Preferences和Caches，除Caches以外，都会被iTunes备份。</p>
+<blockquote>
+<p><strong>Preferences</strong>：包含应用程序的偏好设置文件。您不应该直接创建偏好设置文件，而是应该使用NSUserDefaults类来取得和设置应用程序的偏好。结果在目录下面以plist的方式存储<br><strong>Caches</strong>：用于存放应用程序专用的支持文件，保存应用程序再次启动过程中需要的信息。可创建子文件夹。可以用来放置您希望被备份但不希望被用户看到的数据。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>SystemData</strong>：系统数据</p>
+</blockquote>
+<blockquote>
+<p><strong>tmp</strong>：用来存放应用再次启动时不需要的临时文件，该目录下的东西随时可能被系统清理掉，不会被iTunes同步。</p>
+</blockquote>
+<p>#####沙盒主目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *homeDir = NSHomeDirectory();</span><br></pre></td></tr></table></figure></p>
+<p>#####Documents目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure></p>
+<p>#####Library目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取Library的目录路径</span><br><span class="line">NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];</span><br><span class="line"></span><br><span class="line">// 获取Caches目录路径</span><br><span class="line">NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure></p>
+<h5 id="tmp目录"><a href="#tmp目录" class="headerlink" title="tmp目录"></a>tmp目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir =  NSTemporaryDirectory();</span><br></pre></td></tr></table></figure>
+<h5 id="AppBundle目录路径"><a href="#AppBundle目录路径" class="headerlink" title="AppBundle目录路径"></a>AppBundle目录路径</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取AppBundle目录路径</span><br><span class="line">NSLog(@&quot;%@&quot;,[[NSBundle mainBundle] bundlePath]);</span><br><span class="line"> </span><br><span class="line">NSString *imagePath = [[NSBundle mainBundle] pathForResource:@&quot;apple&quot; ofType:@&quot;png&quot;];</span><br><span class="line"> </span><br><span class="line">UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];</span><br></pre></td></tr></table></figure>
+<p>####二、沙盒内的持久化方式<br><strong>NSKeyedArchiver</strong> 归档</p>
+
       
     </div>
     
@@ -363,15 +384,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/12/16/Xcode工具/" rel="next" title="Xcode工具">
+                <i class="fa fa-chevron-left"></i> Xcode工具
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/09/OC-Keywords/" rel="prev" title="OC-Keywords">
-                OC-Keywords <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何运行JavaScirpt"><span class="nav-number">1.2.</span> <span class="nav-text">如何运行JavaScirpt</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、基础"><span class="nav-number">2.</span> <span class="nav-text">二、基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语法"><span class="nav-number">2.1.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">2.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS持久化方式"><span class="nav-number">1.</span> <span class="nav-text">iOS持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tmp目录"><span class="nav-number">1.0.1.</span> <span class="nav-text">tmp目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AppBundle目录路径"><span class="nav-number">1.0.2.</span> <span class="nav-text">AppBundle目录路径</span></a></li></ol></li></ol></div>
             
 
           </div>
