@@ -361,9 +361,19 @@
 <li>读写权限：<code>readwrite</code>、<code>readonly</code> 默认<code>readwrite</code></li>
 <li>内存管理：<code>assign</code>、<code>strong</code>、<code>weak</code>、<code>copy</code>、<code>unsafe_unretained</code></li>
 <li>set、get方法名</li>
-<li>为空 nullable、nonnull</li>
+<li>可为空 nullable、nonnull</li>
 </ol>
 </blockquote>
+<h4 id="nonatomic非原子性-atomic原子性"><a href="#nonatomic非原子性-atomic原子性" class="headerlink" title="nonatomic非原子性 atomic原子性"></a>nonatomic非原子性 atomic原子性</h4><p>不写默认是<code>atomic</code>原子性</p>
+<p><em>区别</em>：系统自动生成的getter/setter方法不一样。</p>
+<p><code>atomic</code>的属性，系统生成的getter/setter会保证get、set操作的完整性，不受其他线程的影响。比如，线程 A 的 getter 方法运行到一半，线程 B 调用了 setter：那么线程 A 的 getter 还是能得到一个完好无损的对象。</p>
+<p><code>nonatomic</code>的属性，没有这个保证，<code>nonatomic</code>的速度要比<code>atomic</code>快</p>
+<p><code>atomic</code>并不能保证线程安全。如果线程 A 调了 getter，与此同时线程 B 、线程 C 都调了 setter——那最后线程 A get 到的值，3种都有可能：可能是 B、C set 之前原始的值，也可能是 B set 的值，也可能是 C set 的值。同时，最终这个属性的值，可能是 B set 的值，也有可能是 C set 的值。</p>
+<p><em>保证数据完整性——这个多线程编程的最大挑战之一</em></p>
+<h4 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h4><p><code>assion</code>用于非指针变量。基础数据类型（例如NSInteger）和C数据类型（int、float、double、char等），以及id类型。</p>
+<p>用于对基本数据类型进行复制操作，不更改引用计数。也可以用来修饰对象，但是，被<code>assign</code>修饰的对象在释放后，指针的地址还是存在的，也就是说指针并没有被置为nil，成为野指针。如果后续在分配到堆上的某块内存时，正好分到这块内存，程序就会crash。之说以可以修饰基本数据类型，因为基本数据类型一般分配到栈上，栈的内存会由系统自动处理，不会造成野指针。</p>
+<h4 id="weak"><a href="#weak" class="headerlink" title="weak"></a>weak</h4><p><code>weak</code>修饰Object类型，ARC下修饰delegate属性</p>
+<p>在ARC环境下，所有指向这个对象的weak指针都将被置为nil。<br>修饰Object类型，修饰的对象在释放后，指针地址会被置为nil，是一种弱</p>
 
           
         
@@ -1159,6 +1169,40 @@
 <h4 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h4><blockquote>
 <p><code>sync</code>  // 将数据由内存同步到硬盘中。<br><code>shutdown -h new</code>  // 立马关机<br><code>shutdown –h 10</code>  // 10分钟后关机，显示在登录用户的屏幕中<br><code>shutdown –h +10</code>  // 10分钟后关机<br><code>shutdown –h 20:25</code>  // 在今天20:25关机<br><code>shutdown –r now</code>  // 系统立马重启<br><code>shutdown –r +10</code>  // 系统十分钟后重启<br><code>reboot</code>  // 就是重启，等同于 shutdown –r now<br><code>halt</code>  // 关闭系统，等同于shutdown –h now 和 poweroff</p>
 </blockquote>
+<h4 id="系统状态的命令"><a href="#系统状态的命令" class="headerlink" title="系统状态的命令"></a>系统状态的命令</h4><blockquote>
+<p><strong>who</strong>： 确定谁在系统中</p>
+</blockquote>
+<ul>
+<li><p><code>who</code>：列出当前已登录入系统的用户<br>henry  tty1  2018-12-30 15:51<br>用户名  终端设备的设备文件名<br>设备文件一般放于目录/dev下</p>
+</li>
+<li><p><code>tty</code>：可以打印出当前终端的设备文件名</p>
+</li>
+<li><code>who am i</code>：可以列出当前终端上的登录用户</li>
+<li><code>whoami</code>：仅列出当前终端上的登录用户</li>
+</ul>
+<blockquote>
+<p><strong>uptime</strong>：已开机时间（年龄）</p>
+</blockquote>
+<p>15:01:15 up 1:51, 1 user, load average: 0.00, 0.00, 0.00</p>
+<p>系统自启动后到现在的运行时间<br>当前登录入用户数<br>近期1分钟，5分钟，15分钟内系统CPU的负载</p>
+<blockquote>
+<p><strong>top</strong>：列出资源占用排名靠前的进程</p>
+</blockquote>
+<p>VIRT进程逻辑地址空间大小(virtual)<br>RES驻留内存数(Resident)，也就是占用物理内存数<br>SHR与其他进程内存数(share)<br>%CPU占用CPU百分百，%MEM占用内存百分百<br>TIME+占用的CPU时间</p>
+<blockquote>
+<p><strong>ps</strong>：查阅进程状态(process status)</p>
+</blockquote>
+<p>用于控制列表的行数(进程范围)和列数(每进程列出的属性内容)<br><code>ps</code>：只列出在当前终端上启动的进程 PID TTY TIME COMMAND<br><code>ps e</code>：列出系统中所有的进程(进程范围)<br><code>ps f</code>：已<em>fill格式</em>列出每一个进程(控制列的数目)<br><code>ps l</code>：已<em>long格式</em>列出每一个进程(控制列的数目)</p>
+<blockquote>
+<p>UID：用户ID(注册名)<br>PID：进程ID<br>PPID：父进程的PID<br>C：CPU占用指数：最近一段时间(秒级别)进程占用CPU情况<br>STIME：启动时间<br>SZ：进程逻辑内存大小(size)<br>TTY：终端的名字<br>COMMAND：命令名<br>WCHAN：进程在内核的何处睡眠(wait channel)<br>TIME：累计执行时间(占用CPU的时间)<br>PRI：优先级<br>S：状态，S(sleep)，R(run)，Z(Zombie)</p>
+</blockquote>
+<blockquote>
+<p><strong>free</strong>：内存使用情况</p>
+</blockquote>
+<blockquote>
+<p><strong>vmtat</strong>：系统负载</p>
+</blockquote>
+<p>Procs r等待运行的进程数 b处在非中断睡眠状态的进程数<br>Memory free空闲的内存 buff/cache用做缓存的内存数<br>Swap 磁盘/内存的交换页数量，单位：KB/秒<br>IO 设备I/O块数，单位：块/秒<br>System in每秒的硬件中断数(interrupt)，包括时钟中断 cs每秒环境切换次数(context switch)<br>CPU 总使用率 us=user sy=system id=idle wa=wait for disk I/O</p>
 
           
         
@@ -1597,7 +1641,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

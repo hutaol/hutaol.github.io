@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="鸟语花香">
 <meta property="og:description" content="属性 @property@property = 实例变量 + get方法 + set方法 Example1@property (nonatomic, copy) NSString *name; 属性name生成的setter方法123456- (void)setName:(NSString *)name;// rewrite setter- (void)setName:(NSString *)na">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T16:05:13.584Z">
+<meta property="og:updated_time" content="2018-12-21T14:09:30.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC-Property">
 <meta name="twitter:description" content="属性 @property@property = 实例变量 + get方法 + set方法 Example1@property (nonatomic, copy) NSString *name; 属性name生成的setter方法123456- (void)setName:(NSString *)name;// rewrite setter- (void)setName:(NSString *)na">
@@ -357,9 +357,19 @@
 <li>读写权限：<code>readwrite</code>、<code>readonly</code> 默认<code>readwrite</code></li>
 <li>内存管理：<code>assign</code>、<code>strong</code>、<code>weak</code>、<code>copy</code>、<code>unsafe_unretained</code></li>
 <li>set、get方法名</li>
-<li>为空 nullable、nonnull</li>
+<li>可为空 nullable、nonnull</li>
 </ol>
 </blockquote>
+<h4 id="nonatomic非原子性-atomic原子性"><a href="#nonatomic非原子性-atomic原子性" class="headerlink" title="nonatomic非原子性 atomic原子性"></a>nonatomic非原子性 atomic原子性</h4><p>不写默认是<code>atomic</code>原子性</p>
+<p><em>区别</em>：系统自动生成的getter/setter方法不一样。</p>
+<p><code>atomic</code>的属性，系统生成的getter/setter会保证get、set操作的完整性，不受其他线程的影响。比如，线程 A 的 getter 方法运行到一半，线程 B 调用了 setter：那么线程 A 的 getter 还是能得到一个完好无损的对象。</p>
+<p><code>nonatomic</code>的属性，没有这个保证，<code>nonatomic</code>的速度要比<code>atomic</code>快</p>
+<p><code>atomic</code>并不能保证线程安全。如果线程 A 调了 getter，与此同时线程 B 、线程 C 都调了 setter——那最后线程 A get 到的值，3种都有可能：可能是 B、C set 之前原始的值，也可能是 B set 的值，也可能是 C set 的值。同时，最终这个属性的值，可能是 B set 的值，也有可能是 C set 的值。</p>
+<p><em>保证数据完整性——这个多线程编程的最大挑战之一</em></p>
+<h4 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h4><p><code>assion</code>用于非指针变量。基础数据类型（例如NSInteger）和C数据类型（int、float、double、char等），以及id类型。</p>
+<p>用于对基本数据类型进行复制操作，不更改引用计数。也可以用来修饰对象，但是，被<code>assign</code>修饰的对象在释放后，指针的地址还是存在的，也就是说指针并没有被置为nil，成为野指针。如果后续在分配到堆上的某块内存时，正好分到这块内存，程序就会crash。之说以可以修饰基本数据类型，因为基本数据类型一般分配到栈上，栈的内存会由系统自动处理，不会造成野指针。</p>
+<h4 id="weak"><a href="#weak" class="headerlink" title="weak"></a>weak</h4><p><code>weak</code>修饰Object类型，ARC下修饰delegate属性</p>
+<p>在ARC环境下，所有指向这个对象的weak指针都将被置为nil。<br>修饰Object类型，修饰的对象在释放后，指针地址会被置为nil，是一种弱</p>
 
       
     </div>
@@ -517,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-property"><span class="nav-number">1.</span> <span class="nav-text">属性 @property</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动合成"><span class="nav-number">1.0.1.</span> <span class="nav-text">自动合成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态合成"><span class="nav-number">1.0.2.</span> <span class="nav-text">动态合成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#property修饰符"><span class="nav-number">1.1.</span> <span class="nav-text">@property修饰符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性-property"><span class="nav-number">1.</span> <span class="nav-text">属性 @property</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动合成"><span class="nav-number">1.0.1.</span> <span class="nav-text">自动合成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态合成"><span class="nav-number">1.0.2.</span> <span class="nav-text">动态合成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#property修饰符"><span class="nav-number">1.1.</span> <span class="nav-text">@property修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nonatomic非原子性-atomic原子性"><span class="nav-number">1.1.1.</span> <span class="nav-text">nonatomic非原子性 atomic原子性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assign"><span class="nav-number">1.1.2.</span> <span class="nav-text">assign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#weak"><span class="nav-number">1.1.3.</span> <span class="nav-text">weak</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -537,7 +547,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
