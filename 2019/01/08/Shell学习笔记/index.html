@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。 一、沙盒目录结构和各个目录的路径获取方法 AppName.app:  应用程序包目录   Documents：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会">
+<meta name="description" content="欢迎光临">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS持久化方式">
-<meta property="og:url" content="https://hutaol.github.io/2018/12/16/iOS持久化方式/index.html">
+<meta property="og:title" content="Shell学习笔记">
+<meta property="og:url" content="https://hutaol.github.io/2019/01/08/Shell学习笔记/index.html">
 <meta property="og:site_name" content="鸟语花香">
-<meta property="og:description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。 一、沙盒目录结构和各个目录的路径获取方法 AppName.app:  应用程序包目录   Documents：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会">
+<meta property="og:description" content="欢迎光临">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-16T15:44:10.775Z">
+<meta property="og:updated_time" content="2019-01-08T14:16:10.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS持久化方式">
-<meta name="twitter:description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。 一、沙盒目录结构和各个目录的路径获取方法 AppName.app:  应用程序包目录   Documents：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会">
+<meta name="twitter:title" content="Shell学习笔记">
+<meta name="twitter:description" content="欢迎光临">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://hutaol.github.io/2018/12/16/iOS持久化方式/">
+  <link rel="canonical" href="https://hutaol.github.io/2019/01/08/Shell学习笔记/">
 
 
 
 
 
-  <title>iOS持久化方式 | 鸟语花香</title>
+  <title>Shell学习笔记 | 鸟语花香</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/12/16/iOS持久化方式/">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2019/01/08/Shell学习笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Henry">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS持久化方式</h1>
+          <h1 class="post-title" itemprop="name headline">Shell学习笔记</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-16T22:34:06+08:00">
-                2018-12-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-08T22:13:52+08:00">
+                2019-01-08
               </time>
             
 
@@ -294,8 +294,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -331,35 +331,7 @@
       
 
       
-        <h3 id="iOS持久化方式"><a href="#iOS持久化方式" class="headerlink" title="iOS持久化方式"></a>iOS持久化方式</h3><blockquote>
-<p>1.NSUserDefaults<br>2.NSKeyedArchiver<br>3.沙盒Document<br>4.sqlite3<br>5.KeyChain</p>
-</blockquote>
-<p>持久化分为两类：沙盒内和沙盒外。</p>
-<h4 id="一、沙盒目录结构和各个目录的路径获取方法"><a href="#一、沙盒目录结构和各个目录的路径获取方法" class="headerlink" title="一、沙盒目录结构和各个目录的路径获取方法"></a>一、沙盒目录结构和各个目录的路径获取方法</h4><blockquote>
-<p><strong>AppName.app</strong>:  应用程序包目录</p>
-</blockquote>
-<blockquote>
-<p><strong>Documents</strong>：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会被iTunes同步。</p>
-</blockquote>
-<blockquote>
-<p><strong>Library</strong>：有两个子目录Preferences和Caches，除Caches以外，都会被iTunes备份。</p>
-<blockquote>
-<p><strong>Preferences</strong>：包含应用程序的偏好设置文件。您不应该直接创建偏好设置文件，而是应该使用NSUserDefaults类来取得和设置应用程序的偏好。结果在目录下面以plist的方式存储<br><strong>Caches</strong>：用于存放应用程序专用的支持文件，保存应用程序再次启动过程中需要的信息。可创建子文件夹。可以用来放置您希望被备份但不希望被用户看到的数据。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p><strong>SystemData</strong>：系统数据</p>
-</blockquote>
-<blockquote>
-<p><strong>tmp</strong>：用来存放应用再次启动时不需要的临时文件，该目录下的东西随时可能被系统清理掉，不会被iTunes同步。</p>
-</blockquote>
-<h5 id="沙盒主目录"><a href="#沙盒主目录" class="headerlink" title="沙盒主目录"></a>沙盒主目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *homeDir = NSHomeDirectory();</span><br></pre></td></tr></table></figure>
-<h5 id="Documents目录"><a href="#Documents目录" class="headerlink" title="Documents目录"></a>Documents目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
-<h5 id="Library目录"><a href="#Library目录" class="headerlink" title="Library目录"></a>Library目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取Library的目录路径</span><br><span class="line">NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];</span><br><span class="line"></span><br><span class="line">// 获取Caches目录路径</span><br><span class="line">NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
-<h5 id="tmp目录"><a href="#tmp目录" class="headerlink" title="tmp目录"></a>tmp目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir =  NSTemporaryDirectory();</span><br></pre></td></tr></table></figure>
-<h5 id="AppBundle目录路径"><a href="#AppBundle目录路径" class="headerlink" title="AppBundle目录路径"></a>AppBundle目录路径</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取AppBundle目录路径</span><br><span class="line">NSLog(@&quot;%@&quot;,[[NSBundle mainBundle] bundlePath]);</span><br><span class="line"> </span><br><span class="line">NSString *imagePath = [[NSBundle mainBundle] pathForResource:@&quot;apple&quot; ofType:@&quot;png&quot;];</span><br><span class="line"> </span><br><span class="line">UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];</span><br></pre></td></tr></table></figure>
-<h4 id="二、沙盒内的持久化方式"><a href="#二、沙盒内的持久化方式" class="headerlink" title="二、沙盒内的持久化方式"></a>二、沙盒内的持久化方式</h4><p><strong>NSKeyedArchiver</strong> 归档</p>
-
+        
       
     </div>
     
@@ -383,8 +355,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/16/Xcode工具/" rel="next" title="Xcode工具">
-                <i class="fa fa-chevron-left"></i> Xcode工具
+              <a href="/2018/12/19/OC-Property/" rel="next" title="OC-Property">
+                <i class="fa fa-chevron-left"></i> OC-Property
               </a>
             
           </div>
@@ -392,10 +364,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/17/Xcode自定义代码块/" rel="prev" title="Xcode自定义代码块">
-                Xcode自定义代码块 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -447,17 +415,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -510,22 +469,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS持久化方式"><span class="nav-number">1.</span> <span class="nav-text">iOS持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、沙盒目录结构和各个目录的路径获取方法"><span class="nav-number">1.1.</span> <span class="nav-text">一、沙盒目录结构和各个目录的路径获取方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#沙盒主目录"><span class="nav-number">1.1.1.</span> <span class="nav-text">沙盒主目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Documents目录"><span class="nav-number">1.1.2.</span> <span class="nav-text">Documents目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Library目录"><span class="nav-number">1.1.3.</span> <span class="nav-text">Library目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tmp目录"><span class="nav-number">1.1.4.</span> <span class="nav-text">tmp目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AppBundle目录路径"><span class="nav-number">1.1.5.</span> <span class="nav-text">AppBundle目录路径</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、沙盒内的持久化方式"><span class="nav-number">1.2.</span> <span class="nav-text">二、沙盒内的持久化方式</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

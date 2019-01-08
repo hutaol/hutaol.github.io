@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="鸟语花香">
 <meta property="og:description" content="一、前言JavaScript不例外，我们从Hello, world开始 12345678910&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;script&amp;gt;    alert(&amp;apos;Hello, world&amp;apos;);  &amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;  ...&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; 由&amp;l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-15T17:55:55.862Z">
+<meta property="og:updated_time" content="2019-01-08T16:03:56.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript">
 <meta name="twitter:description" content="一、前言JavaScript不例外，我们从Hello, world开始 12345678910&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;script&amp;gt;    alert(&amp;apos;Hello, world&amp;apos;);  &amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;  ...&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt; 由&amp;l">
@@ -336,10 +336,64 @@
 <p>由<code>&lt;script&gt;...&lt;/script&gt;</code>包含的代码就是JavaScript代码，它将直接被浏览器执行。</p>
 <h3 id="如何运行JavaScirpt"><a href="#如何运行JavaScirpt" class="headerlink" title="如何运行JavaScirpt"></a>如何运行JavaScirpt</h3><p>先创建一个<code>helloworid.html</code>文件，把代码复制到文件中，保存，用浏览器打开，就能看到一个<code>Hello，world</code>弹窗效果啦。<br><strong>恭喜你，编程的第一步就从此开始，走向人生巅峰，谱写你的辉煌传奇！</strong></p>
 <h2 id="二、基础"><a href="#二、基础" class="headerlink" title="二、基础"></a>二、基础</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><p>每一个语句以<code>;</code>结束，语句块<code>{...}</code>,但JavaScript并不强制要求在每个语句的结尾加<code>;</code>，浏览器中负责执行JavaScript代码的引擎会自动在每个语句的结尾补上<code>;</code></p>
-<p>*<em>让JavaScript引擎自动加分号在某些情况下会改变程序的语义，导致运行结果与期望不一致</em></p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以<code>//</code>开头直到行末的字符被视为行注释，注释是给开发人员看到，JavaScript引擎会自动忽略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 这是一行注释</span><br><span class="line">alert(&apos;hello&apos;); // 这也是注释</span><br></pre></td></tr></table></figure></p>
-<p>块注释<code>/*...*/</code>把多行字符包裹起来，把一大“块”视为一个注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* 从这里开始是块注释</span><br><span class="line">仍然是注释</span><br><span class="line">仍然是注释</span><br><span class="line">注释结束 */</span><br></pre></td></tr></table></figure></p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3>
+<p><strong>让JavaScript引擎自动加分号在某些情况下会改变程序的语义，导致运行结果与期望不一致</strong></p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以<code>//</code>开头直到行末的字符被视为行注释，注释是给开发人员看到，JavaScript引擎会自动忽略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 这是一行注释</span><br><span class="line">alert(&apos;hello&apos;); // 这也是注释</span><br></pre></td></tr></table></figure>
+<p>块注释<code>/*...*/</code>把多行字符包裹起来，把一大“块”视为一个注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* 从这里开始是块注释</span><br><span class="line">仍然是注释</span><br><span class="line">仍然是注释</span><br><span class="line">注释结束 */</span><br></pre></td></tr></table></figure>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><blockquote>
+<p><strong>值类型</strong>(基础类型)：字符串(<code>String</code>)、数字(<code>Number</code>)、布尔(<code>Boolean</code>)、对空(<code>Null</code>)、未定义(<code>Undefined</code>)、<code>Symbol</code>。<br><strong>引用数据类型</strong>：对象(<code>Object</code>)、数组(<code>Array</code>)、函数(<code>Function</code>)。</p>
+</blockquote>
+<p><em>注：<code>Symbol</code> 是 <code>ES6</code> 引入了一种新的原始数据类型，表示独一无二的值。</em></p>
+<h4 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h4><p>可以使用<code>双引号</code>或<code>单引号</code>，字符串中可以使用引号，只要不匹配包围字符串的引号即可，拼接使用<code>+</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name = &quot;hello&quot; + &quot;world&quot;;</span><br></pre></td></tr></table></figure>
+<h4 id="数字-Number"><a href="#数字-Number" class="headerlink" title="数字(Number)"></a>数字(Number)</h4><p>只要一种数据类型，不区分整数和浮点数</p>
+<p><code>Number</code>基本运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1 + 2;    // 3</span><br><span class="line">3 - 2;    // 1</span><br><span class="line">1 * 2;    // 2</span><br><span class="line">3 / 2;    // 1.5</span><br><span class="line"></span><br><span class="line">// % 求余</span><br><span class="line">10 % 3;    // 1 </span><br><span class="line">10.5 % 3; // 1.5</span><br><span class="line"></span><br><span class="line">// Special</span><br><span class="line">2 / 0;    // Infinity</span><br><span class="line">0 / 0;    // NaN</span><br></pre></td></tr></table></figure>
+<h4 id="布尔-Boolean"><a href="#布尔-Boolean" class="headerlink" title="布尔(Boolean)"></a>布尔(Boolean)</h4><p>布尔只有2个值：<code>true</code>、<code>false</code></p>
+<p>基本运算：</p>
+<ul>
+<li><code>&amp;&amp;</code>运算是<code>与</code>运算，只有所有都为<code>true</code>，<code>&amp;&amp;</code>运算结果才是<code>true</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">true &amp;&amp; true;             // true</span><br><span class="line">true &amp;&amp; false;            // false</span><br><span class="line">false &amp;&amp; true &amp;&amp; false;   // false</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>||</code>运算是<code>或</code>运算，只要其中有一个为<code>true</code>，<code>||</code>运算结果就是true`</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">false || false;           // false</span><br><span class="line">true || false;            // true</span><br><span class="line">false || true || false;   // true</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>!</code>运算是<code>非</code>运算，它是一个单目运算符，把<code>true</code>变成<code>false</code>，<code>false</code>变成<code>true</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">! true;       // 结果为false</span><br><span class="line">! false;      // 结果为true</span><br><span class="line">! (2 &gt; 5);    // 结果为true</span><br></pre></td></tr></table></figure>
+<ul>
+<li>比较运算符 <code>&gt;</code> <code>&lt;</code> <code>=</code> <code>&gt;=</code> <code>&lt;=</code> <code>==</code></li>
+</ul>
+<p><em>布尔值经常用在条件判断中</em></p>
+<p>相等运算符<br><code>==</code>：会自动转换数据类型再比较，在一些情况下会得到诡异的结果<br><code>===</code>：不会自动转换数据类型，如果数据类型不一致返回<code>false</code></p>
+<p>例外：<br><code>NaN</code>这个特殊的Number与所有其他值都不相等，包括它自己</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN === NaN; // false</span><br></pre></td></tr></table></figure>
+<p>唯一能判断<code>NaN</code>的方法是通过<code>isNaN()</code>函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isNaN(NaN); // true</span><br></pre></td></tr></table></figure>
+<h4 id="对空-Null-、未定义-Undefined"><a href="#对空-Null-、未定义-Undefined" class="headerlink" title="对空(Null)、未定义(Undefined)"></a>对空(Null)、未定义(Undefined)</h4><p><code>null</code> 表示一个“空”的值，它和<code>0</code>以及空字符串<code>&#39;&#39;</code>不同，<code>0</code>是一个数值，<code>&#39;&#39;</code>表示长度为0的字符串，而<code>null</code>表示“空”。<br><code>undefined</code> 表示变量不含有值(值未定义)。</p>
+<p>大多数情况下，我们都应该用<code>null</code>。<code>undefined</code>仅仅在判断函数参数是否传递的情况下有用</p>
+<h4 id="数值-Array"><a href="#数值-Array" class="headerlink" title="数值(Array)"></a>数值(Array)</h4><p>数组是一组按顺序排列的集合，集合的每个值称为元素。JavaScript的数组可以包括任意数据类型。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3.14, &apos;Hello&apos;, null, true];</span><br><span class="line">arr[0]; // 返回索引为0的元素，即1</span><br><span class="line">arr[5]; // 返回索引为5的元素，即true</span><br><span class="line">arr[6]; // 索引超出了范围，返回undefined</span><br></pre></td></tr></table></figure>
+<p>数组用<code>[]</code>表示，元素之间用<code>,</code>分隔</p>
+<p>另一种创建数组的方法是通过<code>Array()</code>函数实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Array(1, 2, 3); // 创建了数组[1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h4 id="对象-Object"><a href="#对象-Object" class="headerlink" title="对象(Object)"></a>对象(Object)</h4><p>JavaScript的对象是一组由键-值组成的无序集合，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;Bob&apos;,</span><br><span class="line">    age: 20,</span><br><span class="line">    tags: [&apos;js&apos;, &apos;web&apos;, &apos;mobile&apos;],</span><br><span class="line">    city: &apos;Beijing&apos;,</span><br><span class="line">    hasCar: true,</span><br><span class="line">    zipcode: null</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>JavaScript对象的键都是字符串类型，值可以是任意数据类型。</p>
+<p>要获取一个对象的属性，我们用对象变量.属性名的方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.name; // &apos;Bob&apos;</span><br><span class="line">person.zipcode; // null</span><br></pre></td></tr></table></figure>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>变量名是<code>大小写英文</code>、<code>数字</code>、<code>$</code>和<code>_</code>的组合，且不能用数字开头。<br>变量名也不能是JavaScript的关键字，如<code>if</code>、<code>while</code>等<br>申明一个变量用<code>var</code>语句.</p>
+<p>拥有动态类型，即相同的变量可用作不同的类型，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x;          // x 为undefined  </span><br><span class="line">var x = 1;      // 现在 x 为数字</span><br><span class="line">var x = &quot;ht&quot;    // 现在 x 为字符串</span><br></pre></td></tr></table></figure>
+<p><em>这种变量本身类型不固定的语言称之为<code>动态语言</code>，与之对应的是静态语言。<code>静态语言</code>在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如Java是静态语言</em></p>
+<h5 id="strict模式"><a href="#strict模式" class="headerlink" title="strict模式"></a>strict模式</h5><p>在<code>strict</code>模式下运行的JavaScript代码，强制通过<code>var</code>申明变量，未使用<code>var</code>申明变量就使用的，将导致运行错误。</p>
+<p>启用strict模式的方法是在JavaScript代码的第一行写上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br></pre></td></tr></table></figure>
+<p>这是一个字符串，不支持strict模式的浏览器会把它当做一个字符串语句执行，支持strict模式的浏览器将开启strict模式运行JavaScript。</p>
+
       
     </div>
     
@@ -450,7 +504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何运行JavaScirpt"><span class="nav-number">1.2.</span> <span class="nav-text">如何运行JavaScirpt</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、基础"><span class="nav-number">2.</span> <span class="nav-text">二、基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语法"><span class="nav-number">2.1.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">2.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何运行JavaScirpt"><span class="nav-number">1.2.</span> <span class="nav-text">如何运行JavaScirpt</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、基础"><span class="nav-number">2.</span> <span class="nav-text">二、基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语法"><span class="nav-number">2.1.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">2.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串-String"><span class="nav-number">2.3.1.</span> <span class="nav-text">字符串(String)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字-Number"><span class="nav-number">2.3.2.</span> <span class="nav-text">数字(Number)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔-Boolean"><span class="nav-number">2.3.3.</span> <span class="nav-text">布尔(Boolean)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对空-Null-、未定义-Undefined"><span class="nav-number">2.3.4.</span> <span class="nav-text">对空(Null)、未定义(Undefined)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数值-Array"><span class="nav-number">2.3.5.</span> <span class="nav-text">数值(Array)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象-Object"><span class="nav-number">2.3.6.</span> <span class="nav-text">对象(Object)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">2.3.7.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#strict模式"><span class="nav-number">2.3.7.1.</span> <span class="nav-text">strict模式</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
