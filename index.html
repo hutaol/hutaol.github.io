@@ -1708,10 +1708,134 @@
 <h5 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h5><p>多个字符串连接起来，可以用<code>+</code>号连接</p>
 <p>ES6新增了一种模板字符串，用反斜杠表示，字符串里的变量<code>${name}</code>表示，自动替换字符串中的变量：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'小明'</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> message = <span class="string">`你好, <span class="subst">$&#123;name&#125;</span>, 你今年<span class="subst">$&#123;age&#125;</span>岁了!`</span>;</span><br></pre></td></tr></table></figure>
-<h5 id="操作字符串"><a href="#操作字符串" class="headerlink" title="操作字符串"></a>操作字符串</h5><h6 id="length-长度"><a href="#length-长度" class="headerlink" title="length 长度"></a><code>length</code> 长度</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line">s.length; <span class="comment">// 13</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>：字符串是不可变的，</p>
-<p>获取字符串某个指定位置的字符，索引号从0开始</p>
+<h5 id="操作字符串"><a href="#操作字符串" class="headerlink" title="操作字符串"></a>操作字符串</h5><p>获取字符串某个指定位置的字符，索引号从0开始</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line"></span><br><span class="line">s[<span class="number">0</span>]; <span class="comment">// 'H'</span></span><br><span class="line">s[<span class="number">6</span>]; <span class="comment">// ' '</span></span><br><span class="line">s[<span class="number">7</span>]; <span class="comment">// 'w'</span></span><br><span class="line">s[<span class="number">12</span>]; <span class="comment">// '!'</span></span><br><span class="line">s[<span class="number">13</span>]; <span class="comment">// undefined 超出范围的索引不会报错，但一律返回undefined</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果。</p>
+<h6 id="字符串属性"><a href="#字符串属性" class="headerlink" title="字符串属性"></a>字符串属性</h6><ul>
+<li><p><code>constructor</code> 返回创建字符串属性的函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line">s.constructor;   <span class="comment">// function String() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>prototype</code> 允许您向对象添加属性和方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'Jion'</span>);</span><br><span class="line">s.prototype.name = <span class="string">'world'</span>; <span class="comment">// 添加属性name</span></span><br><span class="line">s.name;   <span class="comment">// world</span></span><br><span class="line">s.prototype.myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;  <span class="comment">// 添加方法</span></span><br><span class="line">s.myFunc();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>length</code> 返回字符串的长度(字符数)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line">s.length;  <span class="comment">// 13</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h6><ul>
+<li><p><code>charAt()</code> 返回指定索引位置的字符</p>
+<blockquote>
+<p>string.charCodeAt(index)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world'</span>;</span><br><span class="line">s.charAt(<span class="number">1</span>);  <span class="comment">// e 索引从0开始</span></span><br><span class="line">s.charAt(s.length<span class="number">-1</span>);  <span class="comment">// d 最后一个字符串</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>charCodeAt()</code> 返回指定索引位置字符的<code>Unicode</code>值</p>
+<blockquote>
+<p>string.charCodeAt(index)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world'</span>;</span><br><span class="line">s.charCodeAt(<span class="number">0</span>);  <span class="comment">// 72</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fromCharCode()</code> 将<code>Unicode</code>转换为字符串</p>
+<blockquote>
+<p>String.fromCharCode(n1, n2, …, nX)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="built_in">String</span>.fromCharCode(<span class="number">72</span>, <span class="number">69</span>, <span class="number">76</span>, <span class="number">76</span>, <span class="number">79</span>);  <span class="comment">// HELLO</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>indexOf()</code> 返回字符串中检索指定字符第一次出现的位置</p>
+<blockquote>
+<p>string.indexOf(searchvalue, start)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world, welcome to the JavaScript!'</span>;</span><br><span class="line"><span class="keyword">var</span> n = s.indexOf(<span class="string">'l'</span>);  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>lastIndexOf()</code> 从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置</p>
+<blockquote>
+<p>string.lastIndexOf(searchvalue, start)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line"><span class="keyword">var</span> n = s.lastIndexOf(<span class="string">'l'</span>);  <span class="comment">// 8 索引从后(0)到前</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>slice()</code> 返回两个指定索引区间的字符</p>
+<blockquote>
+<p>string.slice(start, end)</p>
+</blockquote>
+<p>提示： 如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.slice(<span class="number">0</span>, <span class="number">5</span>);  <span class="comment">// Hello 从索引0开始到5（不包括5）</span></span><br><span class="line">s.slice(<span class="number">6</span>);  <span class="comment">// world 从索引6开始到结束</span></span><br><span class="line">s.slice(<span class="number">-1</span>);  <span class="comment">// d 最后一个字符</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>substring()</code> 返回两个指定的索引区间的字符</p>
+<blockquote>
+<p>string.substring(from, to)</p>
+</blockquote>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.substring(<span class="number">0</span>, <span class="number">5</span>);  <span class="comment">// Hello 从索引0开始到5（不包括5）</span></span><br><span class="line">s.substring(<span class="number">6</span>);  <span class="comment">// world 从索引6开始到结束</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>substr()</code> 返回从索引开始指定长度的字符</p>
+<blockquote>
+<p>string.substr(start, length)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.substr(<span class="number">1</span>, <span class="number">2</span>);  <span class="comment">// el 从索引1开始2个长度</span></span><br><span class="line">s.substr(<span class="number">6</span>);  <span class="comment">// lo world  从索引6开始到结束</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>思考</strong>：<code>slice()</code>、<code>substring()</code>、<code>substr()</code>区别</p>
+<p><code>substring()</code>以两个参数中较小一个作为起始位置，较大的参数作为结束位置<br>当参数为负数时，<br><code>slice()</code>将它字符串的长度与对应的负数相加，结果作为参数<br><code>substring()</code>将负参数都直接转换为0<br><code>substr()</code>将第一个参数与字符串长度相加后的结果作为第一个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// substring</span></span><br><span class="line">s.substring(<span class="number">2</span>, <span class="number">8</span>);  <span class="comment">// llo wo</span></span><br><span class="line">s.substring(<span class="number">8</span>, <span class="number">2</span>);  <span class="comment">// llo wo</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 负数</span></span><br><span class="line">s.slice(<span class="number">-3</span>);      <span class="comment">//  </span></span><br><span class="line">s.substring(<span class="number">-3</span>);  <span class="comment">// hello world</span></span><br><span class="line">s.substr(<span class="number">-3</span>);     <span class="comment">// rld</span></span><br><span class="line"></span><br><span class="line">s.slice(<span class="number">3</span>, <span class="number">-4</span>);   <span class="comment">// lo w (3, 7)</span></span><br><span class="line">s.substring(<span class="number">3</span>, <span class="number">-4</span>); <span class="comment">// hel (0, 3)</span></span><br><span class="line">s.substr(<span class="number">3</span>, <span class="number">-4</span>);    <span class="comment">// 空字符串 索引为3长度为0</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意:</strong> IE对substr接收负值的处理有错，它会返回原始字符串。</p>
+<ul>
+<li><p><code>match()</code> 找到一个或多个正则表达式的匹配<br>如果没有找到任何匹配的文本，<code>match()</code>将返回<code>null</code>。否则，它将返回一个<code>array</code>，其中存放了与它找到的匹配文本有关的信息</p>
+<blockquote>
+<p>string.match(regexp)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"The rain in SPAIN stays mainly in the plain"</span>; </span><br><span class="line"><span class="keyword">var</span> n = str.match(<span class="regexp">/ain/g</span>);  <span class="comment">// ain, ain, ain</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不区分大小写</span></span><br><span class="line"><span class="keyword">var</span> m = str.match(<span class="regexp">/ain/gi</span>);  <span class="comment">// ain, AIN, ain, ain</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>search()</code> 检索与正则表达式相匹配的值</p>
+<p>如果没有找到任何匹配的子串，则返回 -1。</p>
+<blockquote>
+<p>string.search(searchvalue)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Mr. Blue has a blue house"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.search(<span class="string">"blue"</span>);  <span class="comment">// 15</span></span><br><span class="line"><span class="keyword">var</span> m = str.search(<span class="regexp">/blue/i</span>);  <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>toUpperCase()</code> 把一个字符串全部变为大写</p>
+<blockquote>
+<p>string.toUpperCase()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.toUpperCase();  <span class="comment">// HELLO WORLD</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>toLowerCase()</code> 把一个字符串全部变成小写</p>
+<blockquote>
+<p>string.toLowerCase()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.toLowerCase();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>concat()</code> 连接两个或多个字符串，返回连接后的字符串</p>
+<blockquote>
+<p>string.concat(string1, string2, …, stringX)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">'Hello '</span>;</span><br><span class="line"><span class="keyword">var</span> s2 = <span class="string">'world!'</span>;</span><br><span class="line"><span class="keyword">var</span> n = s1.concat(s2);   <span class="comment">// Hello world!</span></span><br><span class="line"><span class="comment">// 连接多个 , 隔开</span></span><br><span class="line"><span class="keyword">var</span> s3 = <span class="string">' How are you!'</span>;</span><br><span class="line"><span class="keyword">var</span> m = s1.concat(s2, s3)  <span class="comment">// Hello world! How are you!</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>replace()</code> 替换与正则表达式匹配的子串</p>
+<p>注意：<code>replace()</code>方法不改变原始字符串。只执行一次替换</p>
+<blockquote>
+<p>string.replace(searchvalue, newvalue)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world, good world'</span></span><br><span class="line"><span class="keyword">var</span> n = s.replace(<span class="string">'world'</span>, <span class="string">'javascript'</span>);  <span class="comment">// hello javascript, good world</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行一个全局替换 正则表达式</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Mr Blue has a blue house and a blue car"</span>;</span><br><span class="line"><span class="keyword">var</span> m = str.replace(<span class="regexp">/blue/g</span>,<span class="string">"red"</span>); <span class="comment">// Mr Blue has a red house and a red car</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行一个全局替换 忽略大小写</span></span><br><span class="line"><span class="keyword">var</span> o = str.replace(<span class="regexp">/blue/gi</span>, <span class="string">"red"</span>); <span class="comment">// Mr red has a red house and a red car</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>split()</code> 把字符串分割为字符串数组</p>
+<p>注意：<code>split()</code>方法不改变原始字符串。<br>如果把空字符串<code>(&quot;&quot;)</code>用作<code>separator</code>，那么<code>stringObject</code>中的每个字符之间都会被分割.</p>
+<blockquote>
+<p>string.split(separator, limit)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world'</span>;</span><br><span class="line">s.split(<span class="string">""</span>);  <span class="comment">// ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']</span></span><br><span class="line">s.split(<span class="string">" "</span>);  <span class="comment">// ['hello', 'world']</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>trim()</code> 去除字符串两边的空白</p>
+<blockquote>
+<p>string.trim()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">' hello world    '</span>;</span><br><span class="line">s.trim();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>valueOf()</code> 返回某个字符串对象的原始值</p>
+<blockquote>
+<p>string.valueOf()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world'</span>;</span><br><span class="line">s.valueOf();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h4 id="数字-Number"><a href="#数字-Number" class="headerlink" title="数字(Number)"></a>数字(Number)</h4><p>只要一种数据类型，不区分整数和浮点数</p>
 <p><code>Number</code>基本运算</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="number">2</span>;    <span class="comment">// 3</span></span><br><span class="line"><span class="number">3</span> - <span class="number">2</span>;    <span class="comment">// 1</span></span><br><span class="line"><span class="number">1</span> * <span class="number">2</span>;    <span class="comment">// 2</span></span><br><span class="line"><span class="number">3</span> / <span class="number">2</span>;    <span class="comment">// 1.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// % 求余</span></span><br><span class="line"><span class="number">10</span> % <span class="number">3</span>;    <span class="comment">// 1 </span></span><br><span class="line"><span class="number">10.5</span> % <span class="number">3</span>; <span class="comment">// 1.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Special</span></span><br><span class="line"><span class="number">2</span> / <span class="number">0</span>;    <span class="comment">// Infinity</span></span><br><span class="line"><span class="number">0</span> / <span class="number">0</span>;    <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
