@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>OC-Keywords | 鸟语花香</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关键字nullable和nonnulliOS9新出的关键字：用来修饰属性 方法的参数和返回值 在属性中使用nullable和nonnull：nullable: 表示修饰的属性或参数可以为空 nonnull:非空，表示修饰的属性或参数不能为空 注意：nonnull,nullable只能修饰对象，不能修饰基本数据类型 3种写法：1234567@property (nonatomic, strong,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC-Keywords">
+<meta property="og:url" content="http://blog.ht9145.com/2018/11/09/OC-Keywords/index.html">
+<meta property="og:site_name" content="鸟语花香">
+<meta property="og:description" content="关键字nullable和nonnulliOS9新出的关键字：用来修饰属性 方法的参数和返回值 在属性中使用nullable和nonnull：nullable: 表示修饰的属性或参数可以为空 nonnull:非空，表示修饰的属性或参数不能为空 注意：nonnull,nullable只能修饰对象，不能修饰基本数据类型 3种写法：1234567@property (nonatomic, strong,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-03T04:48:49.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC-Keywords">
+<meta name="twitter:description" content="关键字nullable和nonnulliOS9新出的关键字：用来修饰属性 方法的参数和返回值 在属性中使用nullable和nonnull：nullable: 表示修饰的属性或参数可以为空 nonnull:非空，表示修饰的属性或参数不能为空 注意：nonnull,nullable只能修饰对象，不能修饰基本数据类型 3种写法：1234567@property (nonatomic, strong,">
+  
+    <link rel="alternate" href="/atom.xml" title="鸟语花香" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">鸟语花香</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.ht9145.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-OC-Keywords" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/09/OC-Keywords/" class="article-date">
+  <time datetime="2018-11-09T04:53:32.000Z" itemprop="datePublished">2018-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Objective-C/">Objective-C</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OC-Keywords
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h2 id="nullable和nonnull"><a href="#nullable和nonnull" class="headerlink" title="nullable和nonnull"></a><code>nullable</code>和<code>nonnull</code></h2><p>iOS9新出的关键字：用来修饰属性 方法的参数和返回值</p>
+<h4 id="在属性中使用nullable和nonnull："><a href="#在属性中使用nullable和nonnull：" class="headerlink" title="在属性中使用nullable和nonnull："></a>在属性中使用nullable和nonnull：</h4><p><code>nullable</code>: 表示修饰的属性或参数可以为空</p>
+<p><code>nonnull</code>:非空，表示修饰的属性或参数不能为空</p>
+<p><strong>注意：nonnull,nullable只能修饰对象，不能修饰基本数据类型</strong></p>
+<p>3种写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, nullable) NSString * name;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br><span class="line">//</span><br><span class="line">@property (nonatomic, strong, nonnull) NSString * price;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br></pre></td></tr></table></figure></p>
+<h4 id="在方法中使用nullable和nonnull："><a href="#在方法中使用nullable和nonnull：" class="headerlink" title="在方法中使用nullable和nonnull："></a>在方法中使用nullable和nonnull：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (nullable NSString *)buyBook:(nullable NSString *)book;</span><br><span class="line">- (NSString *__nullable)buyBook:( NSString *__nullable)book;</span><br><span class="line">- (NSString *_Nullable)buyBook:( NSString *_Nullable)book;</span><br></pre></td></tr></table></figure>
+<h4 id="Nonnull区域设置-Audited-Regions"><a href="#Nonnull区域设置-Audited-Regions" class="headerlink" title="Nonnull区域设置(Audited Regions)"></a>Nonnull区域设置(Audited Regions)</h4><p>宏定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line">@property (nonatomic, strong) NSString * name;</span><br><span class="line">...</span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure></p>
+<p>之间定义的所有属性和方法参数和返回值默认加上nonnull修饰</p>
+<p>为了<strong>安全</strong>起见，苹果还制定了几条<strong>规则</strong>：</p>
+<blockquote>
+<p>1.typedef定义的类型的nullability特性通常依赖于上下文，即使是在Audited Regions中，也不能假定它为nonnull。<br>2.复杂的指针类型(如id <em>)必须显示去指定是nonnull还是nullable。例如，指定一个指向nullable对象的nonnull指针，可以使用”__nullable id </em> __nonnull”。<br>3.我们经常使用的NSError **通常是被假定为一个指向nullable NSError对象的nullable指针。</p>
+</blockquote>
+<h4 id="null-resettable"><a href="#null-resettable" class="headerlink" title="null_resettable"></a>null_resettable</h4><p><strong>null_resettable: get方法:不能返回为空，set方法可以为空</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, null_resettable) NSNumber * number;</span><br></pre></td></tr></table></figure></p>
+<p>当属性策略中使用了null_resettable修饰，就必须保证该属性的get方法返回不为空，否则编译器会如上图那样报警告⚠️。可以在set方法或get方法中做非空处理，以下是在get方法中做处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSNumber *)number&#123;</span><br><span class="line">    </span><br><span class="line">    if (_number == nil) &#123;</span><br><span class="line">        _number = @11;</span><br><span class="line">    &#125;</span><br><span class="line">    return _number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="null-unspecified"><a href="#null-unspecified" class="headerlink" title="null_unspecified"></a>null_unspecified</h4><p><strong>null_unspecified:不确定是否为空,使用方式有三种：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">@property(nonatomic,strong) NSNumber *_Null_unspecified height;</span><br><span class="line">// 方法二</span><br><span class="line">@property(nonatomic,strong) NSNumber *__null_unspecified height;</span><br><span class="line">// 方法三</span><br><span class="line">@property(nonatomic,strong,null_unspecified) NSNumber * height;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.ht9145.com/2018/11/09/OC-Keywords/" data-id="cjtnx167s0005cssl6a5xcyyg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/15/Linux命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/07/javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/08/CocoaPods创建公有Pod库/">CocoaPods创建公有Pod库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/08/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/03/Unix/Linux系统权限/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/js-string-method/">字符串属性和方法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/08/Shell学习笔记/">Shell学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Henry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
