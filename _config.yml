@@ -4,10 +4,11 @@
 
 # Site
 title: 鸟语花香
-subtitle:
-description:
-keywords:
+subtitle: 撸起袖子就是干
+description: 干干干！
+keywords: "移动，js" 
 author: Henry
+email: 1325049637@qq.com
 language:
 timezone:
 
@@ -73,7 +74,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
