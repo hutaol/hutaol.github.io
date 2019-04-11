@@ -160,6 +160,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-apache/apache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MAC系统-Apache-PHP配置"><a href="#MAC系统-Apache-PHP配置" class="headerlink" title="MAC系统 Apache+PHP配置"></a>MAC系统 Apache+PHP配置</h1><h2 id="开启apache"><a href="#开启apache" class="headerlink" title="开启apache"></a>开启apache</h2><blockquote>
+<p>sudo apachectl start</p>
+</blockquote>
+<p>重启apache：<code>sudo apachectl restart</code></p>
+<p>关闭apache：<code>sudo apachectl stop</code></p>
+<p>开启apache：<code>sudo apachectl start</code></p>
+<p>版本apache：<code>httpd -v</code></p>
+<h2 id="开启PHP"><a href="#开启PHP" class="headerlink" title="开启PHP"></a>开启PHP</h2><p>查看本地php版本：<code>php -v</code></p>
+<p>打开文件 <code>/etc/apache2/httpd.conf</code></p>
+<p>php5: <code>LoadModule php5_module libexec/apache2/libphp5.so</code><br>php7: <code>LoadModule php7_module libexec/apache2/libphp7.so</code><br>去掉前面的<code>#</code></p>
+<blockquote>
+<p>重启apache：<code>sudo apachectl restart</code></p>
+</blockquote>
+<h2 id="修改apache本地服务器路径"><a href="#修改apache本地服务器路径" class="headerlink" title="修改apache本地服务器路径"></a>修改apache本地服务器路径</h2><p>默认路径：<code>/Library/WebServer/Documents</code></p>
+<p>具体步骤：（我mac的用户名为henry，以下均以henry为例）</p>
+<ol>
+<li><p>在用户名下创建文件夹Sites</p>
+</li>
+<li><p>打开文件/etc/apache2/httpd.conf</p>
+<ul>
+<li><p>去掉前面的<code>#</code></p>
+<p>  <code>LoadModule userdir_module libexec/apache2/mod_userdir.so</code></p>
+</li>
+<li><p>修改<code>DocumentRoot</code>为：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;/Users/henry/Sites&quot;</span><br><span class="line">&lt;Directory &quot;/Users/henry/Sites&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Options FollowSymLinks Multiviews</code> 修改为 <code>Options FollowSymLinks Multiviews Indexes</code></p>
+</li>
+</ul>
+</li>
+<li><p>创建文件/etc/apache2/users/henry.conf</p>
+<p> 输入以下内容：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/Users/henry/Sites/&quot;&gt;</span><br><span class="line">Options Indexes MultiViews</span><br><span class="line">AllowOverride All</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启apache服务器</p>
+<p> <code>sudo apachectl restart</code></p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/11/apache/apache/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql连接错误</p>
+<p>1、Authentication type： (mysql8.0.0以上版本)</p>
+<p>用户的 Authentication type 默认为 caching_sha2_password，导致数据库连接错误，抛出如下异常：<br>Illuminate\Database\QueryException : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client<br>解决方案：修改密码认证方式<br>ALTER USER ‘youusername‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘yourpassword’;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/10/mysql/mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Node-js创建应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -410,7 +545,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Unix/Linux 系统中的 Operation Not Permitted 问题</p>
-<p><a href="https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/" target="_blank" rel="noopener">https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/</a></p>
+<p>OS X EI Capitan 的 SIP</p>
+<p>Apple 在 OS X 10.11 以后的版本中默认启动了一项系统保护程序，叫做 System Integrity Protection，也被唤作 rootless（寓意让 root 弱一点），该程序意在保护电脑不被恶意程序攻击，但是对于我们这群程序员，很多保护是多余的，甚至给我们带来了很多麻烦。</p>
+<p>SIP 会锁定几个系统文件目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/System</span><br><span class="line">/sbin</span><br><span class="line">/usr （/usr/local 除外）</span><br></pre></td></tr></table></figure>
+<p>在 SIP 的保护下，部分软件、功能、脚本都会失效，我们可以通过如下步骤关闭 SIP：</p>
+<p>重启电脑，按下 Command + R 直到听到开机声音，此时电脑会进入恢复模式（Recovery Mode）<br>当 OSX 工具出现在屏幕中时，下拉工具（Utilities）菜单，选择终端（Terminal）<br>键入 csrutil disable，回车<br>电脑重启后，SIP 就关闭了</p>
+<p>恢复 SIP 的方式同上，只不过终端中键入 csrutil enable。通过 csrutil status 可以检测系统当前 SIP 的启动状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ csrutil status</span><br><span class="line">System Integrity Protection status: enabled.</span><br></pre></td></tr></table></figure>
+<p><strong>参考：</strong> <a href="https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/" target="_blank" rel="noopener">https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/</a></p>
 
       
 
@@ -844,183 +987,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/17/Xcode自定义代码块/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-iOS持久化方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/iOS持久化方式/">iOS持久化方式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/16/iOS持久化方式/" class="archive-article-date">
-  	<time datetime="2018-12-16T14:34:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="iOS持久化方式"><a href="#iOS持久化方式" class="headerlink" title="iOS持久化方式"></a>iOS持久化方式</h3><blockquote>
-<p>1.NSUserDefaults<br>2.NSKeyedArchiver<br>3.沙盒Document<br>4.sqlite3<br>5.KeyChain</p>
-</blockquote>
-<p>持久化分为两类：沙盒内和沙盒外。</p>
-<h4 id="一、沙盒目录结构和各个目录的路径获取方法"><a href="#一、沙盒目录结构和各个目录的路径获取方法" class="headerlink" title="一、沙盒目录结构和各个目录的路径获取方法"></a>一、沙盒目录结构和各个目录的路径获取方法</h4><blockquote>
-<p><strong>AppName.app</strong>:  应用程序包目录</p>
-</blockquote>
-<blockquote>
-<p><strong>Documents</strong>：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会被iTunes同步。</p>
-</blockquote>
-<blockquote>
-<p><strong>Library</strong>：有两个子目录Preferences和Caches，除Caches以外，都会被iTunes备份。</p>
-<blockquote>
-<p><strong>Preferences</strong>：包含应用程序的偏好设置文件。您不应该直接创建偏好设置文件，而是应该使用NSUserDefaults类来取得和设置应用程序的偏好。结果在目录下面以plist的方式存储<br><strong>Caches</strong>：用于存放应用程序专用的支持文件，保存应用程序再次启动过程中需要的信息。可创建子文件夹。可以用来放置您希望被备份但不希望被用户看到的数据。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p><strong>SystemData</strong>：系统数据</p>
-</blockquote>
-<blockquote>
-<p><strong>tmp</strong>：用来存放应用再次启动时不需要的临时文件，该目录下的东西随时可能被系统清理掉，不会被iTunes同步。</p>
-</blockquote>
-<h5 id="沙盒主目录"><a href="#沙盒主目录" class="headerlink" title="沙盒主目录"></a>沙盒主目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *homeDir = NSHomeDirectory();</span><br></pre></td></tr></table></figure>
-<h5 id="Documents目录"><a href="#Documents目录" class="headerlink" title="Documents目录"></a>Documents目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
-<h5 id="Library目录"><a href="#Library目录" class="headerlink" title="Library目录"></a>Library目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取Library的目录路径</span><br><span class="line">NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];</span><br><span class="line"></span><br><span class="line">// 获取Caches目录路径</span><br><span class="line">NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
-<h5 id="tmp目录"><a href="#tmp目录" class="headerlink" title="tmp目录"></a>tmp目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir =  NSTemporaryDirectory();</span><br></pre></td></tr></table></figure>
-<h5 id="AppBundle目录路径"><a href="#AppBundle目录路径" class="headerlink" title="AppBundle目录路径"></a>AppBundle目录路径</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取AppBundle目录路径</span><br><span class="line">NSLog(@&quot;%@&quot;,[[NSBundle mainBundle] bundlePath]);</span><br><span class="line"> </span><br><span class="line">NSString *imagePath = [[NSBundle mainBundle] pathForResource:@&quot;apple&quot; ofType:@&quot;png&quot;];</span><br><span class="line"> </span><br><span class="line">UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];</span><br></pre></td></tr></table></figure>
-<h4 id="二、沙盒内的持久化方式"><a href="#二、沙盒内的持久化方式" class="headerlink" title="二、沙盒内的持久化方式"></a>二、沙盒内的持久化方式</h4><p><strong>NSKeyedArchiver</strong> 归档</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/16/iOS持久化方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Xcode工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/Xcode工具/">Xcode工具</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/16/Xcode工具/" class="archive-article-date">
-  	<time datetime="2018-12-16T14:12:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.查找未使用的Objective-C导入。 </p>
-<p>####<a href="https://github.com/dblock/fui" target="_blank" rel="noopener">fui</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem install fui  // 安装</span><br><span class="line"></span><br><span class="line">fui help  // 帮助</span><br><span class="line"></span><br><span class="line">fui find  // 在当前目录中查找未使用的类</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Xcode//" class="article-tag-list-link color1">Xcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/16/Xcode工具/">展开全文 >></a>
         </p>
       
 
