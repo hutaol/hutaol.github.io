@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.ht9145.com">
   <title>鸟语花香</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MAC系统 Apache+PHP配置开启apache sudo apachectl start  重启apache：sudo apachectl restart 关闭apache：sudo apachectl stop 开启apache：sudo apachectl start 版本apache：httpd -v 开启PHP查看本地php版本：php -v 打开文件 /etc/apache2/ht">
+  <meta name="description" content="Swift枚举支持四种关联值类型  整型(Integer) 浮点数(Float Point) 字符串(String) 布尔类型(Boolean)">
 <meta name="keywords" content="移动，js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鸟语花香">
-<meta property="og:url" content="http://blog.ht9145.com/2019/04/11/apache/apache/index.html">
+<meta property="og:url" content="http://blog.ht9145.com/2019/04/17/swift/swift基础/index.html">
 <meta property="og:site_name" content="鸟语花香">
-<meta property="og:description" content="MAC系统 Apache+PHP配置开启apache sudo apachectl start  重启apache：sudo apachectl restart 关闭apache：sudo apachectl stop 开启apache：sudo apachectl start 版本apache：httpd -v 开启PHP查看本地php版本：php -v 打开文件 /etc/apache2/ht">
+<meta property="og:description" content="Swift枚举支持四种关联值类型  整型(Integer) 浮点数(Float Point) 字符串(String) 布尔类型(Boolean)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-11T14:29:25.493Z">
+<meta property="og:updated_time" content="2019-04-16T16:07:37.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鸟语花香">
-<meta name="twitter:description" content="MAC系统 Apache+PHP配置开启apache sudo apachectl start  重启apache：sudo apachectl restart 关闭apache：sudo apachectl stop 开启apache：sudo apachectl start 版本apache：httpd -v 开启PHP查看本地php版本：php -v 打开文件 /etc/apache2/ht">
+<meta name="twitter:description" content="Swift枚举支持四种关联值类型  整型(Integer) 浮点数(Float Point) 字符串(String) 布尔类型(Boolean)">
   
     <link rel="alternative" href="/atom.xml" title="鸟语花香" type="application/atom+xml">
   
@@ -159,49 +159,18 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-apache/apache" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-swift/swift基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MAC系统-Apache-PHP配置"><a href="#MAC系统-Apache-PHP配置" class="headerlink" title="MAC系统 Apache+PHP配置"></a>MAC系统 Apache+PHP配置</h1><h2 id="开启apache"><a href="#开启apache" class="headerlink" title="开启apache"></a>开启apache</h2><blockquote>
-<p>sudo apachectl start</p>
-</blockquote>
-<p>重启apache：<code>sudo apachectl restart</code></p>
-<p>关闭apache：<code>sudo apachectl stop</code></p>
-<p>开启apache：<code>sudo apachectl start</code></p>
-<p>版本apache：<code>httpd -v</code></p>
-<h2 id="开启PHP"><a href="#开启PHP" class="headerlink" title="开启PHP"></a>开启PHP</h2><p>查看本地php版本：<code>php -v</code></p>
-<p>打开文件 <code>/etc/apache2/httpd.conf</code></p>
-<p>php5: <code>LoadModule php5_module libexec/apache2/libphp5.so</code><br>php7: <code>LoadModule php7_module libexec/apache2/libphp7.so</code><br>去掉前面的<code>#</code></p>
-<blockquote>
-<p>重启apache：<code>sudo apachectl restart</code></p>
-</blockquote>
-<h2 id="修改apache本地服务器路径"><a href="#修改apache本地服务器路径" class="headerlink" title="修改apache本地服务器路径"></a>修改apache本地服务器路径</h2><p>默认路径：<code>/Library/WebServer/Documents</code></p>
-<p>具体步骤：（我mac的用户名为henry，以下均以henry为例）</p>
-<ol>
-<li><p>在用户名下创建文件夹Sites</p>
-</li>
-<li><p>打开文件/etc/apache2/httpd.conf</p>
+        <h1 id="Swift枚举"><a href="#Swift枚举" class="headerlink" title="Swift枚举"></a>Swift枚举</h1><p>支持四种关联值类型</p>
 <ul>
-<li><p>去掉前面的<code>#</code></p>
-<p>  <code>LoadModule userdir_module libexec/apache2/mod_userdir.so</code></p>
-</li>
-<li><p>修改<code>DocumentRoot</code>为：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;/Users/henry/Sites&quot;</span><br><span class="line">&lt;Directory &quot;/Users/henry/Sites&quot;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>Options FollowSymLinks Multiviews</code> 修改为 <code>Options FollowSymLinks Multiviews Indexes</code></p>
-</li>
+<li>整型(Integer)</li>
+<li>浮点数(Float Point)</li>
+<li>字符串(String)</li>
+<li>布尔类型(Boolean)</li>
 </ul>
-</li>
-<li><p>创建文件/etc/apache2/users/henry.conf</p>
-<p> 输入以下内容：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory &quot;/Users/henry/Sites/&quot;&gt;</span><br><span class="line">Options Indexes MultiViews</span><br><span class="line">AllowOverride All</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启apache服务器</p>
-<p> <code>sudo apachectl restart</code></p>
-</li>
-</ol>
 
       
 
@@ -281,7 +250,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.ht9145.com/2019/04/11/apache/apache/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.ht9145.com/2019/04/17/swift/swift基础/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,7 +264,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/13/php/php-xdebug/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/19/vim/vim配置及插件安装/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -305,7 +274,7 @@
     </a>
   
   
-    <a href="/2019/04/10/mysql/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/13/php/php-xdebug/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
