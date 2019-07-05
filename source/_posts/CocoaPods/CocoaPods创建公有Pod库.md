@@ -1,7 +1,8 @@
 ---
 title: CocoaPods创建公有Pod库
 date: 2019-03-08 11:50:31
-tags:
+tags: 
+categories: CocoaPods
 ---
 
 # 1.注册CocoaPods账号信息
