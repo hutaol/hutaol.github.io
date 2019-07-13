@@ -44,6 +44,8 @@ set showcmd               " 右下角显示待补全命令
 set hlsearch              " 搜索字符串时高亮所有结果,:nohlsearch取消高亮
 ```
 
+`:wq` 保存退出
+
 ## 4 安装Vundle（Vim 插件管理器）
 
 ```git
