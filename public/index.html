@@ -160,6 +160,295 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android/Android三方库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/18/Android/Android三方库/">Android三方库</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/18/Android/Android三方库/" class="archive-article-date">
+  	<time datetime="2019-10-18T05:03:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android-Studio-2-3"><a href="#Android-Studio-2-3" class="headerlink" title="Android Studio 2.3"></a>Android Studio 2.3</h1><h2 id="Android-Butterknife-黄油刀"><a href="#Android-Butterknife-黄油刀" class="headerlink" title="Android Butterknife(黄油刀)"></a>Android Butterknife(黄油刀)</h2><p>ButterKnife是一个专注于Android系统的View注入框架，减少findViewById来找View对象，使用ButterKnife对性能基本没有损失，因为ButterKnife用到的注解并不是在运行时反射的，而是在编译的时候生成新的class</p>
+<p>ButterKnife项目地址：<a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">https://github.com/JakeWharton/butterknife</a></p>
+<ul>
+<li>ButterKnife的优势</li>
+</ul>
+<blockquote>
+<p>1、强大的View绑定和Click事件处理功能，简化代码，提升开发效率</p>
+<p>2、方便的处理Adapter里的ViewHolder绑定问题</p>
+<p>3、运行时不会影响APP效率，使用配置方便</p>
+<p>4、代码清晰，可读性强</p>
+</blockquote>
+<ul>
+<li>ButterKnife的基本配置</li>
+</ul>
+<p>在android Studio项目中配置使用ButterKnife</p>
+<p>1、 在Project的 build.gradle 中添加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.3.3'</span></span><br><span class="line">        classpath <span class="string">'com.jakewharton:butterknife-gradle-plugin:8.8.1'</span>  <span class="comment">// 添加这一行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、 在App的 build.gradle 中添加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.jakewharton.butterknife'</span></span><br></pre></td></tr></table></figure>
+
+<p>dependencies中添加：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.jakewharton:butterknife:8.8.1'</span></span><br><span class="line">annotationProcessor <span class="string">'com.jakewharton:butterknife-compiler:8.8.1'</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ButterKnife的使用</li>
+</ul>
+<blockquote>
+<p>1、在Activity 类中绑定 ：ButterKnife.bind(this);必须在setContentView();之后绑定；且父类bind绑定后，子类不需要再bind。</p>
+<p>2、在非Activity 类（eg：Fragment、ViewHold）中绑定： ButterKnife.bind(this，view);这里的this不能替换成getActivity（）。</p>
+<p>3、在Activity中不需要做解绑操作，在Fragment 中必须在onDestroyView()中做解绑操作。</p>
+<p>4、使用ButterKnife修饰的方法和控件，不能用private or static 修饰，否则会报错。错误: @BindView fields must not be private or static. (com.zyj.wifi.ButterknifeActivity.button1)</p>
+<p>5、setContentView()不能通过注解实现。（其他的有些注解框架可以）</p>
+<p>6、使用Activity为根视图绑定任意对象时，如果你使用类似MVC的设计模式你可以在Activity 调用ButterKnife.bind(this, activity)，来绑定Controller。</p>
+<p>7、使用ButterKnife.bind(this，view)绑定一个view的子节点字段。如果你在子View的布局里或者自定义view的构造方法里 使用了inflate,你可以立刻调用此方法。或者，从XML inflate来的自定义view类型可以在onFinishInflate回调方法中使用它。</p>
+</blockquote>
+<p>待续。。。。。。</p>
+<h2 id="Logger-日志打印"><a href="#Logger-日志打印" class="headerlink" title="Logger(日志打印)"></a>Logger(日志打印)</h2><p>Logger项目地址：<a href="https://github.com/orhanobut/logger" target="_blank" rel="noopener">https://github.com/orhanobut/logger</a></p>
+<p>配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.orhanobut:logger:2.0.0'</span></span><br></pre></td></tr></table></figure>
+
+<p>初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Logger.addLogAdapter(<span class="keyword">new</span> AndroidLogAdapter());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 日志适配器通过检查此功能来检查是否应打印日志。如果要禁用/隐藏日志以进行输出，请重写isLoggable方法。 true将打印日志消息，false将其忽略</span></span><br><span class="line">Logger.addLogAdapter(<span class="keyword">new</span> AndroidLogAdapter() &#123;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLoggable</span><span class="params">(<span class="keyword">int</span> priority, String tag)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Logger.d(<span class="string">"hello"</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/18/Android/Android三方库/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/CentOS6安装Python3环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/09/python/CentOS6安装Python3环境/">CentOS6安装Python3.6环境</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/09/python/CentOS6安装Python3环境/" class="archive-article-date">
+  	<time datetime="2019-08-09T03:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CentOS6-5安装python3-6-9"><a href="#CentOS6-5安装python3-6-9" class="headerlink" title="CentOS6.5安装python3.6.9"></a>CentOS6.5安装python3.6.9</h1><p>CentOS6安装python3.7，会出现问题：pip is configured with locations that require TLS/SSL</p>
+<p>系统版本centos6.5，其中openssl的版本为OpenSSL 1.0.1e-fips 11 Feb 2013,而python3.7需要的openssl的版本为1.0.2或者1.1.x,需要对openssl进行升级，并重新编译python3.7.0。yum 安装的openssl 版本都比较低。</p>
+<p>解决办法可参考地址：<a href="https://www.cnblogs.com/khstudy/p/11102633.html" target="_blank" rel="noopener">https://www.cnblogs.com/khstudy/p/11102633.html</a><br>嫌麻烦，安装python3.6.9</p>
+<h2 id="1、安装Python前的库环境"><a href="#1、安装Python前的库环境" class="headerlink" title="1、安装Python前的库环境"></a>1、安装Python前的库环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc patch libffi-devel python-devel  zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel -y</span><br><span class="line">yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel readline-devel.x86_64 -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、下载Python源码包"><a href="#2、下载Python源码包" class="headerlink" title="2、下载Python源码包"></a>2、下载Python源码包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz</span><br><span class="line"></span><br><span class="line">// wget: command not found 安装wget</span><br><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、-安装Python"><a href="#3、-安装Python" class="headerlink" title="3、 安装Python"></a>3、 安装Python</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf Python-3.6.9.tgz</span><br><span class="line">cd Python-3.6.9</span><br><span class="line">./configure --prefix=/usr/local/python3</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、设置软连接"><a href="#4、设置软连接" class="headerlink" title="4、设置软连接"></a>4、设置软连接</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/python3/bin/python3.6 /usr/local/bin/python3</span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、查看python3版本以及pip3版本"><a href="#5、查看python3版本以及pip3版本" class="headerlink" title="5、查看python3版本以及pip3版本"></a>5、查看python3版本以及pip3版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">exit() // 退出python</span><br><span class="line">pip3 -V</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、更新pip3版本"><a href="#6、更新pip3版本" class="headerlink" title="6、更新pip3版本"></a>6、更新pip3版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：Centos系统中自带Python2，不过没有安装pip <code>centos -bash: pip: command not found</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 安装EPEL</span><br><span class="line">yum -y install epel-release</span><br><span class="line">// 启用EPEL</span><br><span class="line">yum install -y yum-utils &amp;&amp; yum-config-manager --enable epel</span><br><span class="line">// 安装pip</span><br><span class="line">yum install -y python-pip</span><br><span class="line">// 更新</span><br><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<h1 id="卸载python3"><a href="#卸载python3" class="headerlink" title="卸载python3"></a>卸载python3</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep python3|xargs rpm -ev --allmatches --nodeps       // 卸载pyhton3</span><br><span class="line">whereis python3 |xargs rm -frv           // 删除所有残余文件</span><br><span class="line">whereis   python       // 查看现有安装的python</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django</span><br><span class="line"></span><br><span class="line">// 给Django设置软连接</span><br><span class="line">ln -s /usr/local/python3/bin/django-admin /usr/local/bin/django-admin</span><br></pre></td></tr></table></figure>
+
+<p>// 出现错误：SQLite 3.8.3 or later is required<br>解决方法1：给django降级</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">卸载django:   pip3 uninstall django</span><br><span class="line">安装低版本：   pip3 install django==2.1.8</span><br></pre></td></tr></table></figure>
+
+<p>解决方法2：升级SQLite</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 查看版本</span><br><span class="line">sqlite3 --version</span><br></pre></td></tr></table></figure>
+
+<p>还是嫌麻烦选择降级，降级后又出现错误：<code>django.db.utils.NotSupportedError: URIs not supported</code></p>
+<p>。。。。。。还是老老实实升级吧</p>
+<p>参考地址：<a href="https://blog.csdn.net/qq_39969226/article/details/92218635" target="_blank" rel="noopener">https://blog.csdn.net/qq_39969226/article/details/92218635</a></p>
+<h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h1><h2 id="1、查看是否安装了MySQL"><a href="#1、查看是否安装了MySQL" class="headerlink" title="1、查看是否安装了MySQL"></a>1、查看是否安装了MySQL</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、删除原来的数据库"><a href="#2、删除原来的数据库" class="headerlink" title="2、删除原来的数据库"></a>2、删除原来的数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e   mysql; // 一般删除，如果提示依赖的其他文件，则不能删除</span><br><span class="line">rpm -e  --nodeps mysql; // 强力删除，如果有其他依赖文件，则可以对其进行强力删除</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、mysql安装"><a href="#3、mysql安装" class="headerlink" title="3、mysql安装"></a>3、mysql安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将mysql,mysql-server,mysql-devel都安装好</span><br><span class="line">yum install -y mysql-server mysql mysql-devel</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、数据库安装成功之后，查看mysql-server的命令"><a href="#4、数据库安装成功之后，查看mysql-server的命令" class="headerlink" title="4、数据库安装成功之后，查看mysql-server的命令"></a>4、数据库安装成功之后，查看mysql-server的命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm  -qi mysql-server</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、启动mysql服务"><a href="#5、启动mysql服务" class="headerlink" title="5、启动mysql服务"></a>5、启动mysql服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySql相关命令"><a href="#MySql相关命令" class="headerlink" title="MySql相关命令"></a>MySql相关命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 查看mysql数据库服务是否设置成开机自己启动</span><br><span class="line">chkconfig --list  | grep mysqld</span><br><span class="line"></span><br><span class="line">// 设置mysql数据库服务开机自动启动</span><br><span class="line">chkconfig  mysqld on</span><br><span class="line"></span><br><span class="line">// 给root账号设置密码为 root</span><br><span class="line">mysqladmin -u root  password 'root';</span><br><span class="line"></span><br><span class="line">// 登录数据库</span><br><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<h2 id="CentOS6-部署Django-Nginx-uwsgi"><a href="#CentOS6-部署Django-Nginx-uwsgi" class="headerlink" title="CentOS6 部署Django+Nginx+uwsgi"></a>CentOS6 部署Django+Nginx+uwsgi</h2><p>参考：<a href="https://www.cnblogs.com/Black-rainbow/articles/9455927.html" target="_blank" rel="noopener">https://www.cnblogs.com/Black-rainbow/articles/9455927.html</a><br>     <a href="https://www.cnblogs.com/khstudy/p/11102633.html" target="_blank" rel="noopener">https://www.cnblogs.com/khstudy/p/11102633.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/09/python/CentOS6安装Python3环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql连接错误</p>
+<p>1、Authentication type： (mysql8.0.0以上版本)</p>
+<p>用户的 Authentication type 默认为 caching_sha2_password，导致数据库连接错误，抛出如下异常：<br>Illuminate\Database\QueryException : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client<br>解决方案：修改密码认证方式<br>ALTER USER ‘youusername’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘yourpassword’;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/08/mysql/mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vim/vim配置及插件安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -167,24 +456,34 @@
       
         <h1 id="Mac-Vim配置及插件"><a href="#Mac-Vim配置及插件" class="headerlink" title="Mac Vim配置及插件"></a>Mac Vim配置及插件</h1><h2 id="1-macOS（Linux）包管理器-Homebrew"><a href="#1-macOS（Linux）包管理器-Homebrew" class="headerlink" title="1 macOS（Linux）包管理器 Homebrew"></a>1 macOS（Linux）包管理器 <code>Homebrew</code></h2><p>安装命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span><br></pre></td></tr></table></figure>
+
 <h2 id="2-安装vim"><a href="#2-安装vim" class="headerlink" title="2 安装vim"></a>2 安装vim</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
+
 <h2 id="3-建立并编辑配置文件"><a href="#3-建立并编辑配置文件" class="headerlink" title="3 建立并编辑配置文件"></a>3 建立并编辑配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">touch .vimrc</span><br><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure>
+
 <p>编辑配置文件为：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" 输入:make编译并运行</span></span><br><span class="line">set makeprg=clear;gcc\ %\ &amp;&amp;\ ./a.out</span><br><span class="line"></span><br><span class="line"><span class="comment">" 当前行高亮</span></span><br><span class="line"><span class="keyword">au</span> WinLeave * <span class="keyword">set</span> nocursorline nocursorcolumn</span><br><span class="line"><span class="keyword">au</span> WinEnter * <span class="keyword">set</span> cursorline</span><br><span class="line"><span class="keyword">set</span> cursorline</span><br><span class="line"></span><br><span class="line"><span class="keyword">colorscheme</span> default       <span class="comment">" 颜色主题</span></span><br><span class="line"><span class="keyword">syntax</span> enable             <span class="comment">" 启用语法分析着色</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span>             <span class="comment">" 设定Tab表示的空格数</span></span><br><span class="line"><span class="keyword">set</span> softtabstop=<span class="number">4</span>         <span class="comment">" 设定输入Tab表示的空格数</span></span><br><span class="line"><span class="keyword">set</span> expandtab             <span class="comment">" 将Tab视为若干空格</span></span><br><span class="line"><span class="keyword">set</span> backspace=<span class="number">2</span>           <span class="comment">" 设置退格键可用</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">number</span>                <span class="comment">" 显示行号</span></span><br><span class="line"><span class="keyword">set</span> showcmd               <span class="comment">" 右下角显示待补全命令</span></span><br><span class="line"><span class="keyword">set</span> hlsearch              <span class="comment">" 搜索字符串时高亮所有结果,:nohlsearch取消高亮</span></span><br></pre></td></tr></table></figure>
+
 <p><code>:wq</code> 保存退出</p>
 <h2 id="4-安装Vundle（Vim-插件管理器）"><a href="#4-安装Vundle（Vim-插件管理器）" class="headerlink" title="4 安装Vundle（Vim 插件管理器）"></a>4 安装Vundle（Vim 插件管理器）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br><span class="line"></span><br><span class="line">// 编辑文件</span><br><span class="line">vim .vimrc</span><br></pre></td></tr></table></figure>
+
 <p>在配置文件开头添加如下配置：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">"---START OF VUNDLE---</span></span><br><span class="line"><span class="keyword">set</span> nocompatible</span><br><span class="line"><span class="keyword">filetype</span> off</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> rtp+=~/.<span class="keyword">vim</span>/bundle/Vundle.<span class="keyword">vim</span></span><br><span class="line"><span class="keyword">call</span> vundle#begin()</span><br><span class="line">Plugin <span class="string">'VundleVim/Vundle.vim'</span></span><br><span class="line"><span class="comment">" Plugins start</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" Plugins end</span></span><br><span class="line"><span class="keyword">call</span> vundle#end()</span><br><span class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></span><br><span class="line"><span class="comment">" ---END OF VUNDLE---</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="5-Vundle安装插件"><a href="#5-Vundle安装插件" class="headerlink" title="5 Vundle安装插件"></a>5 Vundle安装插件</h2><p>在配置文件 “Plugins start 和 end 注释之间加入：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Plugin <span class="string">'[插件名]'</span></span><br><span class="line"></span><br><span class="line">:<span class="keyword">wq</span></span><br><span class="line"><span class="keyword">vim</span> .vimrc</span><br><span class="line">:PluginInstall</span><br></pre></td></tr></table></figure>
+
 <h2 id="6-代码自动补全YouCompleteMe安装"><a href="#6-代码自动补全YouCompleteMe安装" class="headerlink" title="6 代码自动补全YouCompleteMe安装"></a>6 代码自动补全YouCompleteMe安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cmake</span><br></pre></td></tr></table></figure>
+
 <p>方法一 使用Vundle安装</p>
 <p>然后在 <code>/.vimrc</code>文件中加入</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Plugin <span class="string">'Valloric/YouCompleteMe'</span>,&#123;<span class="string">'do'</span>:<span class="string">'python3 install.py'</span>&#125;</span><br><span class="line"></span><br><span class="line">// Go support</span><br><span class="line">Plugin <span class="string">'Valloric/YouCompleteMe'</span>,&#123;<span class="string">'do'</span>:<span class="string">'python3 install.py --go-completer'</span>&#125;</span><br><span class="line">// 全部安装</span><br><span class="line">Plugin <span class="string">'Valloric/YouCompleteMe'</span>,&#123;<span class="string">'do'</span>:<span class="string">'python3 install.py --all'</span>&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后执行<code>:PluginInstall</code>，自动安装</p>
 <p><strong>注</strong>： <code>https://www.jianshu.com/p/edc4bbed92ca</code></p>
 <p>方法二<br>下载ycm源码包</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Valloric/YouCompleteMe.git</span><br><span class="line"></span><br><span class="line">// YouCompleteMe/目录下执行命令</span><br><span class="line">cd YouCompleteMe</span><br><span class="line">python install.py</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -227,14 +526,23 @@
 
 
   
-    <article id="post-mysql/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unix/Linux系统权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mysql连接错误</p>
-<p>1、Authentication type： (mysql8.0.0以上版本)</p>
-<p>用户的 Authentication type 默认为 caching_sha2_password，导致数据库连接错误，抛出如下异常：<br>Illuminate\Database\QueryException : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client<br>解决方案：修改密码认证方式<br>ALTER USER ‘youusername‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘yourpassword’;</p>
+        <p>Unix/Linux 系统中的 Operation Not Permitted 问题</p>
+<p>OS X EI Capitan 的 SIP</p>
+<p>Apple 在 OS X 10.11 以后的版本中默认启动了一项系统保护程序，叫做 System Integrity Protection，也被唤作 rootless（寓意让 root 弱一点），该程序意在保护电脑不被恶意程序攻击，但是对于我们这群程序员，很多保护是多余的，甚至给我们带来了很多麻烦。</p>
+<p>SIP 会锁定几个系统文件目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/System</span><br><span class="line">/sbin</span><br><span class="line">/usr （/usr/local 除外）</span><br></pre></td></tr></table></figure>
+
+<p>在 SIP 的保护下，部分软件、功能、脚本都会失效，我们可以通过如下步骤关闭 SIP：</p>
+<p>重启电脑，按下 Command + R 直到听到开机声音，此时电脑会进入恢复模式（Recovery Mode）<br>当 OSX 工具出现在屏幕中时，下拉工具（Utilities）菜单，选择终端（Terminal）<br>键入 csrutil disable，回车<br>电脑重启后，SIP 就关闭了</p>
+<p>恢复 SIP 的方式同上，只不过终端中键入 csrutil enable。通过 csrutil status 可以检测系统当前 SIP 的启动状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ csrutil status</span><br><span class="line">System Integrity Protection status: enabled.</span><br></pre></td></tr></table></figure>
+
+<p><strong>参考：</strong> <a href="https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/" target="_blank" rel="noopener">https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/</a></p>
 
       
 
@@ -247,7 +555,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/05/mysql/mysql/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/08/Unix/Linux系统权限/">展开全文 >></a>
         </p>
       
 
@@ -332,64 +640,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/05/apache/apache/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unix/Linux系统权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Unix/Linux 系统中的 Operation Not Permitted 问题</p>
-<p>OS X EI Capitan 的 SIP</p>
-<p>Apple 在 OS X 10.11 以后的版本中默认启动了一项系统保护程序，叫做 System Integrity Protection，也被唤作 rootless（寓意让 root 弱一点），该程序意在保护电脑不被恶意程序攻击，但是对于我们这群程序员，很多保护是多余的，甚至给我们带来了很多麻烦。</p>
-<p>SIP 会锁定几个系统文件目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/System</span><br><span class="line">/sbin</span><br><span class="line">/usr （/usr/local 除外）</span><br></pre></td></tr></table></figure>
-<p>在 SIP 的保护下，部分软件、功能、脚本都会失效，我们可以通过如下步骤关闭 SIP：</p>
-<p>重启电脑，按下 Command + R 直到听到开机声音，此时电脑会进入恢复模式（Recovery Mode）<br>当 OSX 工具出现在屏幕中时，下拉工具（Utilities）菜单，选择终端（Terminal）<br>键入 csrutil disable，回车<br>电脑重启后，SIP 就关闭了</p>
-<p>恢复 SIP 的方式同上，只不过终端中键入 csrutil enable。通过 csrutil status 可以检测系统当前 SIP 的启动状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ csrutil status</span><br><span class="line">System Integrity Protection status: enabled.</span><br></pre></td></tr></table></figure>
-<p><strong>参考：</strong> <a href="https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/" target="_blank" rel="noopener">https://www.barretlee.com/blog/2016/04/06/operation-not-permitted-problem-in-linux-or-unix-system/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/05/Unix/Linux系统权限/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/08/apache/apache/">展开全文 >></a>
         </p>
       
 
@@ -440,20 +691,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="CocoaPods-ios-三方管理工具"><a href="#CocoaPods-ios-三方管理工具" class="headerlink" title="CocoaPods ios 三方管理工具"></a>CocoaPods ios 三方管理工具</h1><h2 id="Ruby镜像-更换源"><a href="#Ruby镜像-更换源" class="headerlink" title="Ruby镜像 更换源"></a>Ruby镜像 更换源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo gem update --system</span><br><span class="line"></span><br><span class="line">gem sources --remove https://rubygems.org/</span><br><span class="line"></span><br><span class="line">gem sources --add https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure>
+
 <h3 id="验证是否成功"><a href="#验证是否成功" class="headerlink" title="验证是否成功"></a>验证是否成功</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gem sources -l</span><br><span class="line"></span><br><span class="line"># success</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure>
+
 <h2 id="安装CocoaPods"><a href="#安装CocoaPods" class="headerlink" title="安装CocoaPods"></a>安装CocoaPods</h2><p><code>sudo gem install -n /usr/local/bin cocoapods</code></p>
 <h2 id="安装本地库"><a href="#安装本地库" class="headerlink" title="安装本地库"></a>安装本地库</h2><p><code>pod setup</code></p>
 <h2 id="CocoaPods的使用"><a href="#CocoaPods的使用" class="headerlink" title="CocoaPods的使用"></a>CocoaPods的使用</h2><p>使用终端cd进入Xcode工程根目录</p>
 <p>创建Podfile文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod init</span><br></pre></td></tr></table></figure>
+
 <p>编辑Podfile文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Podfile</span><br></pre></td></tr></table></figure>
+
 <p>写入以下内容并保存 小提示：（终端vim文件 按 i 可编辑 ，esc 退出编辑，：wq  可保存退出）</p>
 <p>添加相关库：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &apos;AFNetworking&apos;</span><br></pre></td></tr></table></figure>
+
 <p><code>:wq</code> 保持后退出</p>
 <p>开始下载：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+
 <p>参考： <a href="https://www.jianshu.com/p/ab6411a05bc2" target="_blank" rel="noopener">https://www.jianshu.com/p/ab6411a05bc2</a></p>
 
       
@@ -532,6 +789,7 @@
 <li>Hosts文件的路径:</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Windows</span><br><span class="line"></span><br><span class="line">C:\Windows\System32\drivers\etc</span><br><span class="line"></span><br><span class="line">// Mac</span><br><span class="line">sudo vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>追加域名的IP地址</li>
 </ol>
@@ -539,6 +797,7 @@
 <p><code>github.com</code>  </p>
 <p><code>github.global.ssl.fastly.net</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.30.253.112 github.com</span><br><span class="line">151.101.185.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -614,12 +873,15 @@
       
         <h1 id="Mac-必备工具"><a href="#Mac-必备工具" class="headerlink" title="Mac 必备工具"></a>Mac 必备工具</h1><h2 id="Homebrew-包管理工具"><a href="#Homebrew-包管理工具" class="headerlink" title="Homebrew 包管理工具"></a>Homebrew 包管理工具</h2><p>安装/卸载/更新各种软件包，如：nodejs, elasticsearch, kibana, mysql, mongodb 等等，快速搭建各种本地环境，程序员必备工具</p>
 <h3 id="安装-brew"><a href="#安装-brew" class="headerlink" title="安装 brew"></a>安装 brew</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+
 <h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>以 nodejs 为例，安装目录在 /usr/local/Cellar</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 安装 nodejs</span><br><span class="line">brew install nodejs</span><br><span class="line"></span><br><span class="line">// 更新</span><br><span class="line">brew upgrade nodejs</span><br><span class="line"></span><br><span class="line">// 卸载</span><br><span class="line">brew remove nodejs</span><br><span class="line"></span><br><span class="line">// 列出当前安装的软件</span><br><span class="line">brew list</span><br><span class="line"></span><br><span class="line">// 查询与 nodejs 相关的可用软件</span><br><span class="line">brew search nodejs</span><br><span class="line"></span><br><span class="line">// 查询 nodejs 的安装信息</span><br><span class="line">brew info nodejs</span><br></pre></td></tr></table></figure>
+
 <p><strong>注：</strong> 如果需要指定版本，可以在<code>brew search</code>查看有没有需要的版本，在<code>@</code>后面指定版本号，例如<code>brew install thrift@0.9</code></p>
 <h2 id="npm-nodejs的包管理器"><a href="#npm-nodejs的包管理器" class="headerlink" title="npm nodejs的包管理器"></a>npm nodejs的包管理器</h2><p>用于node插件管理（包括安装、卸载、管理依赖等）, NPM是随同NodeJS一起安装的包管理工具</p>
 <p>安装npm 或者直接安装nodejs</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install npm</span><br></pre></td></tr></table></figure>
+
 <p>nodejs官网链接下载安装 <a href="https://nodejs.org/" target="_blank" rel="noopener">https://nodejs.org/</a></p>
 
       
@@ -695,10 +957,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h1><h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https:<span class="comment">//getcomposer.org/installer | php</span></span><br><span class="line"></span><br><span class="line">mv composer.phar /usr/local/bin/composer</span><br></pre></td></tr></table></figure>
+
 <h1 id="Composer-国内镜像"><a href="#Composer-国内镜像" class="headerlink" title="Composer 国内镜像"></a>Composer 国内镜像</h1><p>全局配置</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https:<span class="comment">//packagist.phpcomposer.com</span></span><br></pre></td></tr></table></figure>
+
 <p>解除镜像并恢复到packagist官方源</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --<span class="keyword">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
+
 <p><em>参考</em>：<a href="http://www.yanchat.com/75.html" target="_blank" rel="noopener">http://www.yanchat.com/75.html</a></p>
 
       
@@ -713,156 +978,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/06/19/php/PHP管理工具Composer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/23/git/">git</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/23/git/" class="archive-article-date">
-  	<time datetime="2019-05-23T01:19:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="丢弃本地修改"><a href="#丢弃本地修改" class="headerlink" title="丢弃本地修改"></a>丢弃本地修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</span><br><span class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</span><br><span class="line">git reset --hard HASH #返回到某个节点，不保留修改。</span><br><span class="line">git reset --soft HASH #返回到某个节点。保留修改</span><br><span class="line"></span><br><span class="line">git clean -df #返回到某个节点</span><br><span class="line">git clean 参数</span><br><span class="line">    -n 显示 将要 删除的 文件 和  目录</span><br><span class="line">    -f 删除 文件</span><br><span class="line">    -df 删除 文件 和 目录</span><br></pre></td></tr></table></figure>
-
-<p>丢弃本地修改的所有文件（新增、删除、修改）</p>
-<p><code>git checkout . &amp;&amp; git clean -xdf</code></p>
-<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查看分支</span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line"># 删除本地分支</span><br><span class="line">git branch -D &lt;BranchName&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete &lt;BranchName&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Tags"><a href="#Tags" class="headerlink" title="Tags"></a>Tags</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">git ls-remote --tags origin  # 查询远程tags</span><br><span class="line"></span><br><span class="line">git tag  # 列出所有tag</span><br><span class="line">git tag -l v1.* #列出符合条件的tag（筛选作用）</span><br><span class="line"></span><br><span class="line">git tag v1  # 创建tag</span><br><span class="line">git tag -a -m &apos;first version&apos; v1  # 创建含标注tag</span><br><span class="line">git tag -a f1bb97a(commit id) # 为之前提交打tag</span><br><span class="line"></span><br><span class="line">git push origin --tags  # 推送所有本地tag到远程</span><br><span class="line">git push origin v1  # 推送指定本地tag到远程</span><br><span class="line"></span><br><span class="line">git tag -d v1  # 删除本地指定tag</span><br><span class="line">git push origin :refs/tags/v1 # 删除远程指定tag</span><br><span class="line"></span><br><span class="line">git fetch origin v1 # 拉取远程指定tag</span><br><span class="line">git show v1 # 显示指定tag详细信息</span><br><span class="line"></span><br><span class="line">git tag -l | xargs git tag -d  # 删除所有本地分支</span><br><span class="line">git fetch origin --prune  # 从远程拉取所有信息</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/23/git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Node-js创建应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/25/Node-js创建应用/">Node.js创建应用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/25/Node-js创建应用/" class="archive-article-date">
-  	<time datetime="2019-03-25T15:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="创建Node-js应用"><a href="#创建Node-js应用" class="headerlink" title="创建Node.js应用"></a>创建Node.js应用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// require载入http模块，实例化HTTP</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">http.createServer(function (request, response) &#123;</span><br><span class="line"></span><br><span class="line">    // 发送 HTTP 头部 </span><br><span class="line">    // HTTP 状态值: 200 : OK</span><br><span class="line">    // 内容类型: text/plain</span><br><span class="line">    response.writeHead(200, &#123;&apos;Content-Type&apos;: &apos;text/plain&apos;&#125;);</span><br><span class="line"></span><br><span class="line">    // 发送响应数据 &quot;Hello World&quot;</span><br><span class="line">    response.end(&apos;Hello world\n&apos;);</span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"></span><br><span class="line">// 终端打印如下信息</span><br><span class="line">console.log(&apos;Server running at http://127.0.0.1:8888/&apos;);</span><br></pre></td></tr></table></figure>
-<p>保存为<code>server.js</code>文件</p>
-<p>使用<code>node</code>命令执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br><span class="line">Server running at http://127.0.0.1:8888/</span><br></pre></td></tr></table></figure>
-<p>打开浏览器即可访问<a href="http://127.0.0.1:8888/，" target="_blank" rel="noopener">http://127.0.0.1:8888/，</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Node//" class="article-tag-list-link color5">Node</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/25/Node-js创建应用/">展开全文 >></a>
         </p>
       
 

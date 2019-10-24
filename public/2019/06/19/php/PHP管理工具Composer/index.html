@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.ht9145.com">
   <title>PHP管理工具Composer | 鸟语花香</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Composer全局安装123curl -sS https://getcomposer.org/installer | phpmv composer.phar /usr/local/bin/composer Composer 国内镜像全局配置 1composer config -g repo.packagist composer https://packagist.phpcomposer.com">
+  <meta name="description" content="Composer全局安装123curl -sS https://getcomposer.org/installer | phpmv composer.phar /usr/local/bin/composer  Composer 国内镜像全局配置 1composer config -g repo.packagist composer https://packagist.phpcomposer.com">
 <meta name="keywords" content="移动，js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP管理工具Composer">
 <meta property="og:url" content="http://blog.ht9145.com/2019/06/19/php/PHP管理工具Composer/index.html">
 <meta property="og:site_name" content="鸟语花香">
-<meta property="og:description" content="Composer全局安装123curl -sS https://getcomposer.org/installer | phpmv composer.phar /usr/local/bin/composer Composer 国内镜像全局配置 1composer config -g repo.packagist composer https://packagist.phpcomposer.com">
+<meta property="og:description" content="Composer全局安装123curl -sS https://getcomposer.org/installer | phpmv composer.phar /usr/local/bin/composer  Composer 国内镜像全局配置 1composer config -g repo.packagist composer https://packagist.phpcomposer.com">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T08:51:19.064Z">
+<meta property="og:updated_time" content="2019-07-08T06:06:28.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP管理工具Composer">
-<meta name="twitter:description" content="Composer全局安装123curl -sS https://getcomposer.org/installer | phpmv composer.phar /usr/local/bin/composer Composer 国内镜像全局配置 1composer config -g repo.packagist composer https://packagist.phpcomposer.com">
+<meta name="twitter:description" content="Composer全局安装123curl -sS https://getcomposer.org/installer | phpmv composer.phar /usr/local/bin/composer  Composer 国内镜像全局配置 1composer config -g repo.packagist composer https://packagist.phpcomposer.com">
   
     <link rel="alternative" href="/atom.xml" title="鸟语花香" type="application/atom+xml">
   
@@ -180,10 +180,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h1><h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https:<span class="comment">//getcomposer.org/installer | php</span></span><br><span class="line"></span><br><span class="line">mv composer.phar /usr/local/bin/composer</span><br></pre></td></tr></table></figure>
+
 <h1 id="Composer-国内镜像"><a href="#Composer-国内镜像" class="headerlink" title="Composer 国内镜像"></a>Composer 国内镜像</h1><p>全局配置</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https:<span class="comment">//packagist.phpcomposer.com</span></span><br></pre></td></tr></table></figure>
+
 <p>解除镜像并恢复到packagist官方源</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --<span class="keyword">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>
+
 <p><em>参考</em>：<a href="http://www.yanchat.com/75.html" target="_blank" rel="noopener">http://www.yanchat.com/75.html</a></p>
 
       

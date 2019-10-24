@@ -160,6 +160,288 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/15/Linux命令/">Linux命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/15/Linux命令/" class="archive-article-date">
+  	<time datetime="2018-12-15T13:16:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><blockquote>
+<p> <strong>ls</strong> 列出目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -a   // 全部的文件，连同隐藏档( 开头为 . 的文件) 一起列出来</span><br><span class="line">ls -d   // 仅列出目录本身，而不是列出目录内的文件数据</span><br><span class="line">ls -l   // 长数据串列出，包含文件的属性与权限等等数据</span><br><span class="line">ls -al  // 将该目录下的所有文件列出来(含属性与隐藏档)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>cd</strong> 切换目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd .    // 当前目录</span><br><span class="line">cd ..   // 回上一级目录</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>pwd</strong> 显示目前的目录</p>
+</blockquote>
+<blockquote>
+<p><strong>mkdir</strong> 创建一个新的目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m    // 配置文件的权限</span><br><span class="line">mkdir -p    // 可创建多层目录</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>rmdir</strong> 删除一个空的目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>cp</strong> 复制文件或目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-a：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</span><br><span class="line"></span><br><span class="line">-d：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</span><br><span class="line"></span><br><span class="line">-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</span><br><span class="line"></span><br><span class="line">-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</span><br><span class="line"></span><br><span class="line">-l：进行硬式连结(hard link)的连结档创建，而非复制文件本身；</span><br><span class="line"></span><br><span class="line">-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span><br><span class="line"></span><br><span class="line">-r：递归持续复制，用於目录的复制行为；(常用)</span><br><span class="line"></span><br><span class="line">-s：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</span><br><span class="line"></span><br><span class="line">-u：若 destination 比 source 旧才升级 destination ！</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>rm</strong> 移除文件或目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf  // 强制移除目录及其子目录</span><br><span class="line">-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</span><br><span class="line">-i ：互动模式，在删除前会询问使用者是否动作</span><br><span class="line">-r ：递归删除啊！</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>mv</strong> 移动文件与目录，或修改文件与目录的名称</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</span><br><span class="line">-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</span><br><span class="line">-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件内容查看"><a href="#文件内容查看" class="headerlink" title="文件内容查看"></a>文件内容查看</h4><blockquote>
+<p><code>cat</code>  由第一行开始显示文件内容<br><code>tac</code>  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！<br><code>nl</code>   显示的时候，顺道输出行号！<br><code>more</code> 一页一页的显示文件内容<br><code>less</code> 与 more 类似，但是比 more 更好的是，他可以往前翻页！<br><code>head</code> 只看头几行<br><code>tail</code> 只看尾巴几行</p>
+</blockquote>
+<h4 id="查看系统内核"><a href="#查看系统内核" class="headerlink" title="查看系统内核"></a>查看系统内核</h4><blockquote>
+<p><code>cat /proc/version</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux version 2.6.32-642.el6.x86_64 (mockbuild@worker1.bsys.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-17) (GCC) ) #1 SMP Tue May 10 17:27:01 UTC 2016</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>uname -r</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.6.32-642.el6.x86_64</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>uname -a</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux host.localdomain 2.6.32-642.el6.x86_64 #1 SMP Tue May 10 17:27:01 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h4><blockquote>
+<p><code>cat /etc/issue</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CentOS release 6.8 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>cat /etc/redhat-release</code> // 只对Redhat Linux有效</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CentOS release 6.8 (Final)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>lsb_release -a</code> // 需安装lsb  yum install lsb –y</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:	:base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch</span><br><span class="line">Distributor ID:	CentOS</span><br><span class="line">Description:	CentOS release 6.8 (Final)</span><br><span class="line">Release:	6.8</span><br><span class="line">Codename:	Final</span><br></pre></td></tr></table></figure>
+
+<h4 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h4><blockquote>
+<p><code>sync</code>  // 将数据由内存同步到硬盘中。<br><code>shutdown -h new</code>  // 立马关机<br><code>shutdown –h 10</code>  // 10分钟后关机，显示在登录用户的屏幕中<br><code>shutdown –h +10</code>  // 10分钟后关机<br><code>shutdown –h 20:25</code>  // 在今天20:25关机<br><code>shutdown –r now</code>  // 系统立马重启<br><code>shutdown –r +10</code>  // 系统十分钟后重启<br><code>reboot</code>  // 就是重启，等同于 shutdown –r now<br><code>halt</code>  // 关闭系统，等同于shutdown –h now 和 poweroff</p>
+</blockquote>
+<h4 id="系统状态的命令"><a href="#系统状态的命令" class="headerlink" title="系统状态的命令"></a>系统状态的命令</h4><blockquote>
+<p><strong>who</strong>： 确定谁在系统中</p>
+</blockquote>
+<ul>
+<li><p><code>who</code>：列出当前已登录入系统的用户<br>henry  tty1  2018-12-30 15:51<br>用户名  终端设备的设备文件名<br>设备文件一般放于目录/dev下</p>
+</li>
+<li><p><code>tty</code>：可以打印出当前终端的设备文件名</p>
+</li>
+<li><p><code>who am i</code>：可以列出当前终端上的登录用户</p>
+</li>
+<li><p><code>whoami</code>：仅列出当前终端上的登录用户</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>uptime</strong>：已开机时间（年龄）</p>
+</blockquote>
+<p>15:01:15 up 1:51, 1 user, load average: 0.00, 0.00, 0.00</p>
+<p>系统自启动后到现在的运行时间<br>当前登录入用户数<br>近期1分钟，5分钟，15分钟内系统CPU的负载</p>
+<blockquote>
+<p><strong>top</strong>：列出资源占用排名靠前的进程</p>
+</blockquote>
+<p>VIRT进程逻辑地址空间大小(virtual)<br>RES驻留内存数(Resident)，也就是占用物理内存数<br>SHR与其他进程内存数(share)<br>%CPU占用CPU百分百，%MEM占用内存百分百<br>TIME+占用的CPU时间</p>
+<blockquote>
+<p><strong>ps</strong>：查阅进程状态(process status)</p>
+</blockquote>
+<p>用于控制列表的行数(进程范围)和列数(每进程列出的属性内容)<br><code>ps</code>：只列出在当前终端上启动的进程 PID TTY TIME COMMAND<br><code>ps e</code>：列出系统中所有的进程(进程范围)<br><code>ps f</code>：已<em>fill格式</em>列出每一个进程(控制列的数目)<br><code>ps l</code>：已<em>long格式</em>列出每一个进程(控制列的数目)</p>
+<blockquote>
+<p>UID：用户ID(注册名)<br>PID：进程ID<br>PPID：父进程的PID<br>C：CPU占用指数：最近一段时间(秒级别)进程占用CPU情况<br>STIME：启动时间<br>SZ：进程逻辑内存大小(size)<br>TTY：终端的名字<br>COMMAND：命令名<br>WCHAN：进程在内核的何处睡眠(wait channel)<br>TIME：累计执行时间(占用CPU的时间)<br>PRI：优先级<br>S：状态，S(sleep)，R(run)，Z(Zombie)</p>
+</blockquote>
+<blockquote>
+<p><strong>free</strong>：内存使用情况</p>
+</blockquote>
+<blockquote>
+<p><strong>vmtat</strong>：系统负载</p>
+</blockquote>
+<p>Procs r等待运行的进程数 b处在非中断睡眠状态的进程数<br>Memory free空闲的内存 buff/cache用做缓存的内存数<br>Swap 磁盘/内存的交换页数量，单位：KB/秒<br>IO 设备I/O块数，单位：块/秒<br>System in每秒的硬件中断数(interrupt)，包括时钟中断 cs每秒环境切换次数(context switch)<br>CPU 总使用率 us=user sy=system id=idle wa=wait for disk I/O</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/15/Linux命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-iOS/OC-Keywords" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/09/iOS/OC-Keywords/">OC-Keywords</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/09/iOS/OC-Keywords/" class="archive-article-date">
+  	<time datetime="2018-11-09T04:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h2 id="nullable和nonnull"><a href="#nullable和nonnull" class="headerlink" title="nullable和nonnull"></a><code>nullable</code>和<code>nonnull</code></h2><p>iOS9新出的关键字：用来修饰属性 方法的参数和返回值</p>
+<h4 id="在属性中使用nullable和nonnull："><a href="#在属性中使用nullable和nonnull：" class="headerlink" title="在属性中使用nullable和nonnull："></a>在属性中使用nullable和nonnull：</h4><p><code>nullable</code>: 表示修饰的属性或参数可以为空</p>
+<p><code>nonnull</code>:非空，表示修饰的属性或参数不能为空</p>
+<p><strong>注意：nonnull,nullable只能修饰对象，不能修饰基本数据类型</strong></p>
+<p>3种写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, nullable) NSString * name;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br><span class="line">//</span><br><span class="line">@property (nonatomic, strong, nonnull) NSString * price;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在方法中使用nullable和nonnull："><a href="#在方法中使用nullable和nonnull：" class="headerlink" title="在方法中使用nullable和nonnull："></a>在方法中使用nullable和nonnull：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (nullable NSString *)buyBook:(nullable NSString *)book;</span><br><span class="line">- (NSString *__nullable)buyBook:( NSString *__nullable)book;</span><br><span class="line">- (NSString *_Nullable)buyBook:( NSString *_Nullable)book;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Nonnull区域设置-Audited-Regions"><a href="#Nonnull区域设置-Audited-Regions" class="headerlink" title="Nonnull区域设置(Audited Regions)"></a>Nonnull区域设置(Audited Regions)</h4><p>宏定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line">@property (nonatomic, strong) NSString * name;</span><br><span class="line">...</span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+
+<p>之间定义的所有属性和方法参数和返回值默认加上nonnull修饰</p>
+<p>为了<strong>安全</strong>起见，苹果还制定了几条<strong>规则</strong>：</p>
+<blockquote>
+<p>1.typedef定义的类型的nullability特性通常依赖于上下文，即使是在Audited Regions中，也不能假定它为nonnull。<br>2.复杂的指针类型(如id <em>)必须显示去指定是nonnull还是nullable。例如，指定一个指向nullable对象的nonnull指针，可以使用”__nullable id * __nonnull”。<br>3.我们经常使用的NSError *</em>通常是被假定为一个指向nullable NSError对象的nullable指针。</p>
+</blockquote>
+<h4 id="null-resettable"><a href="#null-resettable" class="headerlink" title="null_resettable"></a>null_resettable</h4><p><strong>null_resettable: get方法:不能返回为空，set方法可以为空</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, null_resettable) NSNumber * number;</span><br></pre></td></tr></table></figure>
+
+<p>当属性策略中使用了null_resettable修饰，就必须保证该属性的get方法返回不为空，否则编译器会如上图那样报警告⚠️。可以在set方法或get方法中做非空处理，以下是在get方法中做处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSNumber *)number&#123;</span><br><span class="line">    </span><br><span class="line">    if (_number == nil) &#123;</span><br><span class="line">        _number = @11;</span><br><span class="line">    &#125;</span><br><span class="line">    return _number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="null-unspecified"><a href="#null-unspecified" class="headerlink" title="null_unspecified"></a>null_unspecified</h4><p><strong>null_unspecified:不确定是否为空,使用方式有三种：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">@property(nonatomic,strong) NSNumber *_Null_unspecified height;</span><br><span class="line">// 方法二</span><br><span class="line">@property(nonatomic,strong) NSNumber *__null_unspecified height;</span><br><span class="line">// 方法三</span><br><span class="line">@property(nonatomic,strong,null_unspecified) NSNumber * height;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Objective-C//" class="article-tag-list-link color2">Objective-C</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/09/iOS/OC-Keywords/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,13 +464,16 @@
       
         <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>不例外，我们从<code>Hello, world</code>开始</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    alert('Hello, world');</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>由<code>&lt;script&gt;...&lt;/script&gt;</code>包含的代码就是JavaScript代码，它将直接被浏览器执行。</p>
 <h2 id="如何运行JavaScirpt"><a href="#如何运行JavaScirpt" class="headerlink" title="如何运行JavaScirpt"></a>如何运行JavaScirpt</h2><p>先创建一个<code>helloworid.html</code>文件，把代码复制到文件中，保存，用浏览器打开，就能看到一个<code>Hello，world</code>弹窗效果啦。<br><strong>恭喜你，编程的第一步就从此开始，走向人生巅峰，谱写你的辉煌传奇！</strong></p>
 <h1 id="二、基础"><a href="#二、基础" class="headerlink" title="二、基础"></a>二、基础</h1><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p>每一个语句以<code>;</code>结束，语句块<code>{...}</code>,但JavaScript并不强制要求在每个语句的结尾加<code>;</code>，浏览器中负责执行JavaScript代码的引擎会自动在每个语句的结尾补上<code>;</code><br><strong>让JavaScript引擎自动加分号在某些情况下会改变程序的语义，导致运行结果与期望不一致</strong></p>
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>以<code>//</code>开头直到行末的字符被视为行注释，注释是给开发人员看的，JavaScript引擎会自动忽略：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一行注释</span></span><br><span class="line">alert(<span class="string">'hello'</span>); <span class="comment">// 这也是注释</span></span><br></pre></td></tr></table></figure>
+
 <p>块注释<code>/*...*/</code>把多行字符包裹起来，把一大“块”视为一个注释</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 从这里开始是块注释</span></span><br><span class="line"><span class="comment">仍然是注释</span></span><br><span class="line"><span class="comment">仍然是注释</span></span><br><span class="line"><span class="comment">注释结束 */</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><blockquote>
 <p><strong>值类型</strong>(基础类型)：字符串(<code>String</code>)、数字(<code>Number</code>)、布尔(<code>Boolean</code>)、对空(<code>Null</code>)、未定义(<code>Undefined</code>)、<code>Symbol</code>。<br><strong>引用数据类型</strong>：对象(<code>Object</code>)、数组(<code>Array</code>)、函数(<code>Function</code>)。</p>
 </blockquote>
@@ -198,10 +483,13 @@
 <p>typeof 运算符<br>instanceof 运算符<br>Object.prototype.toString 方法</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">123</span> <span class="comment">// "number"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'123'</span> <span class="comment">// "string"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span> <span class="comment">// "boolean"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">typeof</span> f <span class="comment">// "function"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">// "undefined"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// instanceof</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line">o <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// false</span></span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h3><p>可以使用<code>双引号</code>或<code>单引号</code>，字符串中可以使用引号，只要不匹配包围字符串的引号即可</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"I'm OK"</span>;</span><br></pre></td></tr></table></figure>
+
 <p>字符串内部既包含<code>&#39;</code>又包含<code>&quot;</code>,可以用转义字符<code>\</code>来标识</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'I\'m \"OK\"!'</span>;</span><br></pre></td></tr></table></figure>
+
 <h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符\"></a>转义字符<code>\</code></h4><table>
 <thead>
 <tr>
@@ -209,8 +497,7 @@
 <th>输出</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>\n</code></td>
 <td>换行</td>
 </tr>
@@ -242,25 +529,30 @@
 <td><code>\&quot;</code></td>
 <td>双引号</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>ASCII字符可以以<code>\x##</code>形式的十六进制表示，例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'\x41'</span>; <span class="comment">// 完全等同于 'A'</span></span><br></pre></td></tr></table></figure>
+
 <p><code>\u####</code>表示一个Unicode字符</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'\u4e2d\u6587'</span>; <span class="comment">// 完全等同于 '中文'</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="多行字符串"><a href="#多行字符串" class="headerlink" title="多行字符串"></a>多行字符串</h4><p>每行结尾用<code>\n</code>，ES6标准新增，反引号表示</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`这是一个</span></span><br><span class="line"><span class="string">多行</span></span><br><span class="line"><span class="string">字符串`</span>;</span><br></pre></td></tr></table></figure>
+
 <h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><p>多个字符串连接起来，可以用<code>+</code>号连接</p>
 <p>ES6新增了一种模板字符串，用反斜杠表示，字符串里的变量<code>${name}</code>表示，自动替换字符串中的变量：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'小明'</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> message = <span class="string">`你好, <span class="subst">$&#123;name&#125;</span>, 你今年<span class="subst">$&#123;age&#125;</span>岁了!`</span>;</span><br></pre></td></tr></table></figure>
+
 <h4 id="操作字符串"><a href="#操作字符串" class="headerlink" title="操作字符串"></a>操作字符串</h4><p>获取字符串某个指定位置的字符，索引号从0开始</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line"></span><br><span class="line">s[<span class="number">0</span>]; <span class="comment">// 'H'</span></span><br><span class="line">s[<span class="number">6</span>]; <span class="comment">// ' '</span></span><br><span class="line">s[<span class="number">7</span>]; <span class="comment">// 'w'</span></span><br><span class="line">s[<span class="number">12</span>]; <span class="comment">// '!'</span></span><br><span class="line">s[<span class="number">13</span>]; <span class="comment">// undefined 超出范围的索引不会报错，但一律返回undefined</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>注意</strong>：字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果。</p>
 <h4 id><a href="#" class="headerlink" title></a><a href="/2019/01/10/js-string-method/" title="字符串属性和方法">字符串属性和方法</a></h4><h3 id="数字-Number"><a href="#数字-Number" class="headerlink" title="数字(Number)"></a>数字(Number)</h3><p>只要一种数据类型，不区分整数和浮点数</p>
 <p><code>Infinity</code> - 无穷大</p>
 <p><code>NaN</code> - 非数字值</p>
 <p><code>Number</code>基本运算</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> + <span class="number">2</span>;    <span class="comment">// 3</span></span><br><span class="line"><span class="number">3</span> - <span class="number">2</span>;    <span class="comment">// 1</span></span><br><span class="line"><span class="number">1</span> * <span class="number">2</span>;    <span class="comment">// 2</span></span><br><span class="line"><span class="number">3</span> / <span class="number">2</span>;    <span class="comment">// 1.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// % 求余</span></span><br><span class="line"><span class="number">10</span> % <span class="number">3</span>;    <span class="comment">// 1</span></span><br><span class="line"><span class="number">10.5</span> % <span class="number">3</span>; <span class="comment">// 1.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Special</span></span><br><span class="line"><span class="number">2</span> / <span class="number">0</span>;    <span class="comment">// Infinity</span></span><br><span class="line"><span class="number">0</span> / <span class="number">0</span>;    <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="布尔-Boolean"><a href="#布尔-Boolean" class="headerlink" title="布尔(Boolean)"></a>布尔(Boolean)</h3><p>布尔只有2个值：<code>true</code>、<code>false</code></p>
 <p>基本运算：</p>
 <ul>
@@ -279,29 +571,37 @@
 <p><strong><code>==</code>：会自动转换数据类型再比较，在一些情况下会得到诡异的结果<br><code>===</code>：不会自动转换数据类型，如果数据类型不一致返回<code>false</code></strong></p>
 <p>例如：<br><code>NaN</code>这个特殊的Number与所有其他值都不相等，包括它自己</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>; <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
 <p>唯一能判断<code>NaN</code>的方法是通过<code>isNaN()</code>函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h3 id="对空-Null-、未定义-Undefined"><a href="#对空-Null-、未定义-Undefined" class="headerlink" title="对空(Null)、未定义(Undefined)"></a>对空(Null)、未定义(Undefined)</h3><p><code>null</code> 表示一个“空”的值，它和<code>0</code>以及空字符串<code>&#39;&#39;</code>不同，<code>0</code>是一个数值，<code>&#39;&#39;</code>表示长度为0的字符串，而<code>null</code>表示“空”。<br><code>undefined</code> 表示变量不含有值(值未定义)。</p>
 <p>大多数情况下，我们都应该用<code>null</code>。<code>undefined</code>仅仅在判断函数参数是否传递的情况下有用</p>
 <h3 id="数值-Array"><a href="#数值-Array" class="headerlink" title="数值(Array)"></a>数值(Array)</h3><p>数组是一组按顺序排列的集合，集合的每个值称为元素。JavaScript的数组可以包括任意数据类型。例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3.14</span>, <span class="string">'Hello'</span>, <span class="literal">null</span>, <span class="literal">true</span>];</span><br><span class="line">arr[<span class="number">0</span>]; <span class="comment">// 返回索引为0的元素，即1</span></span><br><span class="line">arr[<span class="number">5</span>]; <span class="comment">// 返回索引为5的元素，即true</span></span><br><span class="line">arr[<span class="number">6</span>]; <span class="comment">// 索引超出了范围，返回undefined</span></span><br></pre></td></tr></table></figure>
+
 <p>数组用<code>[]</code>表示，元素之间用<code>,</code>分隔</p>
 <p>另一种创建数组的方法是通过<code>Array()</code>函数实现：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 创建了数组[1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="对象-Object"><a href="#对象-Object" class="headerlink" title="对象(Object)"></a>对象(Object)</h3><p>JavaScript的对象是一组由键-值组成的无序集合，例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'Bob'</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    tags: [<span class="string">'js'</span>, <span class="string">'web'</span>, <span class="string">'mobile'</span>],</span><br><span class="line">    city: <span class="string">'Beijing'</span>,</span><br><span class="line">    hasCar: <span class="literal">true</span>,</span><br><span class="line">    zipcode: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>JavaScript对象的键都是字符串类型，值可以是任意数据类型。</p>
 <p>要获取一个对象的属性，我们用对象变量.属性名的方式：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.name; <span class="comment">// 'Bob'</span></span><br><span class="line">person.zipcode; <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量名是<code>大小写英文</code>、<code>数字</code>、<code>$</code>和<code>_</code>的组合，且不能用数字开头。<br>变量名也不能是JavaScript的关键字，如<code>if</code>、<code>while</code>等<br>申明一个变量用<code>var</code>语句.</p>
 <p>拥有动态类型，即相同的变量可用作不同的类型，例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;          <span class="comment">// x 为undefined  </span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;      <span class="comment">// 现在 x 为数字</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="string">"ht"</span>    <span class="comment">// 现在 x 为字符串</span></span><br></pre></td></tr></table></figure>
+
 <p><em>这种变量本身类型不固定的语言称之为<code>动态语言</code>，与之对应的是静态语言。<code>静态语言</code>在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如Java是静态语言</em></p>
 <h4 id="strict模式"><a href="#strict模式" class="headerlink" title="strict模式"></a>strict模式</h4><p>在<code>strict</code>模式下运行的JavaScript代码，强制通过<code>var</code>申明变量，未使用<code>var</code>申明变量就使用的，将导致运行错误。</p>
 <p>启用strict模式的方法是在JavaScript代码的第一行写上：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>这是一个字符串，不支持strict模式的浏览器会把它当做一个字符串语句执行，支持strict模式的浏览器将开启strict模式运行JavaScript。</p>
 
       

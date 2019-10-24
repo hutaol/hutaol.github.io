@@ -160,6 +160,172 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/23/git/">git</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/23/git/" class="archive-article-date">
+  	<time datetime="2019-05-23T01:19:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="丢弃本地修改"><a href="#丢弃本地修改" class="headerlink" title="丢弃本地修改"></a>丢弃本地修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</span><br><span class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</span><br><span class="line">git reset --hard HASH #返回到某个节点，不保留修改。</span><br><span class="line">git reset --soft HASH #返回到某个节点。保留修改</span><br><span class="line"></span><br><span class="line">git clean -df #返回到某个节点</span><br><span class="line">git clean 参数</span><br><span class="line">    -n 显示 将要 删除的 文件 和  目录</span><br><span class="line">    -f 删除 文件</span><br><span class="line">    -df 删除 文件 和 目录</span><br></pre></td></tr></table></figure>
+
+<p>丢弃本地修改的所有文件（新增、删除、修改）</p>
+<p><code>git checkout . &amp;&amp; git clean -xdf</code></p>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查看分支</span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line"># 删除本地分支</span><br><span class="line">git branch -D &lt;BranchName&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete &lt;BranchName&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tags"><a href="#Tags" class="headerlink" title="Tags"></a>Tags</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">git ls-remote --tags origin  # 查询远程tags</span><br><span class="line"></span><br><span class="line">git tag  # 列出所有tag</span><br><span class="line">git tag -l v1.* #列出符合条件的tag（筛选作用）</span><br><span class="line"></span><br><span class="line">git tag v1  # 创建tag</span><br><span class="line">git tag -a -m &apos;first version&apos; v1  # 创建含标注tag</span><br><span class="line">git tag -a f1bb97a(commit id) # 为之前提交打tag</span><br><span class="line"></span><br><span class="line">git push origin --tags  # 推送所有本地tag到远程</span><br><span class="line">git push origin v1  # 推送指定本地tag到远程</span><br><span class="line"></span><br><span class="line">git tag -d v1  # 删除本地指定tag</span><br><span class="line">git push origin :refs/tags/v1 # 删除远程指定tag</span><br><span class="line"></span><br><span class="line">git fetch origin v1 # 拉取远程指定tag</span><br><span class="line">git show v1 # 显示指定tag详细信息</span><br><span class="line"></span><br><span class="line">git tag -l | xargs git tag -d  # 删除所有本地分支</span><br><span class="line">git fetch origin --prune  # 从远程拉取所有信息</span><br></pre></td></tr></table></figure>
+
+<h3 id="Git忽略文件"><a href="#Git忽略文件" class="headerlink" title="Git忽略文件"></a>Git忽略文件</h3><p>创建<code>.gitignore</code>文件</p>
+<p>忽略文件的原则是：</p>
+<ol>
+<li>忽略操作系统自动生成的文件，比如缩略图等；</li>
+<li>忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件；</li>
+<li>就没必要放进版本库，比如Java编译产生的.class文件；</li>
+<li>忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*.xcuserstate</span><br><span class="line">project.xcworkspace</span><br><span class="line">xcuserdata</span><br><span class="line">UserInterfaceState.xcuserstate</span><br><span class="line">project.xcworkspace/</span><br><span class="line">xcuserdata/</span><br><span class="line">UserInterface.xcuserstate</span><br></pre></td></tr></table></figure>
+
+<p>如果存在文件，需要先清理缓存文件 git rm –cached xx<br>或者找到文件后删除它，然后commit， push。</p>
+<h3 id="Git合并分支-amp-取消合并"><a href="#Git合并分支-amp-取消合并" class="headerlink" title="Git合并分支&amp;取消合并"></a>Git合并分支&amp;取消合并</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 合并分支dev</span><br><span class="line">git merge dev</span><br><span class="line">// 取消合并</span><br><span class="line">git merge --abort</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/23/git/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Node-js创建应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/Node-js创建应用/">Node.js创建应用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/25/Node-js创建应用/" class="archive-article-date">
+  	<time datetime="2019-03-25T15:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="创建Node-js应用"><a href="#创建Node-js应用" class="headerlink" title="创建Node.js应用"></a>创建Node.js应用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// require载入http模块，实例化HTTP</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">http.createServer(function (request, response) &#123;</span><br><span class="line"></span><br><span class="line">    // 发送 HTTP 头部 </span><br><span class="line">    // HTTP 状态值: 200 : OK</span><br><span class="line">    // 内容类型: text/plain</span><br><span class="line">    response.writeHead(200, &#123;&apos;Content-Type&apos;: &apos;text/plain&apos;&#125;);</span><br><span class="line"></span><br><span class="line">    // 发送响应数据 &quot;Hello World&quot;</span><br><span class="line">    response.end(&apos;Hello world\n&apos;);</span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"></span><br><span class="line">// 终端打印如下信息</span><br><span class="line">console.log(&apos;Server running at http://127.0.0.1:8888/&apos;);</span><br></pre></td></tr></table></figure>
+
+<p>保存为<code>server.js</code>文件</p>
+<p>使用<code>node</code>命令执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br><span class="line">Server running at http://127.0.0.1:8888/</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器即可访问<a href="http://127.0.0.1:8888/，" target="_blank" rel="noopener">http://127.0.0.1:8888/，</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Node//" class="article-tag-list-link color5">Node</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/25/Node-js创建应用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-CocoaPods/CocoaPods创建公有Pod库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -287,85 +453,104 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="字符串属性和方法"><a href="#字符串属性和方法" class="headerlink" title="字符串属性和方法"></a>字符串属性和方法</h1><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="constructor-返回创建字符串属性的函数"><a href="#constructor-返回创建字符串属性的函数" class="headerlink" title="constructor 返回创建字符串属性的函数"></a><code>constructor</code> 返回创建字符串属性的函数</h3>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line">s.constructor;   <span class="comment">// function String() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="prototype-允许您向对象添加属性和方法"><a href="#prototype-允许您向对象添加属性和方法" class="headerlink" title="prototype 允许您向对象添加属性和方法"></a><code>prototype</code> 允许您向对象添加属性和方法</h3>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'Jion'</span>);</span><br><span class="line">s.prototype.name = <span class="string">'world'</span>; <span class="comment">// 添加属性name</span></span><br><span class="line">s.name;   <span class="comment">// world</span></span><br><span class="line">s.prototype.myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;  <span class="comment">// 添加方法</span></span><br><span class="line">s.myFunc();</span><br></pre></td></tr></table></figure>
+
 <h3 id="length-返回字符串的长度-字符数"><a href="#length-返回字符串的长度-字符数" class="headerlink" title="length 返回字符串的长度(字符数)"></a><code>length</code> 返回字符串的长度(字符数)</h3>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world!'</span>;</span><br><span class="line">s.length;  <span class="comment">// 13</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="charAt-返回指定索引位置的字符"><a href="#charAt-返回指定索引位置的字符" class="headerlink" title="charAt() 返回指定索引位置的字符"></a><code>charAt()</code> 返回指定索引位置的字符</h3><blockquote>
 <p>string.charCodeAt(index)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world'</span>;</span><br><span class="line">s.charAt(<span class="number">1</span>);  <span class="comment">// e 索引从0开始</span></span><br><span class="line">s.charAt(s.length<span class="number">-1</span>);  <span class="comment">// d 最后一个字符串</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="charCodeAt-返回指定索引位置字符的Unicode值"><a href="#charCodeAt-返回指定索引位置字符的Unicode值" class="headerlink" title="charCodeAt() 返回指定索引位置字符的Unicode值"></a><code>charCodeAt()</code> 返回指定索引位置字符的<code>Unicode</code>值</h3><blockquote>
 <p>string.charCodeAt(index)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello, world'</span>;</span><br><span class="line">s.charCodeAt(<span class="number">0</span>);  <span class="comment">// 72</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="fromCharCode-将Unicode转换为字符串"><a href="#fromCharCode-将Unicode转换为字符串" class="headerlink" title="fromCharCode() 将Unicode转换为字符串"></a><code>fromCharCode()</code> 将<code>Unicode</code>转换为字符串</h3><blockquote>
 <p>String.fromCharCode(n1, n2, …, nX)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="built_in">String</span>.fromCharCode(<span class="number">72</span>, <span class="number">69</span>, <span class="number">76</span>, <span class="number">76</span>, <span class="number">79</span>);  <span class="comment">// HELLO</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="indexOf-返回字符串中检索指定字符第一次出现的位置"><a href="#indexOf-返回字符串中检索指定字符第一次出现的位置" class="headerlink" title="indexOf() 返回字符串中检索指定字符第一次出现的位置"></a><code>indexOf()</code> 返回字符串中检索指定字符第一次出现的位置</h3><blockquote>
 <p>string.indexOf(searchvalue, start)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world, welcome to the JavaScript!'</span>;</span><br><span class="line"><span class="keyword">var</span> n = s.indexOf(<span class="string">'l'</span>);  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="lastIndexOf-从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置"><a href="#lastIndexOf-从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置" class="headerlink" title="lastIndexOf() 从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置"></a><code>lastIndexOf()</code> 从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置</h3><blockquote>
 <p>string.lastIndexOf(searchvalue, start)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line"><span class="keyword">var</span> n = s.lastIndexOf(<span class="string">'l'</span>);  <span class="comment">// 8 索引从后(0)到前</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="slice-返回两个指定索引区间的字符"><a href="#slice-返回两个指定索引区间的字符" class="headerlink" title="slice() 返回两个指定索引区间的字符"></a><code>slice()</code> 返回两个指定索引区间的字符</h3><blockquote>
 <p>string.slice(start, end)</p>
 </blockquote>
 <p>  提示： 如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.slice(<span class="number">0</span>, <span class="number">5</span>);  <span class="comment">// Hello 从索引0开始到5（不包括5）</span></span><br><span class="line">s.slice(<span class="number">6</span>);  <span class="comment">// world 从索引6开始到结束</span></span><br><span class="line">s.slice(<span class="number">-1</span>);  <span class="comment">// d 最后一个字符</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="substring-返回两个指定的索引区间的字符"><a href="#substring-返回两个指定的索引区间的字符" class="headerlink" title="substring() 返回两个指定的索引区间的字符"></a><code>substring()</code> 返回两个指定的索引区间的字符</h3><blockquote>
 <p>string.substring(from, to)</p>
 </blockquote>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.substring(<span class="number">0</span>, <span class="number">5</span>);  <span class="comment">// Hello 从索引0开始到5（不包括5）</span></span><br><span class="line">s.substring(<span class="number">6</span>);  <span class="comment">// world 从索引6开始到结束</span></span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="substr-返回从索引开始指定长度的字符"><a href="#substr-返回从索引开始指定长度的字符" class="headerlink" title="substr() 返回从索引开始指定长度的字符"></a><code>substr()</code> 返回从索引开始指定长度的字符</h3><blockquote>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.substring(<span class="number">0</span>, <span class="number">5</span>);  <span class="comment">// Hello 从索引0开始到5（不包括5）</span></span><br><span class="line">s.substring(<span class="number">6</span>);  <span class="comment">// world 从索引6开始到结束</span></span><br></pre></td></tr></table></figure></code></pre><h3 id="substr-返回从索引开始指定长度的字符"><a href="#substr-返回从索引开始指定长度的字符" class="headerlink" title="substr() 返回从索引开始指定长度的字符"></a><code>substr()</code> 返回从索引开始指定长度的字符</h3><blockquote>
 <p>string.substr(start, length)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.substr(<span class="number">1</span>, <span class="number">2</span>);  <span class="comment">// el 从索引1开始2个长度</span></span><br><span class="line">s.substr(<span class="number">6</span>);  <span class="comment">// lo world  从索引6开始到结束</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>思考</strong>：<code>slice()</code>、<code>substring()</code>、<code>substr()</code>区别</p>
 <p><code>substring()</code>以两个参数中较小一个作为起始位置，较大的参数作为结束位置<br>当参数为负数时，<br><code>slice()</code>将它字符串的长度与对应的负数相加，结果作为参数<br><code>substring()</code>将负参数都直接转换为0<br><code>substr()</code>将第一个参数与字符串长度相加后的结果作为第一个参数</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// substring</span></span><br><span class="line">s.substring(<span class="number">2</span>, <span class="number">8</span>);  <span class="comment">// llo wo</span></span><br><span class="line">s.substring(<span class="number">8</span>, <span class="number">2</span>);  <span class="comment">// llo wo</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 负数</span></span><br><span class="line">s.slice(<span class="number">-3</span>);      <span class="comment">//  </span></span><br><span class="line">s.substring(<span class="number">-3</span>);  <span class="comment">// hello world</span></span><br><span class="line">s.substr(<span class="number">-3</span>);     <span class="comment">// rld</span></span><br><span class="line"></span><br><span class="line">s.slice(<span class="number">3</span>, <span class="number">-4</span>);   <span class="comment">// lo w (3, 7)</span></span><br><span class="line">s.substring(<span class="number">3</span>, <span class="number">-4</span>); <span class="comment">// hel (0, 3)</span></span><br><span class="line">s.substr(<span class="number">3</span>, <span class="number">-4</span>);    <span class="comment">// 空字符串 索引为3长度为0</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>注意:</strong> IE对substr接收负值的处理有错，它会返回原始字符串。</p>
 <h3 id="match-找到一个或多个正则表达式的匹配"><a href="#match-找到一个或多个正则表达式的匹配" class="headerlink" title="match() 找到一个或多个正则表达式的匹配"></a><code>match()</code> 找到一个或多个正则表达式的匹配</h3><p>  如果没有找到任何匹配的文本，<code>match()</code>将返回<code>null</code>。否则，它将返回一个<code>array</code>，其中存放了与它找到的匹配文本有关的信息</p>
 <blockquote>
 <p>string.match(regexp)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"The rain in SPAIN stays mainly in the plain"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.match(<span class="regexp">/ain/g</span>);  <span class="comment">// ain, ain, ain</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不区分大小写</span></span><br><span class="line"><span class="keyword">var</span> m = str.match(<span class="regexp">/ain/gi</span>);  <span class="comment">// ain, AIN, ain, ain</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="search-检索与正则表达式相匹配的值"><a href="#search-检索与正则表达式相匹配的值" class="headerlink" title="search() 检索与正则表达式相匹配的值"></a><code>search()</code> 检索与正则表达式相匹配的值</h3><p>  如果没有找到任何匹配的子串，则返回 -1。</p>
 <blockquote>
 <p>string.search(searchvalue)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Mr. Blue has a blue house"</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.search(<span class="string">"blue"</span>);  <span class="comment">// 15</span></span><br><span class="line"><span class="keyword">var</span> m = str.search(<span class="regexp">/blue/i</span>);  <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="toUpperCase-把一个字符串全部变为大写"><a href="#toUpperCase-把一个字符串全部变为大写" class="headerlink" title="toUpperCase() 把一个字符串全部变为大写"></a><code>toUpperCase()</code> 把一个字符串全部变为大写</h3><blockquote>
 <p>string.toUpperCase()</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.toUpperCase();  <span class="comment">// HELLO WORLD</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="toLowerCase-把一个字符串全部变成小写"><a href="#toLowerCase-把一个字符串全部变成小写" class="headerlink" title="toLowerCase() 把一个字符串全部变成小写"></a><code>toLowerCase()</code> 把一个字符串全部变成小写</h3><blockquote>
 <p>string.toLowerCase()</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world'</span>;</span><br><span class="line">s.toLowerCase();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="concat-连接两个或多个字符串，返回连接后的字符串"><a href="#concat-连接两个或多个字符串，返回连接后的字符串" class="headerlink" title="concat() 连接两个或多个字符串，返回连接后的字符串"></a><code>concat()</code> 连接两个或多个字符串，返回连接后的字符串</h3><blockquote>
 <p>string.concat(string1, string2, …, stringX)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="string">'Hello '</span>;</span><br><span class="line"><span class="keyword">var</span> s2 = <span class="string">'world!'</span>;</span><br><span class="line"><span class="keyword">var</span> n = s1.concat(s2);   <span class="comment">// Hello world!</span></span><br><span class="line"><span class="comment">// 连接多个 , 隔开</span></span><br><span class="line"><span class="keyword">var</span> s3 = <span class="string">' How are you!'</span>;</span><br><span class="line"><span class="keyword">var</span> m = s1.concat(s2, s3)  <span class="comment">// Hello world! How are you!</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="replace-替换与正则表达式匹配的子串"><a href="#replace-替换与正则表达式匹配的子串" class="headerlink" title="replace() 替换与正则表达式匹配的子串"></a><code>replace()</code> 替换与正则表达式匹配的子串</h3><p>  注意：<code>replace()</code>方法不改变原始字符串。只执行一次替换</p>
 <blockquote>
 <p>string.replace(searchvalue, newvalue)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world, good world'</span></span><br><span class="line"><span class="keyword">var</span> n = s.replace(<span class="string">'world'</span>, <span class="string">'javascript'</span>);  <span class="comment">// hello javascript, good world</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行一个全局替换 正则表达式</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Mr Blue has a blue house and a blue car"</span>;</span><br><span class="line"><span class="keyword">var</span> m = str.replace(<span class="regexp">/blue/g</span>,<span class="string">"red"</span>); <span class="comment">// Mr Blue has a red house and a red car</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行一个全局替换 忽略大小写</span></span><br><span class="line"><span class="keyword">var</span> o = str.replace(<span class="regexp">/blue/gi</span>, <span class="string">"red"</span>); <span class="comment">// Mr red has a red house and a red car</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="split-把字符串分割为字符串数组"><a href="#split-把字符串分割为字符串数组" class="headerlink" title="split() 把字符串分割为字符串数组"></a><code>split()</code> 把字符串分割为字符串数组</h3><p>  注意：<code>split()</code>方法不改变原始字符串。<br>  如果把空字符串<code>(&quot;&quot;)</code>用作<code>separator</code>，那么<code>stringObject</code>中的每个字符之间都会被分割.</p>
 <blockquote>
 <p>string.split(separator, limit)</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world'</span>;</span><br><span class="line">s.split(<span class="string">""</span>);  <span class="comment">// ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']</span></span><br><span class="line">s.split(<span class="string">" "</span>);  <span class="comment">// ['hello', 'world']</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="trim-去除字符串两边的空白"><a href="#trim-去除字符串两边的空白" class="headerlink" title="trim() 去除字符串两边的空白"></a><code>trim()</code> 去除字符串两边的空白</h3><blockquote>
 <p>string.trim()</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">' hello world    '</span>;</span><br><span class="line">s.trim();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="valueOf-返回某个字符串对象的原始值"><a href="#valueOf-返回某个字符串对象的原始值" class="headerlink" title="valueOf() 返回某个字符串对象的原始值"></a><code>valueOf()</code> 返回某个字符串对象的原始值</h3><blockquote>
 <p>string.valueOf()</p>
 </blockquote>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'hello world'</span>;</span><br><span class="line">s.valueOf();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -492,19 +677,19 @@
 
 
   
-    <article id="post-OC-Property" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS/OC-Property" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/19/OC-Property/">OC-Property</a>
+      <a class="article-title" href="/2018/12/19/iOS/OC-Property/">OC-Property</a>
     </h1>
   
 
         
-        <a href="/2018/12/19/OC-Property/" class="archive-article-date">
+        <a href="/2018/12/19/iOS/OC-Property/" class="archive-article-date">
   	<time datetime="2018-12-19T05:19:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
 </a>
         
@@ -513,23 +698,34 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="属性-property"><a href="#属性-property" class="headerlink" title="属性 @property"></a>属性 @property</h2><p>@property = 实例变量 + get方法 + set方法</p>
-<p>Example<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy) NSString *name;</span><br></pre></td></tr></table></figure></p>
-<p>属性name生成的setter方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)setName:(NSString *)name;</span><br><span class="line"></span><br><span class="line">// rewrite setter</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    _name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>属性name生成的getter方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)name;</span><br><span class="line"></span><br><span class="line">// rewrite getter</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    return _name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Example</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, copy) NSString *name;</span><br></pre></td></tr></table></figure>
+
+<p>属性name生成的setter方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)setName:(NSString *)name;</span><br><span class="line"></span><br><span class="line">// rewrite setter</span><br><span class="line">- (void)setName:(NSString *)name &#123;</span><br><span class="line">    _name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性name生成的getter方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)name;</span><br><span class="line"></span><br><span class="line">// rewrite getter</span><br><span class="line">- (NSString *)name &#123;</span><br><span class="line">    return _name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="自动合成"><a href="#自动合成" class="headerlink" title="自动合成"></a>自动合成</h4><blockquote>
 <p>定义一个@property，在<em>编译</em>期间，编译器会<em>自动</em>生成<em>实例变量</em>、<em>getter方法</em>、<em>setter方法</em>，这些方法、变量是通过<em>自动合成</em>（<code>autosynthesize</code>）的方式生成并添加到类中。<br>实际上，一个类经过编译后，会生成变量列表<code>ivar_list</code>和方法列表<code>method_list</code>，每添加一个属性，在变量列表<code>ivar_list</code>会添加对应的<em>变量</em>，方法列表<code>method_list</code>会添加对应的<em>setter</em>方法和<em>getter</em>方法。</p>
 </blockquote>
-<p>对应的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@synthesize name = _name;</span><br></pre></td></tr></table></figure></p>
+<p>对应的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@synthesize name = _name;</span><br></pre></td></tr></table></figure>
+
 <p>编译器自动生成，无需手动添加</p>
 <h4 id="动态合成"><a href="#动态合成" class="headerlink" title="动态合成"></a>动态合成</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@dynamic sex;</span><br></pre></td></tr></table></figure>
+
 <p>这样代码告诉编译器，sex属性的变量名、getter方法、setter方法由开发者自己来添加，编译器无需处理。</p>
 <p><strong>特别注明：</strong></p>
 <blockquote>
 <p><code>getter方法中不能用self.,会造成死循环</code></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)name &#123;</span><br><span class="line">    return self.name;  // 错误的写法，会造成死循环</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>self.name</code>实际上就是执行了属性name的getter方法，getter方法中又调用了<code>self.name</code>，会一直递归调用，直到程序崩溃</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.name = @&quot;aaa&quot;;</span><br></pre></td></tr></table></figure>
+
 <p>这样的方式，setter方法会被调用。</p>
 <h3 id="property修饰符"><a href="#property修饰符" class="headerlink" title="@property修饰符"></a>@property修饰符</h3><p>修饰符有四种：</p>
 <blockquote>
@@ -574,7 +770,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/19/OC-Property/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/19/iOS/OC-Property/">展开全文 >></a>
         </p>
       
 
@@ -604,19 +800,19 @@
 
 
   
-    <article id="post-Xcode自定义代码块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS/Xcode自定义代码块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/17/Xcode自定义代码块/">Xcode自定义代码块</a>
+      <a class="article-title" href="/2018/12/17/iOS/Xcode自定义代码块/">Xcode自定义代码块</a>
     </h1>
   
 
         
-        <a href="/2018/12/17/Xcode自定义代码块/" class="archive-article-date">
+        <a href="/2018/12/17/iOS/Xcode自定义代码块/" class="archive-article-date">
   	<time datetime="2018-12-17T03:41:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
 </a>
         
@@ -627,6 +823,7 @@
         <h1 id="Xcode自定义代码块"><a href="#Xcode自定义代码块" class="headerlink" title="Xcode自定义代码块"></a>Xcode自定义代码块</h1><h3 id="创建代码块"><a href="#创建代码块" class="headerlink" title="创建代码块"></a>创建代码块</h3><p>代码编辑区右击 -&gt; Create Code Snippet</p>
 <h3 id="删除代码块"><a href="#删除代码块" class="headerlink" title="删除代码块"></a>删除代码块</h3><p>选中要删除的代码块，按键delete，确定Delete</p>
 <h3 id="参数规则"><a href="#参数规则" class="headerlink" title="参数规则"></a>参数规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;#prarm#&gt;</span><br></pre></td></tr></table></figure>
+
 <p><strong>Xcode自定义代码块位置</strong></p>
 <blockquote>
 <p>~/Library/Developer/Xcode/UserData/CodeSnippets</p>
@@ -656,7 +853,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/17/Xcode自定义代码块/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/17/iOS/Xcode自定义代码块/">展开全文 >></a>
         </p>
       
 
@@ -686,19 +883,19 @@
 
 
   
-    <article id="post-iOS持久化方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS/iOS持久化方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/iOS持久化方式/">iOS持久化方式</a>
+      <a class="article-title" href="/2018/12/16/iOS/iOS持久化方式/">iOS持久化方式</a>
     </h1>
   
 
         
-        <a href="/2018/12/16/iOS持久化方式/" class="archive-article-date">
+        <a href="/2018/12/16/iOS/iOS持久化方式/" class="archive-article-date">
   	<time datetime="2018-12-16T14:34:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
 </a>
         
@@ -729,10 +926,15 @@
 <p><strong>tmp</strong>：用来存放应用再次启动时不需要的临时文件，该目录下的东西随时可能被系统清理掉，不会被iTunes同步。</p>
 </blockquote>
 <h5 id="沙盒主目录"><a href="#沙盒主目录" class="headerlink" title="沙盒主目录"></a>沙盒主目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *homeDir = NSHomeDirectory();</span><br></pre></td></tr></table></figure>
+
 <h5 id="Documents目录"><a href="#Documents目录" class="headerlink" title="Documents目录"></a>Documents目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
+
 <h5 id="Library目录"><a href="#Library目录" class="headerlink" title="Library目录"></a>Library目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取Library的目录路径</span><br><span class="line">NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];</span><br><span class="line"></span><br><span class="line">// 获取Caches目录路径</span><br><span class="line">NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
+
 <h5 id="tmp目录"><a href="#tmp目录" class="headerlink" title="tmp目录"></a>tmp目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir =  NSTemporaryDirectory();</span><br></pre></td></tr></table></figure>
+
 <h5 id="AppBundle目录路径"><a href="#AppBundle目录路径" class="headerlink" title="AppBundle目录路径"></a>AppBundle目录路径</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取AppBundle目录路径</span><br><span class="line">NSLog(@&quot;%@&quot;,[[NSBundle mainBundle] bundlePath]);</span><br><span class="line"> </span><br><span class="line">NSString *imagePath = [[NSBundle mainBundle] pathForResource:@&quot;apple&quot; ofType:@&quot;png&quot;];</span><br><span class="line"> </span><br><span class="line">UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];</span><br></pre></td></tr></table></figure>
+
 <h4 id="二、沙盒内的持久化方式"><a href="#二、沙盒内的持久化方式" class="headerlink" title="二、沙盒内的持久化方式"></a>二、沙盒内的持久化方式</h4><p><strong>NSKeyedArchiver</strong> 归档</p>
 
       
@@ -757,7 +959,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/16/iOS持久化方式/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/16/iOS/iOS持久化方式/">展开全文 >></a>
         </p>
       
 
@@ -787,19 +989,19 @@
 
 
   
-    <article id="post-Xcode工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS/Xcode工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/Xcode工具/">Xcode工具</a>
+      <a class="article-title" href="/2018/12/16/iOS/Xcode工具/">Xcode工具</a>
     </h1>
   
 
         
-        <a href="/2018/12/16/Xcode工具/" class="archive-article-date">
+        <a href="/2018/12/16/iOS/Xcode工具/" class="archive-article-date">
   	<time datetime="2018-12-16T14:12:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
 </a>
         
@@ -810,6 +1012,7 @@
         <p>1.查找未使用的Objective-C导入。 </p>
 <p>####<a href="https://github.com/dblock/fui" target="_blank" rel="noopener">fui</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem install fui  // 安装</span><br><span class="line"></span><br><span class="line">fui help  // 帮助</span><br><span class="line"></span><br><span class="line">fui find  // 在当前目录中查找未使用的类</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -833,7 +1036,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/16/Xcode工具/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/16/iOS/Xcode工具/">展开全文 >></a>
         </p>
       
 
@@ -863,19 +1066,19 @@
 
 
   
-    <article id="post-Mac命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-iOS/Mac命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/15/Mac命令/">Mac命令</a>
+      <a class="article-title" href="/2018/12/15/iOS/Mac命令/">Mac命令</a>
     </h1>
   
 
         
-        <a href="/2018/12/15/Mac命令/" class="archive-article-date">
+        <a href="/2018/12/15/iOS/Mac命令/" class="archive-article-date">
   	<time datetime="2018-12-15T14:29:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
 </a>
         
@@ -883,9 +1086,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1、创建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir dirname</span><br></pre></td></tr></table></figure></p>
-<p>2、创建文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch name</span><br></pre></td></tr></table></figure></p>
+        <p>1、创建目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir dirname</span><br></pre></td></tr></table></figure>
 
+<p>2、创建文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch name</span><br></pre></td></tr></table></figure>
       
 
       
@@ -908,250 +1113,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/15/Mac命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/15/Linux命令/">Linux命令</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/15/Linux命令/" class="archive-article-date">
-  	<time datetime="2018-12-15T13:16:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><blockquote>
-<p> <strong>ls</strong> 列出目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -a   // 全部的文件，连同隐藏档( 开头为 . 的文件) 一起列出来</span><br><span class="line">ls -d   // 仅列出目录本身，而不是列出目录内的文件数据</span><br><span class="line">ls -l   // 长数据串列出，包含文件的属性与权限等等数据</span><br><span class="line">ls -al  // 将该目录下的所有文件列出来(含属性与隐藏档)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>cd</strong> 切换目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd .    // 当前目录</span><br><span class="line">cd ..   // 回上一级目录</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>pwd</strong> 显示目前的目录</p>
-</blockquote>
-<blockquote>
-<p><strong>mkdir</strong> 创建一个新的目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m    // 配置文件的权限</span><br><span class="line">mkdir -p    // 可创建多层目录</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>rmdir</strong> 删除一个空的目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p]</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>cp</strong> 复制文件或目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-a：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</span><br><span class="line"></span><br><span class="line">-d：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</span><br><span class="line"></span><br><span class="line">-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</span><br><span class="line"></span><br><span class="line">-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</span><br><span class="line"></span><br><span class="line">-l：进行硬式连结(hard link)的连结档创建，而非复制文件本身；</span><br><span class="line"></span><br><span class="line">-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span><br><span class="line"></span><br><span class="line">-r：递归持续复制，用於目录的复制行为；(常用)</span><br><span class="line"></span><br><span class="line">-s：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</span><br><span class="line"></span><br><span class="line">-u：若 destination 比 source 旧才升级 destination ！</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>rm</strong> 移除文件或目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf  // 强制移除目录及其子目录</span><br><span class="line">-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</span><br><span class="line">-i ：互动模式，在删除前会询问使用者是否动作</span><br><span class="line">-r ：递归删除啊！</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>mv</strong> 移动文件与目录，或修改文件与目录的名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</span><br><span class="line">-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</span><br><span class="line">-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h4 id="文件内容查看"><a href="#文件内容查看" class="headerlink" title="文件内容查看"></a>文件内容查看</h4><blockquote>
-<p><code>cat</code>  由第一行开始显示文件内容<br><code>tac</code>  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！<br><code>nl</code>   显示的时候，顺道输出行号！<br><code>more</code> 一页一页的显示文件内容<br><code>less</code> 与 more 类似，但是比 more 更好的是，他可以往前翻页！<br><code>head</code> 只看头几行<br><code>tail</code> 只看尾巴几行</p>
-</blockquote>
-<h4 id="查看系统内核"><a href="#查看系统内核" class="headerlink" title="查看系统内核"></a>查看系统内核</h4><blockquote>
-<p><code>cat /proc/version</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux version 2.6.32-642.el6.x86_64 (mockbuild@worker1.bsys.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-17) (GCC) ) #1 SMP Tue May 10 17:27:01 UTC 2016</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>uname -r</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.6.32-642.el6.x86_64</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>uname -a</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux host.localdomain 2.6.32-642.el6.x86_64 #1 SMP Tue May 10 17:27:01 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h4 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h4><blockquote>
-<p><code>cat /etc/issue</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CentOS release 6.8 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>cat /etc/redhat-release</code> // 只对Redhat Linux有效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CentOS release 6.8 (Final)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><code>lsb_release -a</code> // 需安装lsb  yum install lsb –y<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:	:base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch</span><br><span class="line">Distributor ID:	CentOS</span><br><span class="line">Description:	CentOS release 6.8 (Final)</span><br><span class="line">Release:	6.8</span><br><span class="line">Codename:	Final</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h4 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h4><blockquote>
-<p><code>sync</code>  // 将数据由内存同步到硬盘中。<br><code>shutdown -h new</code>  // 立马关机<br><code>shutdown –h 10</code>  // 10分钟后关机，显示在登录用户的屏幕中<br><code>shutdown –h +10</code>  // 10分钟后关机<br><code>shutdown –h 20:25</code>  // 在今天20:25关机<br><code>shutdown –r now</code>  // 系统立马重启<br><code>shutdown –r +10</code>  // 系统十分钟后重启<br><code>reboot</code>  // 就是重启，等同于 shutdown –r now<br><code>halt</code>  // 关闭系统，等同于shutdown –h now 和 poweroff</p>
-</blockquote>
-<h4 id="系统状态的命令"><a href="#系统状态的命令" class="headerlink" title="系统状态的命令"></a>系统状态的命令</h4><blockquote>
-<p><strong>who</strong>： 确定谁在系统中</p>
-</blockquote>
-<ul>
-<li><p><code>who</code>：列出当前已登录入系统的用户<br>henry  tty1  2018-12-30 15:51<br>用户名  终端设备的设备文件名<br>设备文件一般放于目录/dev下</p>
-</li>
-<li><p><code>tty</code>：可以打印出当前终端的设备文件名</p>
-</li>
-<li><code>who am i</code>：可以列出当前终端上的登录用户</li>
-<li><code>whoami</code>：仅列出当前终端上的登录用户</li>
-</ul>
-<blockquote>
-<p><strong>uptime</strong>：已开机时间（年龄）</p>
-</blockquote>
-<p>15:01:15 up 1:51, 1 user, load average: 0.00, 0.00, 0.00</p>
-<p>系统自启动后到现在的运行时间<br>当前登录入用户数<br>近期1分钟，5分钟，15分钟内系统CPU的负载</p>
-<blockquote>
-<p><strong>top</strong>：列出资源占用排名靠前的进程</p>
-</blockquote>
-<p>VIRT进程逻辑地址空间大小(virtual)<br>RES驻留内存数(Resident)，也就是占用物理内存数<br>SHR与其他进程内存数(share)<br>%CPU占用CPU百分百，%MEM占用内存百分百<br>TIME+占用的CPU时间</p>
-<blockquote>
-<p><strong>ps</strong>：查阅进程状态(process status)</p>
-</blockquote>
-<p>用于控制列表的行数(进程范围)和列数(每进程列出的属性内容)<br><code>ps</code>：只列出在当前终端上启动的进程 PID TTY TIME COMMAND<br><code>ps e</code>：列出系统中所有的进程(进程范围)<br><code>ps f</code>：已<em>fill格式</em>列出每一个进程(控制列的数目)<br><code>ps l</code>：已<em>long格式</em>列出每一个进程(控制列的数目)</p>
-<blockquote>
-<p>UID：用户ID(注册名)<br>PID：进程ID<br>PPID：父进程的PID<br>C：CPU占用指数：最近一段时间(秒级别)进程占用CPU情况<br>STIME：启动时间<br>SZ：进程逻辑内存大小(size)<br>TTY：终端的名字<br>COMMAND：命令名<br>WCHAN：进程在内核的何处睡眠(wait channel)<br>TIME：累计执行时间(占用CPU的时间)<br>PRI：优先级<br>S：状态，S(sleep)，R(run)，Z(Zombie)</p>
-</blockquote>
-<blockquote>
-<p><strong>free</strong>：内存使用情况</p>
-</blockquote>
-<blockquote>
-<p><strong>vmtat</strong>：系统负载</p>
-</blockquote>
-<p>Procs r等待运行的进程数 b处在非中断睡眠状态的进程数<br>Memory free空闲的内存 buff/cache用做缓存的内存数<br>Swap 磁盘/内存的交换页数量，单位：KB/秒<br>IO 设备I/O块数，单位：块/秒<br>System in每秒的硬件中断数(interrupt)，包括时钟中断 cs每秒环境切换次数(context switch)<br>CPU 总使用率 us=user sy=system id=idle wa=wait for disk I/O</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/15/Linux命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-OC-Keywords" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/09/OC-Keywords/">OC-Keywords</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/09/OC-Keywords/" class="archive-article-date">
-  	<time datetime="2018-11-09T04:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><h2 id="nullable和nonnull"><a href="#nullable和nonnull" class="headerlink" title="nullable和nonnull"></a><code>nullable</code>和<code>nonnull</code></h2><p>iOS9新出的关键字：用来修饰属性 方法的参数和返回值</p>
-<h4 id="在属性中使用nullable和nonnull："><a href="#在属性中使用nullable和nonnull：" class="headerlink" title="在属性中使用nullable和nonnull："></a>在属性中使用nullable和nonnull：</h4><p><code>nullable</code>: 表示修饰的属性或参数可以为空</p>
-<p><code>nonnull</code>:非空，表示修饰的属性或参数不能为空</p>
-<p><strong>注意：nonnull,nullable只能修饰对象，不能修饰基本数据类型</strong></p>
-<p>3种写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, nullable) NSString * name;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br><span class="line">//</span><br><span class="line">@property (nonatomic, strong, nonnull) NSString * price;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br></pre></td></tr></table></figure></p>
-<h4 id="在方法中使用nullable和nonnull："><a href="#在方法中使用nullable和nonnull：" class="headerlink" title="在方法中使用nullable和nonnull："></a>在方法中使用nullable和nonnull：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (nullable NSString *)buyBook:(nullable NSString *)book;</span><br><span class="line">- (NSString *__nullable)buyBook:( NSString *__nullable)book;</span><br><span class="line">- (NSString *_Nullable)buyBook:( NSString *_Nullable)book;</span><br></pre></td></tr></table></figure>
-<h4 id="Nonnull区域设置-Audited-Regions"><a href="#Nonnull区域设置-Audited-Regions" class="headerlink" title="Nonnull区域设置(Audited Regions)"></a>Nonnull区域设置(Audited Regions)</h4><p>宏定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line">@property (nonatomic, strong) NSString * name;</span><br><span class="line">...</span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure></p>
-<p>之间定义的所有属性和方法参数和返回值默认加上nonnull修饰</p>
-<p>为了<strong>安全</strong>起见，苹果还制定了几条<strong>规则</strong>：</p>
-<blockquote>
-<p>1.typedef定义的类型的nullability特性通常依赖于上下文，即使是在Audited Regions中，也不能假定它为nonnull。<br>2.复杂的指针类型(如id <em>)必须显示去指定是nonnull还是nullable。例如，指定一个指向nullable对象的nonnull指针，可以使用”__nullable id </em> __nonnull”。<br>3.我们经常使用的NSError **通常是被假定为一个指向nullable NSError对象的nullable指针。</p>
-</blockquote>
-<h4 id="null-resettable"><a href="#null-resettable" class="headerlink" title="null_resettable"></a>null_resettable</h4><p><strong>null_resettable: get方法:不能返回为空，set方法可以为空</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, null_resettable) NSNumber * number;</span><br></pre></td></tr></table></figure></p>
-<p>当属性策略中使用了null_resettable修饰，就必须保证该属性的get方法返回不为空，否则编译器会如上图那样报警告⚠️。可以在set方法或get方法中做非空处理，以下是在get方法中做处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSNumber *)number&#123;</span><br><span class="line">    </span><br><span class="line">    if (_number == nil) &#123;</span><br><span class="line">        _number = @11;</span><br><span class="line">    &#125;</span><br><span class="line">    return _number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="null-unspecified"><a href="#null-unspecified" class="headerlink" title="null_unspecified"></a>null_unspecified</h4><p><strong>null_unspecified:不确定是否为空,使用方式有三种：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">@property(nonatomic,strong) NSNumber *_Null_unspecified height;</span><br><span class="line">// 方法二</span><br><span class="line">@property(nonatomic,strong) NSNumber *__null_unspecified height;</span><br><span class="line">// 方法三</span><br><span class="line">@property(nonatomic,strong,null_unspecified) NSNumber * height;</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Objective-C//" class="article-tag-list-link color2">Objective-C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/09/OC-Keywords/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/15/iOS/Mac命令/">展开全文 >></a>
         </p>
       
 
