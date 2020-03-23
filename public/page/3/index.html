@@ -160,6 +160,189 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS/iOS持久化方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/iOS/iOS持久化方式/">iOS持久化方式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/16/iOS/iOS持久化方式/" class="archive-article-date">
+  	<time datetime="2018-12-16T14:34:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="iOS持久化方式"><a href="#iOS持久化方式" class="headerlink" title="iOS持久化方式"></a>iOS持久化方式</h3><blockquote>
+<p>1.NSUserDefaults<br>2.NSKeyedArchiver<br>3.沙盒Document<br>4.sqlite3<br>5.KeyChain</p>
+</blockquote>
+<p>持久化分为两类：沙盒内和沙盒外。</p>
+<h4 id="一、沙盒目录结构和各个目录的路径获取方法"><a href="#一、沙盒目录结构和各个目录的路径获取方法" class="headerlink" title="一、沙盒目录结构和各个目录的路径获取方法"></a>一、沙盒目录结构和各个目录的路径获取方法</h4><blockquote>
+<p><strong>AppName.app</strong>:  应用程序包目录</p>
+</blockquote>
+<blockquote>
+<p><strong>Documents</strong>：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会被iTunes同步。</p>
+</blockquote>
+<blockquote>
+<p><strong>Library</strong>：有两个子目录Preferences和Caches，除Caches以外，都会被iTunes备份。</p>
+<blockquote>
+<p><strong>Preferences</strong>：包含应用程序的偏好设置文件。您不应该直接创建偏好设置文件，而是应该使用NSUserDefaults类来取得和设置应用程序的偏好。结果在目录下面以plist的方式存储<br><strong>Caches</strong>：用于存放应用程序专用的支持文件，保存应用程序再次启动过程中需要的信息。可创建子文件夹。可以用来放置您希望被备份但不希望被用户看到的数据。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>SystemData</strong>：系统数据</p>
+</blockquote>
+<blockquote>
+<p><strong>tmp</strong>：用来存放应用再次启动时不需要的临时文件，该目录下的东西随时可能被系统清理掉，不会被iTunes同步。</p>
+</blockquote>
+<h5 id="沙盒主目录"><a href="#沙盒主目录" class="headerlink" title="沙盒主目录"></a>沙盒主目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *homeDir = NSHomeDirectory();</span><br></pre></td></tr></table></figure>
+
+<h5 id="Documents目录"><a href="#Documents目录" class="headerlink" title="Documents目录"></a>Documents目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
+
+<h5 id="Library目录"><a href="#Library目录" class="headerlink" title="Library目录"></a>Library目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取Library的目录路径</span><br><span class="line">NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];</span><br><span class="line"></span><br><span class="line">// 获取Caches目录路径</span><br><span class="line">NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
+
+<h5 id="tmp目录"><a href="#tmp目录" class="headerlink" title="tmp目录"></a>tmp目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir =  NSTemporaryDirectory();</span><br></pre></td></tr></table></figure>
+
+<h5 id="AppBundle目录路径"><a href="#AppBundle目录路径" class="headerlink" title="AppBundle目录路径"></a>AppBundle目录路径</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取AppBundle目录路径</span><br><span class="line">NSLog(@&quot;%@&quot;,[[NSBundle mainBundle] bundlePath]);</span><br><span class="line"> </span><br><span class="line">NSString *imagePath = [[NSBundle mainBundle] pathForResource:@&quot;apple&quot; ofType:@&quot;png&quot;];</span><br><span class="line"> </span><br><span class="line">UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、沙盒内的持久化方式"><a href="#二、沙盒内的持久化方式" class="headerlink" title="二、沙盒内的持久化方式"></a>二、沙盒内的持久化方式</h4><p><strong>NSKeyedArchiver</strong> 归档</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/16/iOS/iOS持久化方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-iOS/Xcode工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/iOS/Xcode工具/">Xcode工具</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/16/iOS/Xcode工具/" class="archive-article-date">
+  	<time datetime="2018-12-16T14:12:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.查找未使用的Objective-C导入。 </p>
+<p>####<a href="https://github.com/dblock/fui" target="_blank" rel="noopener">fui</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem install fui  // 安装</span><br><span class="line"></span><br><span class="line">fui help  // 帮助</span><br><span class="line"></span><br><span class="line">fui find  // 在当前目录中查找未使用的类</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Xcode//" class="article-tag-list-link color1">Xcode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/16/iOS/Xcode工具/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-iOS/Mac命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -747,7 +930,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Henry
+    		&copy; 2020 Henry
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
