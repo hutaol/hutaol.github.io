@@ -15,7 +15,7 @@ php artisan make:model Categories -m
 php artisan make:migration create_categories_table
 
 // 3.运行数据库迁移
-$table->id();
+php artisan migrate
 
 // admin
 // 4.创建一个对应模型的路由器

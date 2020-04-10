@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.ht9145.com">
   <title>Laravel基础学习 | 鸟语花香</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234567891011121314151617// 1.创建模型php artisan make:model Categories// 创建模型并生成迁移php artisan make:model Categories -m// 2.生成迁移php artisan make:migration create_categories_table// 3.运行数据库迁移$table-&amp;gt;id(">
+  <meta name="description" content="1234567891011121314151617// 1.创建模型php artisan make:model Categories// 创建模型并生成迁移php artisan make:model Categories -m// 2.生成迁移php artisan make:migration create_categories_table// 3.运行数据库迁移php artisan mi">
 <meta name="keywords" content="移动，js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Laravel基础学习">
 <meta property="og:url" content="http://blog.ht9145.com/2020/03/09/php/laraval/Laravel基础学习/index.html">
 <meta property="og:site_name" content="鸟语花香">
-<meta property="og:description" content="1234567891011121314151617// 1.创建模型php artisan make:model Categories// 创建模型并生成迁移php artisan make:model Categories -m// 2.生成迁移php artisan make:migration create_categories_table// 3.运行数据库迁移$table-&amp;gt;id(">
+<meta property="og:description" content="1234567891011121314151617// 1.创建模型php artisan make:model Categories// 创建模型并生成迁移php artisan make:model Categories -m// 2.生成迁移php artisan make:migration create_categories_table// 3.运行数据库迁移php artisan mi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-10T11:32:32.637Z">
+<meta property="og:updated_time" content="2020-03-23T16:22:30.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel基础学习">
-<meta name="twitter:description" content="1234567891011121314151617// 1.创建模型php artisan make:model Categories// 创建模型并生成迁移php artisan make:model Categories -m// 2.生成迁移php artisan make:migration create_categories_table// 3.运行数据库迁移$table-&amp;gt;id(">
+<meta name="twitter:description" content="1234567891011121314151617// 1.创建模型php artisan make:model Categories// 创建模型并生成迁移php artisan make:model Categories -m// 2.生成迁移php artisan make:migration create_categories_table// 3.运行数据库迁移php artisan mi">
   
     <link rel="alternative" href="/atom.xml" title="鸟语花香" type="application/atom+xml">
   
@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.创建模型</span></span><br><span class="line">php artisan make:model Categories</span><br><span class="line"><span class="comment">// 创建模型并生成迁移</span></span><br><span class="line">php artisan make:model Categories -m</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.生成迁移</span></span><br><span class="line">php artisan make:migration create_categories_table</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.运行数据库迁移</span></span><br><span class="line">$table-&gt;id();</span><br><span class="line"></span><br><span class="line"><span class="comment">// admin</span></span><br><span class="line"><span class="comment">// 4.创建一个对应模型的路由器</span></span><br><span class="line">php artisan admin:make CategoryController --model=App\\Category</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.将以下路由添加到 app/Admin/routes.php:</span></span><br><span class="line">$router-&gt;resource(<span class="string">'categories'</span>, CategoryController::class);</span><br></pre></td></tr></table></figure>
+        <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.创建模型</span></span><br><span class="line">php artisan make:model Categories</span><br><span class="line"><span class="comment">// 创建模型并生成迁移</span></span><br><span class="line">php artisan make:model Categories -m</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.生成迁移</span></span><br><span class="line">php artisan make:migration create_categories_table</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.运行数据库迁移</span></span><br><span class="line">php artisan migrate</span><br><span class="line"></span><br><span class="line"><span class="comment">// admin</span></span><br><span class="line"><span class="comment">// 4.创建一个对应模型的路由器</span></span><br><span class="line">php artisan admin:make CategoryController --model=App\\Category</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.将以下路由添加到 app/Admin/routes.php:</span></span><br><span class="line">$router-&gt;resource(<span class="string">'categories'</span>, CategoryController::class);</span><br></pre></td></tr></table></figure>
 
 <h2 id="1、Eloquent-ORM"><a href="#1、Eloquent-ORM" class="headerlink" title="1、Eloquent ORM"></a>1、Eloquent ORM</h2><blockquote>
 <p>提供一个漂亮、简洁的 ActiveRecord 实现来和数据库交互</p>
