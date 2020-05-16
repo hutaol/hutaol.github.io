@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://blog.ht9145.com">
+  <link rel="dns-prefetch" href>
   <title>鸟语花香</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="干干干！">
-<meta name="keywords" content="移动，js">
+<meta name="keywords" content="Objective-C，Swift，Java，JavaScript，PHP，Python">
 <meta property="og:type" content="website">
 <meta property="og:title" content="鸟语花香">
-<meta property="og:url" content="http://blog.ht9145.com/index.html">
+<meta property="og:url" content="/index.html">
 <meta property="og:site_name" content="鸟语花香">
 <meta property="og:description" content="干干干！">
 <meta property="og:locale" content="default">
@@ -695,6 +695,56 @@
 
 
   
+    <article id="post-mysql/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql连接错误</p>
+<p>1、Authentication type： (mysql8.0.0以上版本)</p>
+<p>用户的 Authentication type 默认为 caching_sha2_password，导致数据库连接错误，抛出如下异常：<br>Illuminate\Database\QueryException : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client<br>解决方案：修改密码认证方式<br>ALTER USER ‘youusername’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘yourpassword’;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/08/mysql/mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vim/vim配置及插件安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -743,56 +793,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/08/vim/vim配置及插件安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mysql连接错误</p>
-<p>1、Authentication type： (mysql8.0.0以上版本)</p>
-<p>用户的 Authentication type 默认为 caching_sha2_password，导致数据库连接错误，抛出如下异常：<br>Illuminate\Database\QueryException : SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client<br>解决方案：修改密码认证方式<br>ALTER USER ‘youusername’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘yourpassword’;</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/08/mysql/mysql/">展开全文 >></a>
         </p>
       
 
@@ -1017,7 +1017,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CocoaPods-ios-三方管理工具"><a href="#CocoaPods-ios-三方管理工具" class="headerlink" title="CocoaPods ios 三方管理工具"></a>CocoaPods ios 三方管理工具</h1><h2 id="Ruby镜像-更换源"><a href="#Ruby镜像-更换源" class="headerlink" title="Ruby镜像 更换源"></a>Ruby镜像 更换源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo gem update --system</span><br><span class="line"></span><br><span class="line">gem sources --remove https://rubygems.org/</span><br><span class="line"></span><br><span class="line">gem sources --add https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure>
+        <h2 id="CocoaPods-iOS三方库管理工具"><a href="#CocoaPods-iOS三方库管理工具" class="headerlink" title="CocoaPods iOS三方库管理工具"></a>CocoaPods iOS三方库管理工具</h2><h2 id="Ruby镜像-更换源"><a href="#Ruby镜像-更换源" class="headerlink" title="Ruby镜像 更换源"></a>Ruby镜像 更换源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo gem update --system</span><br><span class="line"></span><br><span class="line">gem sources --remove https://rubygems.org/</span><br><span class="line"></span><br><span class="line">gem sources --add https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure>
 
 <h3 id="验证是否成功"><a href="#验证是否成功" class="headerlink" title="验证是否成功"></a>验证是否成功</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gem sources -l</span><br><span class="line"></span><br><span class="line"># success</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">https://gems.ruby-china.com/</span><br></pre></td></tr></table></figure>
 
@@ -1038,7 +1038,13 @@
 <p>开始下载：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
 
-<p>参考： <a href="https://www.jianshu.com/p/ab6411a05bc2" target="_blank" rel="noopener">https://www.jianshu.com/p/ab6411a05bc2</a></p>
+<h2 id="CocoaPods的升级"><a href="#CocoaPods的升级" class="headerlink" title="CocoaPods的升级"></a>CocoaPods的升级</h2><p>查看版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod --version</span><br></pre></td></tr></table></figure>
+
+<p>升级</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://www.jianshu.com/p/ab6411a05bc2" target="_blank" rel="noopener">https://www.jianshu.com/p/ab6411a05bc2</a><br>参考：<a href="https://www.jianshu.com/p/d40ac1f18f92" target="_blank" rel="noopener">https://www.jianshu.com/p/d40ac1f18f92</a></p>
 
       
 

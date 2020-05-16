@@ -5,18 +5,18 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://blog.ht9145.com">
+  <link rel="dns-prefetch" href>
   <title>CocoaPods创建公有Pod库 | 鸟语花香</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.注册CocoaPods账号信息 pod trunk register 邮箱地址 用户名 –verbose  在邮箱中收到确认邮箱，在浏览器中点击链接确认即注册成功 查看注册信息及自己开源pod库  pod trunk me  2.Github创建仓库（略）3.创建共享库文件并上传到公有仓库 pod lib create 库名  配置*.podspec文件 4.推送到远程仓库5.打tag, 发布">
-<meta name="keywords" content="移动，js">
+<meta name="keywords" content="Objective-C，Swift，Java，JavaScript，PHP，Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CocoaPods创建公有Pod库">
-<meta property="og:url" content="http://blog.ht9145.com/2019/03/08/CocoaPods/CocoaPods创建公有Pod库/index.html">
+<meta property="og:url" content="/2019/03/08/CocoaPods/CocoaPods创建公有Pod库/index.html">
 <meta property="og:site_name" content="鸟语花香">
 <meta property="og:description" content="1.注册CocoaPods账号信息 pod trunk register 邮箱地址 用户名 –verbose  在邮箱中收到确认邮箱，在浏览器中点击链接确认即注册成功 查看注册信息及自己开源pod库  pod trunk me  2.Github创建仓库（略）3.创建共享库文件并上传到公有仓库 pod lib create 库名  配置*.podspec文件 4.推送到远程仓库5.打tag, 发布">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T06:06:28.760Z">
+<meta property="og:updated_time" content="2020-05-15T16:19:01.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods创建公有Pod库">
 <meta name="twitter:description" content="1.注册CocoaPods账号信息 pod trunk register 邮箱地址 用户名 –verbose  在邮箱中收到确认邮箱，在浏览器中点击链接确认即注册成功 查看注册信息及自己开源pod库  pod trunk me  2.Github创建仓库（略）3.创建共享库文件并上传到公有仓库 pod lib create 库名  配置*.podspec文件 4.推送到远程仓库5.打tag, 发布">
@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-注册CocoaPods账号信息"><a href="#1-注册CocoaPods账号信息" class="headerlink" title="1.注册CocoaPods账号信息"></a>1.注册CocoaPods账号信息</h1><blockquote>
+        <h2 id="1-注册CocoaPods账号信息"><a href="#1-注册CocoaPods账号信息" class="headerlink" title="1.注册CocoaPods账号信息"></a>1.注册CocoaPods账号信息</h2><blockquote>
 <p>pod trunk register 邮箱地址 用户名 –verbose</p>
 </blockquote>
 <p>在邮箱中收到确认邮箱，在浏览器中点击链接确认即注册成功</p>
@@ -187,17 +187,17 @@
 <blockquote>
 <p>pod trunk me</p>
 </blockquote>
-<h1 id="2-Github创建仓库（略）"><a href="#2-Github创建仓库（略）" class="headerlink" title="2.Github创建仓库（略）"></a>2.Github创建仓库（略）</h1><h1 id="3-创建共享库文件并上传到公有仓库"><a href="#3-创建共享库文件并上传到公有仓库" class="headerlink" title="3.创建共享库文件并上传到公有仓库"></a>3.创建共享库文件并上传到公有仓库</h1><blockquote>
+<h2 id="2-Github创建仓库（略）"><a href="#2-Github创建仓库（略）" class="headerlink" title="2.Github创建仓库（略）"></a>2.Github创建仓库（略）</h2><h2 id="3-创建共享库文件并上传到公有仓库"><a href="#3-创建共享库文件并上传到公有仓库" class="headerlink" title="3.创建共享库文件并上传到公有仓库"></a>3.创建共享库文件并上传到公有仓库</h2><blockquote>
 <p>pod lib create 库名</p>
 </blockquote>
 <p>配置*.podspec文件</p>
-<h1 id="4-推送到远程仓库"><a href="#4-推送到远程仓库" class="headerlink" title="4.推送到远程仓库"></a>4.推送到远程仓库</h1><h1 id="5-打tag-发布一个release版本"><a href="#5-打tag-发布一个release版本" class="headerlink" title="5.打tag, 发布一个release版本"></a>5.打tag, 发布一个release版本</h1><blockquote>
+<h2 id="4-推送到远程仓库"><a href="#4-推送到远程仓库" class="headerlink" title="4.推送到远程仓库"></a>4.推送到远程仓库</h2><h2 id="5-打tag-发布一个release版本"><a href="#5-打tag-发布一个release版本" class="headerlink" title="5.打tag, 发布一个release版本"></a>5.打tag, 发布一个release版本</h2><blockquote>
 <p>git tag -m ‘first release’ ‘1.0.1’<br>git push –tags #推送tag到远端仓库</p>
 </blockquote>
-<h1 id="6-trunk-push-pod"><a href="#6-trunk-push-pod" class="headerlink" title="6.trunk push pod"></a>6.trunk push pod</h1><blockquote>
+<h2 id="6-trunk-push-pod"><a href="#6-trunk-push-pod" class="headerlink" title="6.trunk push pod"></a>6.trunk push pod</h2><blockquote>
 <p>pod trunk push TestPod.podspec –allow-warnings</p>
 </blockquote>
-<h1 id="7-search-pod"><a href="#7-search-pod" class="headerlink" title="7.search pod"></a>7.search pod</h1><blockquote>
+<h2 id="7-search-pod"><a href="#7-search-pod" class="headerlink" title="7.search pod"></a>7.search pod</h2><blockquote>
 <p>pod search TestPod 检验是否可用</p>
 </blockquote>
 <ul>
@@ -302,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.ht9145.com/2019/03/08/CocoaPods/CocoaPods创建公有Pod库/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:/2019/03/08/CocoaPods/CocoaPods创建公有Pod库/" alt="微信分享二维码">
     </div>
 </div>
 
