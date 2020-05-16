@@ -5,7 +5,7 @@ tags:
 categories: CocoaPods
 ---
 
-# CocoaPods ios 三方管理工具
+## CocoaPods iOS三方库管理工具
 
 ## Ruby镜像 更换源
 
@@ -70,4 +70,19 @@ pod 'AFNetworking'
 pod install
 ```
 
-参考： https://www.jianshu.com/p/ab6411a05bc2
+## CocoaPods的升级
+
+查看版本
+
+```pod
+pod --version
+```
+
+升级
+
+```pod
+sudo gem install cocoapods
+```
+
+参考：https://www.jianshu.com/p/ab6411a05bc2
+参考：https://www.jianshu.com/p/d40ac1f18f92
