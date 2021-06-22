@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hutaol.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="关键字 nullable nonnull 【未完】">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC-Keywords">
+<meta property="og:url" content="https://hutaol.github.io/2018/11/09/iOS/OC-Keywords/index.html">
+<meta property="og:site_name" content="鸟语花香">
+<meta property="og:description" content="关键字 nullable nonnull 【未完】">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-09T04:53:32.000Z">
+<meta property="article:modified_time" content="2021-06-22T02:33:34.962Z">
+<meta property="article:author" content="Henry">
+<meta property="article:tag" content="OC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hutaol.github.io/2018/11/09/iOS/OC-Keywords/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>OC-Keywords | 鸟语花香</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鸟语花香</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">撸起袖子就是干</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/11/09/iOS/OC-Keywords/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/avatar.png">
+      <meta itemprop="name" content="Henry">
+      <meta itemprop="description" content="干干干！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鸟语花香">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OC-Keywords
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-09 12:53:32" itemprop="dateCreated datePublished" datetime="2018-11-09T12:53:32+08:00">2018-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-22 10:33:34" itemprop="dateModified" datetime="2021-06-22T10:33:34+08:00">2021-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>关键字 <code>nullable</code> <code>nonnull</code> 【未完】</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h2 id="nullable和nonnull"><a href="#nullable和nonnull" class="headerlink" title="nullable和nonnull"></a><code>nullable</code>和<code>nonnull</code></h2><p>iOS9新出的关键字：用来修饰属性 方法的参数和返回值</p>
+<h3 id="在属性中使用nullable和nonnull"><a href="#在属性中使用nullable和nonnull" class="headerlink" title="在属性中使用nullable和nonnull"></a>在属性中使用<code>nullable</code>和<code>nonnull</code></h3><p><code>nullable</code>: 表示修饰的属性或参数可以为空</p>
+<p><code>nonnull</code>:非空，表示修饰的属性或参数不能为空</p>
+<p><strong>注意：<code>nonnull</code>，<code>nullable</code>只能修饰对象，不能修饰基本数据类型</strong></p>
+<p>3种写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, nullable) NSString * name;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br><span class="line">//</span><br><span class="line">@property (nonatomic, strong, nonnull) NSString * price;</span><br><span class="line">@property (nonatomic, strong) NSString *_Nullable name;</span><br><span class="line">@property (nonatomic, strong) NSString *__nullable name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在方法中使用nullable和nonnull"><a href="#在方法中使用nullable和nonnull" class="headerlink" title="在方法中使用nullable和nonnull"></a>在方法中使用<code>nullable</code>和<code>nonnull</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (nullable NSString *)buyBook:(nullable NSString *)book;</span><br><span class="line">- (NSString *__nullable)buyBook:( NSString *__nullable)book;</span><br><span class="line">- (NSString *_Nullable)buyBook:( NSString *_Nullable)book;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Nonnull区域设置-Audited-Regions"><a href="#Nonnull区域设置-Audited-Regions" class="headerlink" title="Nonnull区域设置(Audited Regions)"></a><code>Nonnull</code>区域设置(Audited Regions)</h3><p>宏定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line">@property (nonatomic, strong) NSString * name;</span><br><span class="line">...</span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+
+<p>之间定义的所有属性和方法参数和返回值默认加上<code>nonnull</code>修饰</p>
+<p>为了<strong>安全</strong>起见，苹果还制定了几条<strong>规则</strong>：</p>
+<blockquote>
+<p>1.typedef定义的类型的nullability特性通常依赖于上下文，即使是在Audited Regions中，也不能假定它为nonnull。<br>2.复杂的指针类型(如id)必须显示去指定是nonnull还是nullable。例如，指定一个指向nullable对象的nonnull指针，可以使用<code>__nullable id * __nonnull</code>。<br>3.我们经常使用的<code>NSError</code> 通常是被假定为一个指向nullable NSError对象的nullable指针。</p>
+</blockquote>
+<h3 id="null-resettable"><a href="#null-resettable" class="headerlink" title="null_resettable"></a>null_resettable</h3><p><strong><code>null_resettable</code>: get方法:不能返回为空，set方法可以为空</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong, null_resettable) NSNumber * number;</span><br></pre></td></tr></table></figure>
+
+<p>当属性策略中使用了<code>null_resettable</code>修饰，就必须保证该属性的get方法返回不为空，否则编译器会如上图那样报警告⚠️。可以在set方法或get方法中做非空处理，以下是在get方法中做处理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSNumber *)number &#123;</span><br><span class="line">    if (_number == nil) &#123;</span><br><span class="line">        _number = @11;</span><br><span class="line">    &#125;</span><br><span class="line">    return _number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="null-unspecified"><a href="#null-unspecified" class="headerlink" title="null_unspecified"></a>null_unspecified</h3><p><strong><code>null_unspecified</code>:不确定是否为空,使用方式有三种：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 方法一</span><br><span class="line">@property(nonatomic,strong) NSNumber *_Null_unspecified height;</span><br><span class="line">// 方法二</span><br><span class="line">@property(nonatomic,strong) NSNumber *__null_unspecified height;</span><br><span class="line">// 方法三</span><br><span class="line">@property(nonatomic,strong,null_unspecified) NSNumber * height;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OC/" rel="tag"># OC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/07/js/javascript/" rel="prev" title="JavaScript">
+      <i class="fa fa-chevron-left"></i> JavaScript
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/15/mysql/mysql/" rel="next" title="MySql">
+      MySql <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nullable%E5%92%8Cnonnull"><span class="nav-number">2.</span> <span class="nav-text">nullable和nonnull</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%B1%9E%E6%80%A7%E4%B8%AD%E4%BD%BF%E7%94%A8nullable%E5%92%8Cnonnull"><span class="nav-number">2.1.</span> <span class="nav-text">在属性中使用nullable和nonnull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BD%BF%E7%94%A8nullable%E5%92%8Cnonnull"><span class="nav-number">2.2.</span> <span class="nav-text">在方法中使用nullable和nonnull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nonnull%E5%8C%BA%E5%9F%9F%E8%AE%BE%E7%BD%AE-Audited-Regions"><span class="nav-number">2.3.</span> <span class="nav-text">Nonnull区域设置(Audited Regions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-resettable"><span class="nav-number">2.4.</span> <span class="nav-text">null_resettable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-unspecified"><span class="nav-number">2.5.</span> <span class="nav-text">null_unspecified</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Henry"
+      src="/assets/img/avatar.png">
+  <p class="site-author-name" itemprop="name">Henry</p>
+  <div class="site-description" itemprop="description">干干干！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

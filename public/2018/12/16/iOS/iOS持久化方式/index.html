@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hutaol.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS持久化方式">
+<meta property="og:url" content="https://hutaol.github.io/2018/12/16/iOS/iOS%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="鸟语花香">
+<meta property="og:description" content="iOS持久化方式 1.NSUserDefaults2.NSKeyedArchiver3.沙盒Document4.sqlite35.KeyChain  持久化分为两类：沙盒内和沙盒外。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-16T14:34:06.000Z">
+<meta property="article:modified_time" content="2021-06-22T03:00:52.462Z">
+<meta property="article:author" content="Henry">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hutaol.github.io/2018/12/16/iOS/iOS%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>iOS持久化方式 | 鸟语花香</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鸟语花香</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">撸起袖子就是干</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/12/16/iOS/iOS%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/avatar.png">
+      <meta itemprop="name" content="Henry">
+      <meta itemprop="description" content="干干干！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鸟语花香">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS持久化方式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-16 22:34:06" itemprop="dateCreated datePublished" datetime="2018-12-16T22:34:06+08:00">2018-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-22 11:00:52" itemprop="dateModified" datetime="2021-06-22T11:00:52+08:00">2021-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="iOS持久化方式"><a href="#iOS持久化方式" class="headerlink" title="iOS持久化方式"></a>iOS持久化方式</h2><blockquote>
+<p>1.NSUserDefaults<br>2.NSKeyedArchiver<br>3.沙盒Document<br>4.sqlite3<br>5.KeyChain</p>
+</blockquote>
+<p>持久化分为两类：沙盒内和沙盒外。</p>
+<span id="more"></span>
+
+<h2 id="一、沙盒目录结构和各个目录的路径获取方法"><a href="#一、沙盒目录结构和各个目录的路径获取方法" class="headerlink" title="一、沙盒目录结构和各个目录的路径获取方法"></a>一、沙盒目录结构和各个目录的路径获取方法</h2><blockquote>
+<p><strong>AppName.app</strong>:  应用程序包目录<br><strong>Documents</strong>：存储用户数据，您应该将所有的应用程序数据文件写入到这个目录下。该路径可通过配置实现iTunes共享文件。会被iTunes同步。<br><strong>Library</strong>：有两个子目录Preferences和Caches，除Caches以外，都会被iTunes备份。<br><strong>Preferences</strong>：包含应用程序的偏好设置文件。您不应该直接创建偏好设置文件，而是应该使用NSUserDefaults类来取得和设置应用程序的偏好。结果在目录下面以plist的方式存储。<br><strong>Caches</strong>：用于存放应用程序专用的支持文件，保存应用程序再次启动过程中需要的信息。可创建子文件夹。可以用来放置您希望被备份但不希望被用户看到的数据。<br><strong>SystemData</strong>：系统数据<br><strong>tmp</strong>：用来存放应用再次启动时不需要的临时文件，该目录下的东西随时可能被系统清理掉，不会被iTunes同步。</p>
+</blockquote>
+<h3 id="沙盒主目录"><a href="#沙盒主目录" class="headerlink" title="沙盒主目录"></a>沙盒主目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *homeDir = NSHomeDirectory();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Documents目录"><a href="#Documents目录" class="headerlink" title="Documents目录"></a>Documents目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *documentsDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
+
+<h3 id="Library目录"><a href="#Library目录" class="headerlink" title="Library目录"></a>Library目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取Library的目录路径</span><br><span class="line">NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];</span><br><span class="line"></span><br><span class="line">// 获取Caches目录路径</span><br><span class="line">NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];</span><br></pre></td></tr></table></figure>
+
+<h3 id="tmp目录"><a href="#tmp目录" class="headerlink" title="tmp目录"></a>tmp目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *tmpDir =  NSTemporaryDirectory();</span><br></pre></td></tr></table></figure>
+
+<h3 id="AppBundle目录路径"><a href="#AppBundle目录路径" class="headerlink" title="AppBundle目录路径"></a>AppBundle目录路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取AppBundle目录路径</span><br><span class="line">NSLog(@&quot;%@&quot;, [[NSBundle mainBundle] bundlePath]);</span><br><span class="line"></span><br><span class="line">NSString *imagePath = [[NSBundle mainBundle] pathForResource:@&quot;apple&quot; ofType:@&quot;png&quot;];</span><br><span class="line"></span><br><span class="line">UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、沙盒内的持久化方式"><a href="#二、沙盒内的持久化方式" class="headerlink" title="二、沙盒内的持久化方式"></a>二、沙盒内的持久化方式</h2><h3 id="NSKeyedArchiver归档"><a href="#NSKeyedArchiver归档" class="headerlink" title="NSKeyedArchiver归档"></a>NSKeyedArchiver归档</h3><h4 id="1、什么是归档"><a href="#1、什么是归档" class="headerlink" title="1、什么是归档"></a>1、什么是归档</h4><blockquote>
+<p>归档是一种很常用的文件存储方法，可以存储各种类型的对象(以文件的方式保存)。<br>官方提供了NSKeyedArchiver和NSKeyedUnarchiver两个类以供我们把对象序列化和反序列化，在存储之前使用NSKeyedArchiver进行序列化操作，并且写入本地文件，在使用之前使用NSKeyedUnarchiver进行反序列化的操作，以供提取使用</p>
+</blockquote>
+<h4 id="2、使用场景"><a href="#2、使用场景" class="headerlink" title="2、使用场景"></a>2、使用场景</h4><blockquote>
+<p>如果是简单的基础数据类型，我们一般使用的是NSUserDefaults 或者 plist文件存储<br>对于一些量级比较大的，有规律可循的我们一般使用sqlite3数据库、coreData等<br>但是对于对象级别，轻量级的存储，我们一般可以使用归档来完成。</p>
+</blockquote>
+<h4 id="3、归档的使用方法"><a href="#3、归档的使用方法" class="headerlink" title="3、归档的使用方法"></a>3、归档的使用方法</h4><p>1、了解NSCoding 和 NSSecureCoding，NSCoding安全性不高，所以iOS6的时候，苹果引入了NSSecureCoding协议，加强安全性。</p>
+<p>2、需要序列化的类需要实现 NSCoding 或者 NSSecureCoding 协议（推荐使用NSSecureCoding），并复写方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)encodeWithCoder:(NSCoder *)coder</span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)coder</span><br></pre></td></tr></table></figure>
+
+<p>3、NSKeyedArchiver 和 NSKeyedUnarchiver，NSKeyedArchiver将自定义的类转换成NSData实例，类里面每一个值对应一个Key；NSKeyedUnarchiver将NSData实例根据key值还原成自定义的类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// NSKeyedArchiver 归档操作现在不推荐使用下面两个操作(被苹果废弃)</span><br><span class="line"></span><br><span class="line">+ (NSData *)archivedDataWithRootObject:(id)rootObject </span><br><span class="line">+ (BOOL)archiveRootObject:(id)rootObject toFile:(NSString *)path</span><br><span class="line"></span><br><span class="line">// 推荐使用</span><br><span class="line"></span><br><span class="line">+ (nullable NSData *)archivedDataWithRootObject:(id)object requiringSecureCoding:(BOOL)requiresSecureCoding error:(NSError **)error</span><br></pre></td></tr></table></figure>
+
+<p>4、归档、解档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSData * data = [NSKeyedArchiver archivedDataWithRootObject:me requiringSecureCoding:YES error:&amp;error];</span><br><span class="line"></span><br><span class="line">Person *newPerson = (Person *)[NSKeyedUnarchiver unarchivedObjectOfClass:Person.class fromData:data error:&amp;error];</span><br></pre></td></tr></table></figure>
+
+<p>5、例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@property (nonatomic, strong) NSString *name;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">-------------------------------------------</span><br><span class="line"></span><br><span class="line">@implementation Person</span><br><span class="line">- (void)encodeWithCoder:(NSCoder *)coder</span><br><span class="line">&#123;</span><br><span class="line">    [coder encodeObject:self.name forKey:@&quot;name&quot;];</span><br><span class="line">&#125;</span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)coder</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        self.name = [coder decodeObjectForKey:@&quot;name&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line">+ (BOOL)supportsSecureCoding &#123;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">-------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Person *me = [[Person alloc]init];</span><br><span class="line">me.name = @&quot;小白&quot;;</span><br><span class="line">NSString *homeDir = NSHomeDirectory();</span><br><span class="line"></span><br><span class="line">NSError *error;</span><br><span class="line">NSData * data = [NSKeyedArchiver archivedDataWithRootObject:me requiringSecureCoding:YES error:&amp;error];</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;%@&quot;,error);</span><br><span class="line">Person *newPerson = (Person *)[NSKeyedUnarchiver unarchivedObjectOfClass:Person.class fromData:data error:&amp;error];</span><br><span class="line">NSLog(@&quot;%@&quot;,error);</span><br><span class="line">NSLog(@&quot;%@&quot;,newPerson.name);</span><br></pre></td></tr></table></figure>
+
+<p>6、归档文件的存放</p>
+<blockquote>
+<p>归档操作生成的data文件，可以通过文件存储的方式，存放到沙盒中</p>
+</blockquote>
+<h3 id="NSUserDefaults"><a href="#NSUserDefaults" class="headerlink" title="NSUserDefaults"></a>NSUserDefaults</h3><h4 id="1、存取"><a href="#1、存取" class="headerlink" title="1、存取"></a>1、存取</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// [NSUserDefaults standardUserDefaults]获取NSUserDefaults对象，以key-value方式进行持久化操作。</span><br><span class="line">存</span><br><span class="line">[[NSUserDefaults standardUserDefaults] setObject:array forKey:@&quot;array&quot;];</span><br><span class="line"></span><br><span class="line">取</span><br><span class="line">NSMutableArray *mutableArr = [NSMutableArray arrayWithArray:[defaults objectForKey:@&quot;mutableArr&quot;]];</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、应用场景"><a href="#2、应用场景" class="headerlink" title="2、应用场景"></a>2、应用场景</h4><blockquote>
+<p>存放一些基础数据、如判断条件等，自动登录信息。</p>
+</blockquote>
+<h4 id="3、注意事项"><a href="#3、注意事项" class="headerlink" title="3、注意事项"></a>3、注意事项</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、可以存储的对象有NSString、NSArray、NSDictionary、NSData、NSNumber</span><br><span class="line"></span><br><span class="line">2、我们还要注意NSUserDefaults存储的对象全是不可变的，就算你存的时候是可变的，最后都会被转成不可变的</span><br><span class="line"></span><br><span class="line">比如 NSMutableArray 存储后取出时NSArray，是不可变的，需要重新构建 NSMutableArray</span><br><span class="line"></span><br><span class="line">NSMutableArray *mutableArr = [NSMutableArray arrayWithArray:[defaults objectForKey:@&quot;mutableArr&quot;]];</span><br><span class="line"></span><br><span class="line">3、对相同的key赋值等于一次覆盖，所以请保证key的唯一性</span><br></pre></td></tr></table></figure>
+
+<h3 id="Plist存储、文件存储"><a href="#Plist存储、文件存储" class="headerlink" title="Plist存储、文件存储"></a>Plist存储、文件存储</h3><h4 id="1、plist"><a href="#1、plist" class="headerlink" title="1、plist"></a>1、plist</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">可以存储的对象有NSString、NSArray、NSDictionary、NSData、NSNumber</span><br><span class="line"></span><br><span class="line">写入使用writeToFile，读取使用xxxWithContentsOfFile；需要指定文件路径。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">写入：</span><br><span class="line"></span><br><span class="line">NSMutableArray * array = [[NSMutableArray alloc]initWithObjects:@&quot;小白&quot;, @&quot;蜡笔小新&quot;, nil];</span><br><span class="line"></span><br><span class="line">//获取Document目录地址，拼接上文件名称</span><br><span class="line">NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@&quot;data.plist&quot;];</span><br><span class="line"></span><br><span class="line">[array writeToFile:path atomically:YES];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">读取：</span><br><span class="line"></span><br><span class="line">NSMutableArray * new_array = [NSMutableArray arrayWithContentsOfFile:path];</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;%@&quot;,new_array);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、文件"><a href="#2、文件" class="headerlink" title="2、文件"></a>2、文件</h4><blockquote>
+<p>这里要和plist区分一下，plist方式是字典/数组数据格式写入文件；而这里的文件方式不限数据格式。</p>
+</blockquote>
+<h3 id="数据库-sqlite3-（FMDB）"><a href="#数据库-sqlite3-（FMDB）" class="headerlink" title="数据库 sqlite3 （FMDB）"></a>数据库 sqlite3 （FMDB）</h3><p>数据库无疑是大量数据最好的持久化方案，数据库目前有：sqlite、CoreData和Realm等。</p>
+<h4 id="1、SQLite"><a href="#1、SQLite" class="headerlink" title="1、SQLite"></a>1、SQLite</h4><p>SQLite是一个进程内的库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它是一个零配置的数据库，这意味着与其他数据库一样，您不需要在系统中配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1、不需要一个单独的服务器进程或操作的系统（无服务器的）</span><br><span class="line">2、SQLite 不需要配置，这意味着不需要安装或管理</span><br><span class="line">3、一个完整的 SQLite 数据库是存储在一个单一的跨平台的磁盘文件</span><br><span class="line">4、SQLite 是非常小的，是轻量级的，完全配置时小于 400KB，省略可选功能配置时小于250KB</span><br><span class="line">5、SQLite 是自给自足的，这意味着不需要任何外部的依赖</span><br><span class="line">6、SQLite 事务是完全兼容 ACID 的，允许从多个进程或线程安全访问</span><br><span class="line"></span><br><span class="line">1.ACID事务</span><br><span class="line">2.零配置 – 无需安装和管理配置</span><br><span class="line">3.储存在单一磁盘文件中的一个完整的数据库</span><br><span class="line">4.数据库文件可以在不同字节顺序的机器间自由的共享</span><br><span class="line">5.支持数据库大小至2TB</span><br><span class="line">6.足够小, 大致13万行C代码, 4.43M</span><br><span class="line">7.比一些流行的数据库在大部分普通数据库操作要快</span><br><span class="line">8.简单, 轻松的API</span><br><span class="line">9.包含TCL绑定, 同时通过Wrapper支持其他语言的绑定</span><br><span class="line">10.良好注释的源代码, 并且有着90%以上的测试覆盖率</span><br><span class="line">11.独立: 没有额外依赖</span><br><span class="line">12.源码完全的开源, 你可以用于任何用途, 包括出售它</span><br><span class="line">13.支持多种开发语言，C, C++, PHP, Perl, Java, C#,Python, Ruby等</span><br></pre></td></tr></table></figure>
+
+<p>SQLite将数据划分为以下几种存储类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NULL ： NULL 值</span><br><span class="line">integer : 整型值</span><br><span class="line">real : 浮点值</span><br><span class="line">text : 文本字符串</span><br><span class="line">blob : 二进制数据（比如文件）</span><br><span class="line">没有 Boolean 没有用于存储日期和/或时间的类型，可用其他类型代替</span><br><span class="line">实际上SQLite是无类型的，就算声明为integer类型，还是能存储字符串文本（主键除外）</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、FMDB使用"><a href="#2、FMDB使用" class="headerlink" title="2、FMDB使用"></a>2、FMDB使用</h4><p>1、什么是FMDB</p>
+<blockquote>
+<p>iOS中使用C语言函数对原生SQLite数据库进行增删改查操作，复杂麻烦，于是，就出现了一系列将SQLite API封装的库，如FMDB<br>FMDB是针对libsqlite3框架进行封装的三方，它以OC的方式封装了SQLite的C语言的API，使用步骤与SQLite相似</p>
+</blockquote>
+<p>2、FMDB优缺点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FMDB的优点是：</span><br><span class="line">(1) 使用时面向对象，避免了复杂的C语言代码</span><br><span class="line">(2) 对比苹果自带的Core Data框架，更加轻量级和灵活</span><br><span class="line">(3) 提供多线程安全处理数据库操作方法，保证多线程安全跟数据准确性</span><br><span class="line"></span><br><span class="line">FMDB缺点：</span><br><span class="line">(1) 因为是OC语言开发，只能在iOS平台上使用，所以实现跨平台操作时存在限制性</span><br></pre></td></tr></table></figure>
+
+<p>3、相关类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FMDatabase：一个FMDatabase对象代表一个单独的SQLite数据库，通过SQLite语句执行数据库的增删改查操作</span><br><span class="line"></span><br><span class="line">FMResultSet：使用FMDatabase对象查询数据库后的结果集</span><br><span class="line"></span><br><span class="line">FMDatabaseQueue：用于多线程操作数据库，它保证线程安全</span><br></pre></td></tr></table></figure>
+
+<p>3、sqlite锁</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">sqlite的锁的粒度比较粗，是数据库级别的，也就是说即使只是对某个页进行读写操作，sqlite也会封锁整个数据库。这种策略降低了读-写事务和写-写事务间的并发程度，但是大大简化了程序设计，减小了整个程序的大小。所以，sqlite的适用场景为：较少次写入数据，大量、多次读出数据。这也是sqlite作为一款嵌入式数据库的设计初衷。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sqlite读事务获取锁的过程：UNLOCKED--&gt;SHARED-&gt;进行读取操作</span><br><span class="line"></span><br><span class="line">sqlite写事务获取锁的过程：UNLOCKED-&gt;SHARED-&gt;RESERVED-&gt;创建回滚日志，在数据库内存页中写入数据，刷新日志文件到磁盘-&gt;PENDING-&gt;EXCLUSIVE-&gt;刷新内存页中的数据到磁盘。</span><br><span class="line"></span><br><span class="line">SQLite使用锁逐步上升机制，为了写数据库，连接需要逐级地获得排它锁。</span><br><span class="line"></span><br><span class="line">SQLite有5个不同的锁状态：</span><br><span class="line">未加锁(UNLOCKED)</span><br><span class="line">共享 (SHARED)</span><br><span class="line">保留(RESERVED)</span><br><span class="line">待定(PENDING)</span><br><span class="line">排它(EXCLUSIVE)。</span><br><span class="line"></span><br><span class="line">每个数据库连接在同一时刻只能处于其中一个状态。每 种状态(未加锁状态除外)都有一种锁与之对应。</span><br><span class="line"></span><br><span class="line">最初的状态是未加锁状态，在此状态下，连接还没有存取数据库。当连接到了一个数据库，甚至已经用BEGIN开始了一个事务时，连接都还处于未加锁状态。</span><br><span class="line"></span><br><span class="line">未加锁状态的下一个状态是共享状态。为了能够从数据库中读(不写)数据，连接必须首先进入共享状态，也就是说首先要获得一个共享锁。多个连接可以 同时获得并保持共享锁，也就是说多个连接可以同时从同一个数据库中读数据。但哪怕只有一个共享锁还没有释放，也不允许任何连接写数据库。</span><br><span class="line"></span><br><span class="line">如果一个连接想要写数据库，它必须首先获得一个保留锁。一个数据库上同时只能有一个保留锁。保留锁可以与共享锁共存，保留锁是写数据库的第1阶段。保留锁即不阻止其它拥有共享锁的连接继续读数据库，也不阻止其它连接获得新的共享锁。</span><br><span class="line"></span><br><span class="line">一旦一个连接获得了保留锁，它就可以开始处理数据库修改操作了，尽管这些修改只能在缓冲区中进行，而不是实际地写到磁盘。对读出内容所做的修改保存在内存缓冲区中。</span><br><span class="line"></span><br><span class="line">当连接想要提交修改(或事务)时，需要将保留锁提升为排它锁。为了得到排它锁，还必须首先将保留锁提升为待定锁。获得待定锁之后，其它连接就不能再获得新的共享锁了，但已经拥有共享锁的连接仍然可以继续正常读数据库。此时，拥有等待锁的连接等待其它拥有共享锁的连接完成工作并释放其共享锁。</span><br><span class="line"></span><br><span class="line">一旦所有其它共享锁都被释放，拥有待定锁的连接就可以将其锁提升至排它锁，此时就可以自由地对数据库进行修改了。所有以前对缓冲区所做的修改都会被写到数据库文件。</span><br></pre></td></tr></table></figure>
+
+<p>4、sqlite的死锁</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line"></span><br><span class="line">两个连接 A 和 B 同时但完全独立地工作于同一个数据库。A执行第1条命令，B执行第2、3条，等等。 </span><br><span class="line"></span><br><span class="line">A连接                                     B连接 </span><br><span class="line">sqlite&gt; BEGIN; </span><br><span class="line">                                    sqlite&gt; BEGIN; </span><br><span class="line">                                    sqlite&gt; INSERT INTO foo VALUES(&#x27;x&#x27;); </span><br><span class="line">sqlite&gt; SELECT * FROM foo; </span><br><span class="line">                                    sqlite&gt; COMMIT; </span><br><span class="line">                                    SQL error: database is locked </span><br><span class="line">sqlite&gt; INSERT INTO foo VALUES (&#x27;x&#x27;); </span><br><span class="line">SQL error: database is locked</span><br><span class="line"></span><br><span class="line">两个连接都在死锁中结束。B首先尝试写数据库，也就拥有了一个待定锁。A再试图写，但当其INSERT语句试图将共享锁提升为保留锁时失败。</span><br><span class="line"></span><br><span class="line">为了讨论的方便，假设连接A和B都一直等待数据库可写。那么此时，其它的连接甚至都不能够再读数据库了，因为B拥有待定锁(它能阻止其它连接获得共享锁)。那么时此，不仅A和B不能工作，其它所有进程都不能再操作此数据库了。</span><br><span class="line"></span><br><span class="line">解决死锁的办法：sqlite用锁超时的机制处理死锁</span><br><span class="line"></span><br><span class="line">如果避免此情况呢？答案是采用正确的事务类型来完成工作。 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">事务的种类</span><br><span class="line">SQLite有三种不同的事务，使用不同的锁状态。</span><br><span class="line"></span><br><span class="line">事务可以开始于：DEFERRED、MMEDIATE 或 EXCLUSIVE。</span><br><span class="line"></span><br><span class="line">事务类型在BEGIN命令中指定： </span><br><span class="line">BEGIN [ DEFERRED | IMMEDIATE | EXCLUSIVE ] TRANSACTION;</span><br><span class="line"></span><br><span class="line">一个DEFERRED事务不获取任何锁(直到它需要锁的时候)，BEGIN语句本身也不会做什么事情——它开始于UNLOCK状态。默认情况下就是这样的，如果仅仅用BEGIN开始一个事务，那么事务就是DEFERRED的，同时它不会获取任何锁；当对数据库进行第一次读操作时，它会获取 SHARED锁；同样，当进行第一次写操作时，它会获取RESERVED锁。</span><br><span class="line"></span><br><span class="line">IMMEDIATE事务会尝试获取RESERVED锁。如果成功，BEGIN IMMEDIATE保证没有别的连接可以写数据库。但是，别的连接可以对数据库进行读操作；但是，RESERVED锁会阻止其它连接的BEGIN IMMEDIATE或者BEGIN EXCLUSIVE命令，当其它连接执行上述命令时，会返回SQLITE_BUSY错误。这时你就可以对数据库进行修改操作了，但是你还不能提交，当你 COMMIT时，会返回SQLITE_BUSY错误，这意味着还有其它的读事务没有完成，得等它们执行完后才能提交事务。</span><br><span class="line"></span><br><span class="line">EXCLUSIVE事务会试着获取对数据库的EXCLUSIVE锁。这与IMMEDIATE类似，但是一旦成功，EXCLUSIVE事务保证没有其它的连接，所以就可对数据库进行读写操作了。</span><br><span class="line"></span><br><span class="line">上节那个例子的问题在于两个连接最终都想写数据库，但是它们都没有放弃各自原来的锁，最终，SHARED锁导致了问题的出现。如果两个连接都以 BEGIN IMMEDIATE开始事务，那么死锁就不会发生。在这种情况下，在同一时刻只能有一个连接进入BEGIN IMMEDIATE，其它的连接就得等待。BEGIN IMMEDIATE和BEGIN EXCLUSIVE通常被写事务使用。就像同步机制一样，它防止了死锁的产生。</span><br><span class="line"></span><br><span class="line">基本的准则是：如果你正在使用的数据库没有其它的连接，用BEGIN就足够了。但是，如果你使用的数据库有其它的连接也会对数据库进行写操作，就得使用BEGIN IMMEDIATE或BEGIN EXCLUSIVE开始你的事务。</span><br><span class="line"></span><br><span class="line">那么，如何启动，提交还有回滚事务呢？SQLite中分别是：BEGIN、COMMIT和ROLLBACK。</span><br></pre></td></tr></table></figure>
+
+<p>5、数据库知识</p>
+<p>1、数据库分类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">关系型数据库</span><br><span class="line"></span><br><span class="line">MySQL等</span><br><span class="line"></span><br><span class="line">非关系型数据库</span><br><span class="line"></span><br><span class="line">MongoDB等</span><br></pre></td></tr></table></figure>
+
+<p>2、SQLite常用语句的使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">1、常用关键字</span><br><span class="line">select、insert、update、delete、from、create、where、desc、order、by、group、table、alter、view、index等等</span><br><span class="line">2、语句种类</span><br><span class="line">DDL：数据定义语句 ： create（创建）、alter（修改）、drop(删除)</span><br><span class="line">create table if not exists 表名 (字段名1 字段类型1, 字段名2 字段类型2, …) ;</span><br><span class="line">create table t_student (id integer, name text, age integer, score real) ;</span><br><span class="line">ALTER TABLE table_name RENAME TO new_table_naler ;</span><br><span class="line">DROP table if exists 表名 ;</span><br><span class="line">DROP table t_student ;</span><br><span class="line">--------------------------------------------------</span><br><span class="line">DML：数据操作语句</span><br><span class="line">包括insert、update、delete等操作</span><br><span class="line">上面的3种操作分别用于添加、修改、删除表中的数据</span><br><span class="line">insert into 表名 (字段1, 字段2, …) values (字段1的值, 字段2的值, …) ;</span><br><span class="line">insert into t_student (name, age) values (‘mj’, 10) ;</span><br><span class="line">update 表名 set 字段1 = 字段1的值, 字段2 = 字段2的值, … ;</span><br><span class="line">update t_student set name = ‘jack’, age = 20 ;</span><br><span class="line">delete from 表名 ;</span><br><span class="line">delete from t_student ;</span><br><span class="line">--------------------------------------------------</span><br><span class="line">DQL：数据库查询语句</span><br><span class="line">关键字select是DQL（也是所有SQL）用得最多的操作</span><br><span class="line">--------------------------------------------------</span><br><span class="line">like子句</span><br><span class="line">百分号（%）代表零个、一个或多个数字或字符。下划线（_）代表一个单一的数字或字符。这些符号可以被组合使用。</span><br><span class="line">SELECT FROM table_name</span><br><span class="line">WHERE column LIKE &#x27;XXXX%&#x27;</span><br><span class="line">or </span><br><span class="line">SELECT FROM table_name</span><br><span class="line">WHERE column LIKE &#x27;%XXXX%&#x27;</span><br><span class="line">or</span><br><span class="line">SELECT FROM table_name</span><br><span class="line">WHERE column LIKE &#x27;XXXX_&#x27;</span><br><span class="line">or</span><br><span class="line">SELECT FROM table_name</span><br><span class="line">WHERE column LIKE &#x27;_XXXX&#x27;</span><br><span class="line">or</span><br><span class="line">SELECT FROM table_name</span><br><span class="line">WHERE column LIKE &#x27;_XXXX_&#x27;</span><br><span class="line">--------------------------------------------------</span><br><span class="line">Glob 子句 ：和LIKE一样是通配符匹配， 与 LIKE 不同的是，GLOB 是大小写敏感的</span><br><span class="line">星号（*）代表零个、一个或多个数字或字符。问号（?）代表一个单一的数字或字符。这些符号可以被组合使用。</span><br><span class="line">--------------------------------------------------</span><br><span class="line">LIMIT 子句用于限制由 SELECT 语句返回的数据数量。</span><br><span class="line">SELECT column1, column2, columnN </span><br><span class="line">FROM table_name</span><br><span class="line">LIMIT [no of rows] OFFSET [row num]</span><br><span class="line">SQLite 引擎将返回从OFFSET下一行开始 [no of rows] 行。</span><br><span class="line">--------------------------------------------------</span><br><span class="line">ORDER BY 子句是用来基于一个或多个列按升序或降序顺序排列数据。</span><br><span class="line">SELECT column-list </span><br><span class="line">FROM table_name </span><br><span class="line">[WHERE condition] </span><br><span class="line">[ORDER BY column1, column2, .. columnN] [ASC | DESC];</span><br><span class="line">--------------------------------------------------</span><br><span class="line">GROUP BY 子句用于与 SELECT 语句一起使用，来对相同的数据进行分组。</span><br><span class="line">SELECT column-list</span><br><span class="line">FROM table_name</span><br><span class="line">WHERE [ conditions ]</span><br><span class="line">GROUP BY column1, column2....columnN</span><br><span class="line">ORDER BY column1, column2....columnN</span><br><span class="line">--------------------------------------------------</span><br><span class="line">HAVING 子句允许指定条件来过滤将出现在最终结果中的分组结果。</span><br><span class="line">WHERE 子句在所选列上设置条件，而 HAVING 子句则在由 GROUP BY 子句创建的分组上设置条件。</span><br><span class="line">SELECT</span><br><span class="line">FROM</span><br><span class="line">WHERE</span><br><span class="line">GROUP BY</span><br><span class="line">HAVING</span><br><span class="line">ORDER BY</span><br><span class="line">在一个查询中，HAVING 子句必须放在 GROUP BY 子句之后，必须放在 ORDER BY 子句之前。下面是包含 HAVING 子句的 SELECT 语句的语法：</span><br><span class="line">SELECT column1, column2</span><br><span class="line">FROM table1, table2</span><br><span class="line">WHERE [ conditions ]</span><br><span class="line">GROUP BY column1, column2</span><br><span class="line">HAVING [ conditions ]</span><br><span class="line">ORDER BY column1, column2</span><br><span class="line">--------------------------------------------------</span><br><span class="line">DISTINCT 关键字与 SELECT 语句一起使用，来消除所有重复的记录，并只获取唯一一次记录。</span><br><span class="line">SELECT DISTINCT column1, column2,.....columnN </span><br><span class="line">FROM table_name</span><br><span class="line">WHERE [condition]</span><br></pre></td></tr></table></figure>
+
+<p>3、SQLite的索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">索引（Index）是一种特殊的查找表，数据库搜索引擎用来加快数据检索。简单地说，索引是一个指向表中数据的指针。一个数据库中的索引与一本书后边的索引是非常相似的。</span><br><span class="line"></span><br><span class="line">1、索引不应该使用在较小的表上。</span><br><span class="line">2、索引不应该使用在有频繁的大批量的更新或插入操作的表上。</span><br><span class="line">3、索引不应该使用在含有大量的 NULL 值的列上。</span><br><span class="line">4、索引不应该使用在频繁操作的列上。</span><br><span class="line"></span><br><span class="line">CREATE INDEX 命令</span><br><span class="line">CREATE INDEX index_name ON table_name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">唯一索引：使用唯一索引不仅是为了性能，同时也为了数据的完整性。唯一索引不允许任何重复的值插入到表中。</span><br><span class="line"></span><br><span class="line">CREATE INDEX index_name</span><br><span class="line">on table_name (column_name);</span><br><span class="line"></span><br><span class="line">组合索引：组合索引是基于一个表的两个或多个列上创建的索引。</span><br><span class="line"></span><br><span class="line">CREATE INDEX index_name</span><br><span class="line">on table_name (column1, column2);</span><br><span class="line"></span><br><span class="line">隐式索引</span><br><span class="line"></span><br><span class="line">隐式索引是在创建对象时，由数据库服务器自动创建的索引。索引自动创建为主键约束和唯一约束。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DROP INDEX 命令</span><br><span class="line"></span><br><span class="line">一个索引可以使用 SQLite 的 DROP 命令删除。当删除索引时应特别注意，因为性能可能会下降或提高。</span><br><span class="line"></span><br><span class="line">DROP INDEX index_name;</span><br></pre></td></tr></table></figure>
+
+<p>4、SQLite的约束</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">约束是在表的数据列上强制执行的规则。这些是用来限制可以插入到表中的数据类型。这确保了数据库中数据的准确性和可靠性。</span><br><span class="line"></span><br><span class="line">NOT NULL 约束：确保某列不能有 NULL 值。</span><br><span class="line">DEFAULT 约束：当某列没有指定值时，为该列提供默认值。</span><br><span class="line">UNIQUE 约束：确保某列中的所有值是不同的。</span><br><span class="line">PRIMARY Key 约束：唯一标识数据库表中的各行/记录。</span><br><span class="line">CHECK 约束：CHECK 约束确保某列中的所有值满足一定条件。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE TABLE COMPANY3(</span><br><span class="line">   ID INT PRIMARY KEY     NOT NULL,</span><br><span class="line">   NAME           TEXT    NOT NULL,</span><br><span class="line">   AGE            INT     NOT NULL UNIQUE,</span><br><span class="line">   ADDRESS        CHAR(50) DEFAULT &#x27;home&#x27;,</span><br><span class="line">   SALARY         REAL    CHECK(SALARY &gt; 0)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>5、SQLite事务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1、事务（Transaction）是一个对数据库执行工作单元。事务（Transaction）是以逻辑顺序完成的工作单位或序列，可以是由用户手动操作完成，也可以是由某种数据库程序自动完成。</span><br><span class="line"></span><br><span class="line">2、事务（Transaction）是指一个或多个更改数据库的扩展。例如，如果您正在创建一个记录或者更新一个记录或者从表中删除一个记录，那么您正在该表上执行事务。重要的是要控制事务以确保数据的完整性和处理数据库错误。</span><br><span class="line"></span><br><span class="line">3、事务（Transaction）具有以下四个标准属性，通常根据首字母缩写为 ACID：</span><br><span class="line"></span><br><span class="line">原子性（Atomicity）：确保工作单位内的所有操作都成功完成，否则，事务会在出现故障时终止，之前的操作也会回滚到以前的状态。</span><br><span class="line">一致性（Consistency)：确保数据库在成功提交的事务上正确地改变状态。</span><br><span class="line">隔离性（Isolation）：使事务操作相互独立和透明。</span><br><span class="line">持久性（Durability）：确保已提交事务的结果或效果在系统发生故障的情况下仍然存在。</span><br><span class="line"></span><br><span class="line">4、事务控制</span><br><span class="line"></span><br><span class="line">BEGIN TRANSACTION：开始事务处理 或者BEGIN。</span><br><span class="line"></span><br><span class="line">//中间是自己需要完成的数据库操作</span><br><span class="line"></span><br><span class="line">COMMIT：保存更改，或者可以使用 END TRANSACTION 命令。</span><br><span class="line">ROLLBACK：回滚所做的更改。</span><br><span class="line"></span><br><span class="line">sqlite&gt; BEGIN;</span><br><span class="line">sqlite&gt; DELETE FROM COMPANY WHERE AGE = 25;</span><br><span class="line">sqlite&gt; ROLLBACK;</span><br></pre></td></tr></table></figure>
+
+<p>更多语法：<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/sqlite/sqlite-pragma.html">https://www.w3cschool.cn/sqlite/sqlite-pragma.html</a></p>
+<p>6、SQLite的提高查询速度方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1、关键搜索词索引的建立</span><br><span class="line"></span><br><span class="line">索引并不是越多越好</span><br><span class="line"></span><br><span class="line">注意会增大数据库大小，可以显著提高select的速度，同时也可以提高update的速度</span><br><span class="line"></span><br><span class="line">2、查询sql的优化</span><br><span class="line"></span><br><span class="line">尽量查找id</span><br><span class="line"></span><br><span class="line">减少全表扫描 如：</span><br><span class="line"></span><br><span class="line">避免sql中 where子句后面使用表达式</span><br><span class="line"></span><br><span class="line">避免where子句中使用 or连接，可以通过联合</span><br><span class="line"></span><br><span class="line">in not in 也要慎用</span><br></pre></td></tr></table></figure>
+
+<p>更多sql优化：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wenjianzhiqin/article/details/81017468">https://blog.csdn.net/wenjianzhiqin/article/details/81017468</a></p>
+<p>7、提高写入速度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、事务开启可以提高查询效率，因为避免了频繁的函数调用，插入后一次性提交。</span><br><span class="line"></span><br><span class="line">2、关闭写入同步 </span><br><span class="line"></span><br><span class="line">在SQLite中，数据库配置的参数都由编译指示（pragma）来实现的，而其中synchronous选项有三种可选状态，分别是full、normal、off。full写入速度最慢，但保证数据是安全的，不受断电、系统崩溃等影响，而off可以加速数据库的一些操作，但如果系统崩溃或断电，则数据库可能会损毁。如果有定期备份的机制，而且少量数据丢失可接受</span><br><span class="line"></span><br><span class="line">sqlite3_exec(db,&quot;PRAGMA synchronous = OFF; &quot;,0,0,0);  </span><br><span class="line"></span><br><span class="line">3、使用执行准备</span><br><span class="line"></span><br><span class="line">就算开起了事务，SQLite仍然要对循环中每一句SQL语句进行“词法分析”和“语法分析”，这对于同时插入大量数据的操作来说，简直就是浪费时间。使用执行准备，即先将SQL语句编译好，然后再一步一步（或一行一行）地执行。</span><br></pre></td></tr></table></figure>
+
+<p>四、沙盒外的持久化方式</p>
+<p>沙盒内的方式在应用被删除后数据都会丢失，如果想要不丢失则需要使用KeyChain。</p>
+<p>KeyChain本质是一个sqlite数据库，其保存的所有数据都是加密过的。</p>
+<p>KeyChain分为私有和公有，公有则需要指定group，一个group中的应用可以共享此KeyChain。</p>
+<p>使用KeyChain过程中要理解下面几个问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1：自己使用的KeyChain和系统自带的KeyChain数据是隔离的，内部应该是不同数据库文件；</span><br><span class="line"></span><br><span class="line">2：KeyChain数据可备份到iCloud中；</span><br><span class="line"></span><br><span class="line">3：不需要联网，也不用登陆iCloud账号；一个设备一个sqlite数据库，但是不同应用组不共享数据；</span><br><span class="line"></span><br><span class="line">4：要在另一台设备上使用当前设备存储的KeyChain信息，需要当前设备进行数据备份，</span><br><span class="line">再在另一设备上复原数据；比较常用的是iCloud备份方式；</span><br><span class="line"></span><br><span class="line">5：系统自带的KeyChain中账号密码分类数据可在系统设置-&gt;账号与密码里面看到，</span><br><span class="line">你退出iCloud账号还是存在，只是iCloud会帮你备份如果你设置了的话；这个和照片是一样的道理。</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cocoachina.com/articles/25733">http://www.cocoachina.com/articles/25733</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/16/iOS/Xcode%E5%B7%A5%E5%85%B7/" rel="prev" title="Xcode工具">
+      <i class="fa fa-chevron-left"></i> Xcode工具
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/17/iOS/Xcode%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81%E5%9D%97/" rel="next" title="Xcode自定义代码块">
+      Xcode自定义代码块 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">iOS持久化方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B2%99%E7%9B%92%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E5%90%84%E4%B8%AA%E7%9B%AE%E5%BD%95%E7%9A%84%E8%B7%AF%E5%BE%84%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">一、沙盒目录结构和各个目录的路径获取方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%99%E7%9B%92%E4%B8%BB%E7%9B%AE%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">沙盒主目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Documents%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.</span> <span class="nav-text">Documents目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Library%E7%9B%AE%E5%BD%95"><span class="nav-number">2.3.</span> <span class="nav-text">Library目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmp%E7%9B%AE%E5%BD%95"><span class="nav-number">2.4.</span> <span class="nav-text">tmp目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppBundle%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84"><span class="nav-number">2.5.</span> <span class="nav-text">AppBundle目录路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B2%99%E7%9B%92%E5%86%85%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">二、沙盒内的持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSKeyedArchiver%E5%BD%92%E6%A1%A3"><span class="nav-number">3.1.</span> <span class="nav-text">NSKeyedArchiver归档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%BD%92%E6%A1%A3"><span class="nav-number">3.1.1.</span> <span class="nav-text">1、什么是归档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">3.1.2.</span> <span class="nav-text">2、使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E5%BD%92%E6%A1%A3%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.3.</span> <span class="nav-text">3、归档的使用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSUserDefaults"><span class="nav-number">3.2.</span> <span class="nav-text">NSUserDefaults</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%AD%98%E5%8F%96"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、存取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">3.2.3.</span> <span class="nav-text">3、注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plist%E5%AD%98%E5%82%A8%E3%80%81%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="nav-number">3.3.</span> <span class="nav-text">Plist存储、文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81plist"><span class="nav-number">3.3.1.</span> <span class="nav-text">1、plist</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.2.</span> <span class="nav-text">2、文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-sqlite3-%EF%BC%88FMDB%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">数据库 sqlite3 （FMDB）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81SQLite"><span class="nav-number">3.4.1.</span> <span class="nav-text">1、SQLite</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81FMDB%E4%BD%BF%E7%94%A8"><span class="nav-number">3.4.2.</span> <span class="nav-text">2、FMDB使用</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Henry"
+      src="/assets/img/avatar.png">
+  <p class="site-author-name" itemprop="name">Henry</p>
+  <div class="site-description" itemprop="description">干干干！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

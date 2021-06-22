@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hutaol.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令">
+<meta property="og:url" content="https://hutaol.github.io/2018/12/15/linux/Linux%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="鸟语花香">
+<meta property="og:description" content="Linux">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-15T13:16:47.000Z">
+<meta property="article:modified_time" content="2021-06-22T02:50:23.327Z">
+<meta property="article:author" content="Henry">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hutaol.github.io/2018/12/15/linux/Linux%E5%91%BD%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux命令 | 鸟语花香</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鸟语花香</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">撸起袖子就是干</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/12/15/linux/Linux%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/avatar.png">
+      <meta itemprop="name" content="Henry">
+      <meta itemprop="description" content="干干干！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鸟语花香">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-15 21:16:47" itemprop="dateCreated datePublished" datetime="2018-12-15T21:16:47+08:00">2018-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-22 10:50:23" itemprop="dateModified" datetime="2021-06-22T10:50:23+08:00">2021-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>Linux</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
+<p><strong>ls</strong> 列出目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -a   // 全部的文件，连同隐藏档( 开头为 . 的文件) 一起列出来</span><br><span class="line">ls -d   // 仅列出目录本身，而不是列出目录内的文件数据</span><br><span class="line">ls -l   // 长数据串列出，包含文件的属性与权限等等数据</span><br><span class="line">ls -al  // 将该目录下的所有文件列出来(含属性与隐藏档)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>cd</strong> 切换目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd .    // 当前目录</span><br><span class="line">cd ..   // 回上一级目录</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>pwd</strong> 显示目前的目录<br><strong>mkdir</strong> 创建一个新的目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m    // 配置文件的权限</span><br><span class="line">mkdir -p    // 可创建多层目录</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>rmdir</strong> 删除一个空的目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>cp</strong> 复制文件或目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-a：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</span><br><span class="line"></span><br><span class="line">-d：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</span><br><span class="line"></span><br><span class="line">-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</span><br><span class="line"></span><br><span class="line">-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</span><br><span class="line"></span><br><span class="line">-l：进行硬式连结(hard link)的连结档创建，而非复制文件本身；</span><br><span class="line"></span><br><span class="line">-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span><br><span class="line"></span><br><span class="line">-r：递归持续复制，用於目录的复制行为；(常用)</span><br><span class="line"></span><br><span class="line">-s：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</span><br><span class="line"></span><br><span class="line">-u：若 destination 比 source 旧才升级 destination ！</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>rm</strong> 移除文件或目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf  // 强制移除目录及其子目录</span><br><span class="line">-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</span><br><span class="line">-i ：互动模式，在删除前会询问使用者是否动作</span><br><span class="line">-r ：递归删除啊！</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>mv</strong> 移动文件与目录，或修改文件与目录的名称</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</span><br><span class="line">-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</span><br><span class="line">-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件内容查看"><a href="#文件内容查看" class="headerlink" title="文件内容查看"></a>文件内容查看</h2><blockquote>
+<p><code>cat</code>  由第一行开始显示文件内容<br><code>tac</code>  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！<br><code>nl</code>   显示的时候，顺道输出行号！<br><code>more</code> 一页一页的显示文件内容<br><code>less</code> 与 more 类似，但是比 more 更好的是，他可以往前翻页！<br><code>head</code> 只看头几行<br><code>tail</code> 只看尾巴几行</p>
+</blockquote>
+<h2 id="查看系统内核"><a href="#查看系统内核" class="headerlink" title="查看系统内核"></a>查看系统内核</h2><blockquote>
+<p><code>cat /proc/version</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux version 2.6.32-642.el6.x86_64 (mockbuild@worker1.bsys.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-17) (GCC) ) #1 SMP Tue May 10 17:27:01 UTC 2016</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>uname -r</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.6.32-642.el6.x86_64</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>uname -a</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux host.localdomain 2.6.32-642.el6.x86_64 #1 SMP Tue May 10 17:27:01 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h2><blockquote>
+<p><code>cat /etc/issue</code></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CentOS release 6.8 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>cat /etc/redhat-release</code> // 只对Redhat Linux有效</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CentOS release 6.8 (Final)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>lsb_release -a</code> // 需安装lsb  yum install lsb –y</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch</span><br><span class="line">Distributor ID:CentOS</span><br><span class="line">Description:CentOS release 6.8 (Final)</span><br><span class="line">Release:6.8</span><br><span class="line">Codename:Final</span><br></pre></td></tr></table></figure>
+
+<h2 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h2><blockquote>
+<p><code>sync</code>  // 将数据由内存同步到硬盘中。<br><code>shutdown -h new</code>  // 立马关机<br><code>shutdown –h 10</code>  // 10分钟后关机，显示在登录用户的屏幕中<br><code>shutdown –h +10</code>  // 10分钟后关机<br><code>shutdown –h 20:25</code>  // 在今天20:25关机<br><code>shutdown –r now</code>  // 系统立马重启<br><code>shutdown –r +10</code>  // 系统十分钟后重启<br><code>reboot</code>  // 就是重启，等同于 shutdown –r now<br><code>halt</code>  // 关闭系统，等同于shutdown –h now 和 poweroff</p>
+</blockquote>
+<h2 id="系统状态的命令"><a href="#系统状态的命令" class="headerlink" title="系统状态的命令"></a>系统状态的命令</h2><blockquote>
+<p><strong>who</strong>： 确定谁在系统中</p>
+</blockquote>
+<ul>
+<li><p><code>who</code>：列出当前已登录入系统的用户<br>henry  tty1  2018-12-30 15:51<br>用户名  终端设备的设备文件名<br>设备文件一般放于目录/dev下</p>
+</li>
+<li><p><code>tty</code>：可以打印出当前终端的设备文件名</p>
+</li>
+<li><p><code>who am i</code>：可以列出当前终端上的登录用户</p>
+</li>
+<li><p><code>whoami</code>：仅列出当前终端上的登录用户</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>uptime</strong>：已开机时间（年龄）</p>
+</blockquote>
+<p>15:01:15 up 1:51, 1 user, load average: 0.00, 0.00, 0.00</p>
+<p>系统自启动后到现在的运行时间<br>当前登录入用户数<br>近期1分钟，5分钟，15分钟内系统CPU的负载</p>
+<blockquote>
+<p><strong>top</strong>：列出资源占用排名靠前的进程</p>
+</blockquote>
+<p>VIRT进程逻辑地址空间大小(virtual)<br>RES驻留内存数(Resident)，也就是占用物理内存数<br>SHR与其他进程内存数(share)<br>%CPU占用CPU百分百，%MEM占用内存百分百<br>TIME+占用的CPU时间</p>
+<blockquote>
+<p><strong>ps</strong>：查阅进程状态(process status)</p>
+</blockquote>
+<p>用于控制列表的行数(进程范围)和列数(每进程列出的属性内容)<br><code>ps</code>：只列出在当前终端上启动的进程 PID TTY TIME COMMAND<br><code>ps e</code>：列出系统中所有的进程(进程范围)<br><code>ps f</code>：已<em>fill格式</em>列出每一个进程(控制列的数目)<br><code>ps l</code>：已<em>long格式</em>列出每一个进程(控制列的数目)</p>
+<blockquote>
+<p>UID：用户ID(注册名)<br>PID：进程ID<br>PPID：父进程的PID<br>C：CPU占用指数：最近一段时间(秒级别)进程占用CPU情况<br>STIME：启动时间<br>SZ：进程逻辑内存大小(size)<br>TTY：终端的名字<br>COMMAND：命令名<br>WCHAN：进程在内核的何处睡眠(wait channel)<br>TIME：累计执行时间(占用CPU的时间)<br>PRI：优先级<br>S：状态，S(sleep)，R(run)，Z(Zombie)<br><strong>free</strong>：内存使用情况<br><strong>vmtat</strong>：系统负载</p>
+</blockquote>
+<p>Procs r等待运行的进程数 b处在非中断睡眠状态的进程数<br>Memory free空闲的内存 buff/cache用做缓存的内存数<br>Swap 磁盘/内存的交换页数量，单位：KB/秒<br>IO 设备I/O块数，单位：块/秒<br>System in每秒的硬件中断数(interrupt)，包括时钟中断 cs每秒环境切换次数(context switch)<br>CPU 总使用率 us=user sy=system id=idle wa=wait for disk I/O</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/15/linux/Linux%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/" rel="prev" title="Linux系统命令">
+      <i class="fa fa-chevron-left"></i> Linux系统命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/15/iOS/Mac%E5%91%BD%E4%BB%A4/" rel="next" title="Mac命令">
+      Mac命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.</span> <span class="nav-text">文件内容查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="nav-number">3.</span> <span class="nav-text">查看系统内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC"><span class="nav-number">4.</span> <span class="nav-text">查看系统版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA-shutdown"><span class="nav-number">5.</span> <span class="nav-text">关机 shutdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">系统状态的命令</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Henry"
+      src="/assets/img/avatar.png">
+  <p class="site-author-name" itemprop="name">Henry</p>
+  <div class="site-description" itemprop="description">干干干！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
