@@ -1,9 +1,15 @@
 ---
 title: CocoaPods创建公有Pod库
 date: 2019-03-08 11:50:31
-tags: 
+tags: [iOS, CocoaPods]
 categories: CocoaPods
 ---
+
+> CocoaPods（Xcode依赖库管理）
+
+## CocoaPods创建公有Pod库
+
+<!-- more -->
 
 ## 1.注册CocoaPods账号信息
 

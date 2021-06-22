@@ -1,11 +1,13 @@
 ---
 title: Mac工具
 date: 2019-07-02 16:10:10
-tags:
+tags: Mac
 categories: Mac
 ---
 
-# Mac 必备工具
+> Mac 必备工具 `Homebrew`
+
+<!-- more -->
 
 ## Homebrew 包管理工具
 
@@ -53,5 +55,4 @@ brew info nodejs
 brew install npm
 ```
 
-nodejs官网链接下载安装 https://nodejs.org/
-
+nodejs官网链接下载安装 <https://nodejs.org/>

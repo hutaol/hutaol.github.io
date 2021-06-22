@@ -1,12 +1,15 @@
 ---
 title: CocoaPods安装及简单使用
 date: 2019-07-02 16:50:27
-tags:
+tags: [iOS, CocoaPods]
 categories: CocoaPods
 ---
 
-## CocoaPods iOS三方库管理工具
+> CocoaPods（Xcode依赖库管理）
 
+`CocoaPods`是`iOS`项目的依赖管理工具，该项目源码在`Github`上管理。开发iOS项目不可避免地要使用第三方开源库，CocoaPods的出现使得我们可以节省设置和第三方开源库的时间
+
+<!-- more -->
 ## Ruby镜像 更换源
 
 ```gem
@@ -84,5 +87,5 @@ pod --version
 sudo gem install cocoapods
 ```
 
-参考：https://www.jianshu.com/p/ab6411a05bc2
-参考：https://www.jianshu.com/p/d40ac1f18f92
+参考：<https://www.jianshu.com/p/ab6411a05bc2>
+参考：<https://www.jianshu.com/p/d40ac1f18f92>

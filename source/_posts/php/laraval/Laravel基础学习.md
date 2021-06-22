@@ -1,9 +1,15 @@
 ---
 title: Laravel基础学习
 date: 2020-03-09 17:59:11
-tags:
-categories:
+tags: [PHP, Laravel]
+categories: PHP
 ---
+
+> Laravel（PHP开发框架）
+
+`Laravel`是一套简洁、优雅的PHP Web开发框架(`PHP Web Framework`)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力
+
+<!-- more -->
 
 ```php
 // 1.创建模型
@@ -139,4 +145,3 @@ $flight->number; // "FR 900"
 ```php
 php artisan storage:link
 ```
-

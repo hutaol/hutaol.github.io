@@ -1,15 +1,21 @@
 ---
 title: 初学thinkphp5
 date: 2020-03-23 17:28:39
-tags:
-categories: php
+tags: [PHP, ThinkPHP]
+categories: PHP
 ---
+
+> ThinkPHP（PHP开发框架）
+
+`ThinkPHP`是一个快速、兼容而且简单的轻量级国产PHP开发框架
+
+<!-- more -->
 
 ## php环境的搭建
 
 使用`phpstudy`集成环境
 
-开发手册：https://www.kancloud.cn/manual/thinkphp5/118003
+开发手册：<https://www.kancloud.cn/manual/thinkphp5/118003>
 
 入口为`public/index.php`
 
@@ -32,7 +38,7 @@ categories: php
 
 ## 多模块
 
-命令行：https://www.kancloud.cn/manual/thinkphp5/118021
+命令行：<https://www.kancloud.cn/manual/thinkphp5/118021>
 
 默认的框架的根目录下面自带了一个`build.php`，用于自动生成的规则定义文件
 
@@ -49,9 +55,8 @@ categories: php
 * 快速生成控制器类
 
 生成index模块的Blog控制器类库文件
-> php think make:controller index/Blog
-
-> php think make:controller index\Blog --plain
+> php think make:controller index/Blog  
+php think make:controller index\Blog --plain
 
 * 快速生成模型类
 

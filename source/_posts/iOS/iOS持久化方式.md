@@ -1,10 +1,9 @@
 ---
 title: iOS持久化方式
 date: 2018-12-16 22:34:06
-tags:
+tags: iOS
 categories: iOS
 ---
-
 ## iOS持久化方式
 
 > 1.NSUserDefaults  
@@ -14,6 +13,8 @@ categories: iOS
 5.KeyChain
 
 持久化分为两类：沙盒内和沙盒外。
+
+<!-- more -->
 
 ## 一、沙盒目录结构和各个目录的路径获取方法
 
