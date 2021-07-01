@@ -1,7 +1,7 @@
 ---
-title: Linux系统命令
+title: Linux系统权限
 date: 2018-12-15 21:16:47
-tags:
+tags: Linux
 categories: Linux
 ---
 
