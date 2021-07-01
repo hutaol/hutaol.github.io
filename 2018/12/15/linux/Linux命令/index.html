@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"hutaol.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Linux">
+  <meta name="description" content="Linux命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux命令">
 <meta property="og:url" content="https://hutaol.github.io/2018/12/15/linux/Linux%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="鸟语花香">
-<meta property="og:description" content="Linux">
+<meta property="og:description" content="Linux命令">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-15T13:16:47.000Z">
-<meta property="article:modified_time" content="2021-06-22T06:59:54.087Z">
+<meta property="article:modified_time" content="2021-07-01T06:11:04.819Z">
 <meta property="article:author" content="Henry">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-22 14:59:54" itemprop="dateModified" datetime="2021-06-22T14:59:54+08:00">2021-06-22</time>
+                <time title="修改时间：2021-07-01 14:11:04" itemprop="dateModified" datetime="2021-07-01T14:11:04+08:00">2021-07-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,11 +216,11 @@
 
       
         <blockquote>
-<p>Linux</p>
+<p>Linux命令</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><blockquote>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><blockquote>
 <p><strong>ls</strong> 列出目录</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -a   // 全部的文件，连同隐藏档( 开头为 . 的文件) 一起列出来</span><br><span class="line">ls -d   // 仅列出目录本身，而不是列出目录内的文件数据</span><br><span class="line">ls -l   // 长数据串列出，包含文件的属性与权限等等数据</span><br><span class="line">ls -al  // 将该目录下的所有文件列出来(含属性与隐藏档)</span><br></pre></td></tr></table></figure>
@@ -231,29 +231,36 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd .    // 当前目录</span><br><span class="line">cd ..   // 回上一级目录</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>pwd</strong> 显示目前的目录<br><strong>mkdir</strong> 创建一个新的目录</p>
+<p><strong>pwd</strong> 显示目前的目录  </p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -m    // 配置文件的权限</span><br><span class="line">mkdir -p    // 可创建多层目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>rmdir</strong> 删除一个空的目录</p>
+<p><strong>mkdir</strong> 创建一个新的目录 <code>mkdir [-p] dirName</code></p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir       // 创建目录</span><br><span class="line">mkdir -m    // 配置文件的权限</span><br><span class="line">mkdir -p    // 可创建多层目录</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>cp</strong> 复制文件或目录</p>
+<p><strong>rmdir</strong> 删除一个空的目录 <code>rmdir [-p] dirName</code></p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-a：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</span><br><span class="line"></span><br><span class="line">-d：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</span><br><span class="line"></span><br><span class="line">-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</span><br><span class="line"></span><br><span class="line">-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</span><br><span class="line"></span><br><span class="line">-l：进行硬式连结(hard link)的连结档创建，而非复制文件本身；</span><br><span class="line"></span><br><span class="line">-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span><br><span class="line"></span><br><span class="line">-r：递归持续复制，用於目录的复制行为；(常用)</span><br><span class="line"></span><br><span class="line">-s：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</span><br><span class="line"></span><br><span class="line">-u：若 destination 比 source 旧才升级 destination ！</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir      // 删除空目录</span><br><span class="line">rmdir -p   // 多层删除空目录</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>rm</strong> 移除文件或目录</p>
+<p><strong>cp</strong> 复制文件或目录 <code>cp [options] source dest</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-a：在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容,相当于-pdr参数组合（常用）</span><br><span class="line"></span><br><span class="line">-d：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</span><br><span class="line"></span><br><span class="line">-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</span><br><span class="line"></span><br><span class="line">-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</span><br><span class="line"></span><br><span class="line">-l：不复制文件，只是生成链接文件；</span><br><span class="line"></span><br><span class="line">-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</span><br><span class="line"></span><br><span class="line">-r：递归持续复制，用于目录的复制行为；(常用)</span><br><span class="line"></span><br><span class="line">-s：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</span><br><span class="line"></span><br><span class="line">-u：若 destination 比 source 旧才升级 destination ！</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>rm</strong> 移除文件或目录 <code>rm [options] name</code></p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm -rf  // 强制移除目录及其子目录</span><br><span class="line">-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</span><br><span class="line">-i ：互动模式，在删除前会询问使用者是否动作</span><br><span class="line">-r ：递归删除啊！</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>mv</strong> 移动文件与目录，或修改文件与目录的名称</p>
+<p><strong>mv</strong> 移动文件与目录，或修改文件与目录的名称 <code>mv [options] source dest</code></p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</span><br><span class="line">-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</span><br><span class="line">-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</span><br></pre></td></tr></table></figure>
+
+<h2 id="系统管理命令"><a href="#系统管理命令" class="headerlink" title="系统管理命令"></a>系统管理命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">stat        显示指定文件的详细信息，比ls更详细</span><br><span class="line">who         显示在线登陆用户</span><br><span class="line">whoami      显示当前操作用户</span><br><span class="line">hostname    显示主机名</span><br><span class="line">uname       显示系统信息</span><br><span class="line">top         动态显示当前耗费资源最懂进程</span><br><span class="line">ps          显示瞬间进程状态 ps -aux   （mac ： ps -au）</span><br><span class="line">du          查看目录大小  du -h/home带有单位显示目录信息</span><br><span class="line">df          查看磁盘大小  df -h带有单位显示磁盘信息 </span><br><span class="line">ifconfig    查看网络情况</span><br><span class="line">ping        测试网络连通</span><br><span class="line">netstat     显示网络状态信息</span><br><span class="line">man         命令不会用了  如：man ls</span><br><span class="line">clear       清屏</span><br><span class="line">alias       对命令重命名 如: alias showmeit=&quot;ps -aux&quot;, 解除使用 unalias showmeit</span><br><span class="line">kill        杀死进程，可以先用ps或top命令查看进程的id，然后再用kill命令杀死进程</span><br></pre></td></tr></table></figure>
 
 <h2 id="文件内容查看"><a href="#文件内容查看" class="headerlink" title="文件内容查看"></a>文件内容查看</h2><blockquote>
 <p><code>cat</code>  由第一行开始显示文件内容<br><code>tac</code>  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！<br><code>nl</code>   显示的时候，顺道输出行号！<br><code>more</code> 一页一页的显示文件内容<br><code>less</code> 与 more 类似，但是比 more 更好的是，他可以往前翻页！<br><code>head</code> 只看头几行<br><code>tail</code> 只看尾巴几行</p>
@@ -289,7 +296,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch</span><br><span class="line">Distributor ID:CentOS</span><br><span class="line">Description:CentOS release 6.8 (Final)</span><br><span class="line">Release:6.8</span><br><span class="line">Codename:Final</span><br></pre></td></tr></table></figure>
 
 <h2 id="关机-shutdown"><a href="#关机-shutdown" class="headerlink" title="关机 shutdown"></a>关机 shutdown</h2><blockquote>
-<p><code>sync</code>  // 将数据由内存同步到硬盘中。<br><code>shutdown -h new</code>  // 立马关机<br><code>shutdown –h 10</code>  // 10分钟后关机，显示在登录用户的屏幕中<br><code>shutdown –h +10</code>  // 10分钟后关机<br><code>shutdown –h 20:25</code>  // 在今天20:25关机<br><code>shutdown –r now</code>  // 系统立马重启<br><code>shutdown –r +10</code>  // 系统十分钟后重启<br><code>reboot</code>  // 就是重启，等同于 shutdown –r now<br><code>halt</code>  // 关闭系统，等同于shutdown –h now 和 poweroff</p>
+<p><code>sync</code>  // 将数据由内存同步到硬盘中<br><code>shutdown -h new</code>  // 立马关机<br><code>shutdown –h 10</code>  // 10分钟后关机，显示在登录用户的屏幕中<br><code>shutdown –h +10</code>  // 10分钟后关机<br><code>shutdown –h 20:25</code>  // 在今天20:25关机<br><code>shutdown –r now</code>  // 系统立马重启<br><code>shutdown –r +10</code>  // 系统十分钟后重启<br><code>reboot</code>  // 就是重启，等同于 shutdown –r now<br><code>halt</code>  // 关闭系统，等同于shutdown –h now 和 poweroff</p>
 </blockquote>
 <h2 id="系统状态的命令"><a href="#系统状态的命令" class="headerlink" title="系统状态的命令"></a>系统状态的命令</h2><blockquote>
 <p><strong>who</strong>： 确定谁在系统中</p>
@@ -339,8 +346,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/12/15/linux/Linux%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/" rel="prev" title="Linux系统命令">
-      <i class="fa fa-chevron-left"></i> Linux系统命令
+    <a href="/2018/12/15/linux/Linux%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/" rel="prev" title="Linux系统权限">
+      <i class="fa fa-chevron-left"></i> Linux系统权限
     </a></div>
       <div class="post-nav-item">
     <a href="/2018/12/15/iOS/Mac%E5%91%BD%E4%BB%A4/" rel="next" title="Mac命令">
@@ -404,7 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.</span> <span class="nav-text">文件内容查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="nav-number">3.</span> <span class="nav-text">查看系统内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC"><span class="nav-number">4.</span> <span class="nav-text">查看系统版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA-shutdown"><span class="nav-number">5.</span> <span class="nav-text">关机 shutdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">系统状态的命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">系统管理命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B"><span class="nav-number">3.</span> <span class="nav-text">文件内容查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="nav-number">4.</span> <span class="nav-text">查看系统内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">查看系统版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%9C%BA-shutdown"><span class="nav-number">6.</span> <span class="nav-text">关机 shutdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">系统状态的命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
