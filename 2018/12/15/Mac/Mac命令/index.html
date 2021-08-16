@@ -23,17 +23,17 @@
   <meta name="description" content="Mac命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac命令">
-<meta property="og:url" content="https://hutaol.github.io/2018/12/15/iOS/Mac%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:url" content="https://hutaol.github.io/2018/12/15/Mac/Mac%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="鸟语花香">
 <meta property="og:description" content="Mac命令">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-15T14:29:10.000Z">
-<meta property="article:modified_time" content="2021-06-22T06:59:54.081Z">
+<meta property="article:modified_time" content="2021-08-16T02:15:39.651Z">
 <meta property="article:author" content="Henry">
 <meta property="article:tag" content="Mac">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hutaol.github.io/2018/12/15/iOS/Mac%E5%91%BD%E4%BB%A4/">
+<link rel="canonical" href="https://hutaol.github.io/2018/12/15/Mac/Mac%E5%91%BD%E4%BB%A4/">
 
 
 <script id="page-configurations">
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/12/15/iOS/Mac%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2018/12/15/Mac/Mac%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/assets/img/avatar.png">
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-22 14:59:54" itemprop="dateModified" datetime="2021-06-22T14:59:54+08:00">2021-06-22</time>
+                <time title="修改时间：2021-08-16 10:15:39" itemprop="dateModified" datetime="2021-08-16T10:15:39+08:00">2021-08-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,11 +220,277 @@
 </blockquote>
 <span id="more"></span>
 
-<p>1、创建目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir dirname</span><br></pre></td></tr></table></figure>
+<h2 id="目录和文件操作"><a href="#目录和文件操作" class="headerlink" title="目录和文件操作"></a>目录和文件操作</h2><table>
+<thead>
+<tr>
+<th align="center">命令名</th>
+<th align="left">功能描述</th>
+<th align="left">举例或备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">cd</td>
+<td align="left">进入指定文件夹路径</td>
+<td align="left"><code>cd ~/Desktop</code></td>
+</tr>
+<tr>
+<td align="center">pwd</td>
+<td align="left">显示当前的目录路径</td>
+<td align="left">/Users/xz/Desktop</td>
+</tr>
+<tr>
+<td align="center">ls</td>
+<td align="left">显示当前目录下的内容</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">ls -la</td>
+<td align="left">显示当前目录下的详细内容</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">ls -a</td>
+<td align="left">显示当前目录下的内容</td>
+<td align="left">含点(.)开头的文件</td>
+</tr>
+<tr>
+<td align="center">mkdir</td>
+<td align="left">创建目录</td>
+<td align="left"><code>mkdir dir_name</code></td>
+</tr>
+<tr>
+<td align="center">touch</td>
+<td align="left">创建指定格式的文件</td>
+<td align="left"><code>touch file.format</code></td>
+</tr>
+<tr>
+<td align="center">mvdir</td>
+<td align="left">移动目录</td>
+<td align="left"><code>mvdir dir1 dir2</code></td>
+</tr>
+<tr>
+<td align="center">mv</td>
+<td align="left">移动/重命名—文件/文件夹</td>
+<td align="left"><code>mv dir1 dir2</code>MAC没有重命名的命令</td>
+</tr>
+<tr>
+<td align="center">rm</td>
+<td align="left">删除文件或空目录</td>
+<td align="left"><code>rm file</code></td>
+</tr>
+<tr>
+<td align="center">rm -rf dir</td>
+<td align="left">删除一个非空目录</td>
+<td align="left"><code>rm -rf dir</code></td>
+</tr>
+<tr>
+<td align="center">rmdir</td>
+<td align="left">删除空目录</td>
+<td align="left">平时用得少</td>
+</tr>
+<tr>
+<td align="center">cp</td>
+<td align="left">复制文件或目录</td>
+<td align="left"><code>cp file1 file2</code></td>
+</tr>
+<tr>
+<td align="center">file</td>
+<td align="left">显示文件类型</td>
+<td align="left"><code>file file_name</code></td>
+</tr>
+<tr>
+<td align="center">find</td>
+<td align="left">使用匹配表达式查找文件</td>
+<td align="left"><code>find *.file_format</code></td>
+</tr>
+<tr>
+<td align="center">open</td>
+<td align="left">使用默认的程序打开文件</td>
+<td align="left"><code>open file_name</code></td>
+</tr>
+<tr>
+<td align="center">open .</td>
+<td align="left">打开Finder目录</td>
+<td align="left"><code>open .</code></td>
+</tr>
+<tr>
+<td align="center">cat</td>
+<td align="left">显示或连接文件内容</td>
+<td align="left"><code>cat file</code></td>
+</tr>
+<tr>
+<td align="center">ln</td>
+<td align="left">为文件创建联接</td>
+<td align="left"><code>ln -s file1 file2</code> s 表示软联接</td>
+</tr>
+<tr>
+<td align="center">head</td>
+<td align="left">显示文件的最初几行</td>
+<td align="left"><code>head -20 file_name</code></td>
+</tr>
+<tr>
+<td align="center">tail</td>
+<td align="left">显示文件的最后几行</td>
+<td align="left"><code>tail -10 file_name</code></td>
+</tr>
+<tr>
+<td align="center">paste</td>
+<td align="left">横向拼接文件内容</td>
+<td align="left"><code>paste file1 file2</code></td>
+</tr>
+<tr>
+<td align="center">diff</td>
+<td align="left">比较并显示两个文件的内容差异</td>
+<td align="left"><code>diff file1 file2</code></td>
+</tr>
+<tr>
+<td align="center">wc</td>
+<td align="left">统计文件的字符数、词数和行数</td>
+<td align="left"><code>wc file_name</code></td>
+</tr>
+<tr>
+<td align="center">uniq</td>
+<td align="left">去掉文件中的重复行</td>
+<td align="left"><code>uniq file_name</code></td>
+</tr>
+<tr>
+<td align="center">grep</td>
+<td align="left">通过简单正则表达式搜索文件</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="文件属性-ls-l"><a href="#文件属性-ls-l" class="headerlink" title="文件属性 ls -l"></a>文件属性 <code>ls -l</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">total 82488</span><br><span class="line">-rw-r--r--@ 1 xz  staff  42233727  7 19 16:30 PowerBi.pbix</span><br></pre></td></tr></table></figure>
 
-<p>2、创建文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch name</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">语法</th>
+<th align="left">属性</th>
+<th align="left">含义说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-</td>
+<td align="left">文件类型</td>
+<td align="left">横杠表示普通文件，若为d表示文件目录</td>
+</tr>
+<tr>
+<td align="center">rw-r–r–</td>
+<td align="left">访问权限</td>
+<td align="left">分3组：用户、群组和其他用户的文件访问权限</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="left">文件数量</td>
+<td align="left">本例中仅1个文件</td>
+</tr>
+<tr>
+<td align="center">xz</td>
+<td align="left">所在用户</td>
+<td align="left">本例中用户名为xz</td>
+</tr>
+<tr>
+<td align="center">staff</td>
+<td align="left">所在群组</td>
+<td align="left">本例中用户群组为staff</td>
+</tr>
+<tr>
+<td align="center">42233727</td>
+<td align="left">文件大小</td>
+<td align="left">本例中文件的字节数</td>
+</tr>
+<tr>
+<td align="center">7 19 16:30</td>
+<td align="left">修改日期</td>
+<td align="left">本例中为7-19 16:30</td>
+</tr>
+<tr>
+<td align="center">PowerBi.pbix</td>
+<td align="left">文件名称</td>
+<td align="left">本例中为PowerBi.pbix</td>
+</tr>
+</tbody></table>
+<h3 id="修改访问权限-chmod"><a href="#修改访问权限-chmod" class="headerlink" title="修改访问权限 chmod"></a>修改访问权限 <code>chmod</code></h3><p>语法：chmod 用户 操作 权限 文件<br>用户：u表示用户(user)、g表示群组(group)、o表示其他用户(other)、a表示全部用户。缺失的情况下默认为所有用户；<br>操作：+表示增加权限、-表示取消权限、=表示赋值权限；<br>权限：r表示可读(read)、w表示可写(write)、x表示可执行(execute)；<br>文件：不指定文件名时，操作对象为当前目录下的所有文件。  </p>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><table>
+<thead>
+<tr>
+<th align="center">命令名</th>
+<th align="left">功能描述</th>
+<th align="left">举例或备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">sudo</td>
+<td align="left">获取root权限</td>
+<td align="left">sudo -s</td>
+</tr>
+<tr>
+<td align="center">Control + D / exit</td>
+<td align="left">退出root权限</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">clear</td>
+<td align="left">清除屏幕或窗口内容</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">ping</td>
+<td align="left">给网络主机发送回应请求</td>
+<td align="left">ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></td>
+</tr>
+<tr>
+<td align="center">man</td>
+<td align="left">查看命令说明</td>
+<td align="left">man ls</td>
+</tr>
+<tr>
+<td align="center">q</td>
+<td align="left">退出查看的命令说明</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">which</td>
+<td align="left">查看指定程序的路径</td>
+<td align="left">which python</td>
+</tr>
+<tr>
+<td align="center">history</td>
+<td align="left">列出最近执行过的命令及编号</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">hostname</td>
+<td align="left">电脑在网络中的名称</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">env</td>
+<td align="left">显示当前所有设置过的环境变量</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">passwd</td>
+<td align="left">修改用户密码</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">date</td>
+<td align="left">显示系统的当前日期和时间</td>
+<td align="left">date</td>
+</tr>
+<tr>
+<td align="center">cal</td>
+<td align="left">显示日历</td>
+<td align="left">cal</td>
+</tr>
+<tr>
+<td align="center">time</td>
+<td align="left">统计程序的执行时间</td>
+<td align="left">time</td>
+</tr>
+</tbody></table>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>CTRL+A：移动光标至行首<br>CTRL+E：移动光标至行尾<br>CTRL+X：按住CTRL，双击 X 可以进行当前位置与行首位置，进行切换<br>ESC+B：光标向左移动一个单词<br>ESC+F：光标向右移动一个单词<br>CTRL+U：删除光标前所有字符<br>CTRL+K：删除光标后所有字符<br>CTRL+W：删除光标前一个单词（根据空格识别单词分隔）<br>CTRL+Y：粘贴之前（CTRL+U/K/W）删除的内容<br>CTRL+C：中断操作</p>
 
     </div>
 
@@ -308,6 +574,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">目录和文件操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7-ls-l"><span class="nav-number">2.</span> <span class="nav-text">文件属性 ls -l</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90-chmod"><span class="nav-number">2.1.</span> <span class="nav-text">修改访问权限 chmod</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">4.</span> <span class="nav-text">快捷键</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
