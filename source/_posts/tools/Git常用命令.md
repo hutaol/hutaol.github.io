@@ -9,7 +9,45 @@ categories: Git
 
 `Git`（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
 
+更多命令查看帮助 `git help`
+
 <!-- more -->
+
+## 配置
+
+```shell
+git config --global user.name "xx"
+git config --global user.email "xx@xx.com"
+```
+
+## 常用命令
+
+```shell
+git init
+git clone
+git pull
+git push
+git status
+git add xyz
+git add .
+git commit -m xx
+git commit --amend -m xx
+git commit -am xx # add和commit
+git rm xx
+git rm -r *
+git log 
+git log -1
+git log --stat
+git log -p -m
+git show
+git show HEAD
+git show HEAD^
+git checkout -b
+git remote add origin http://xx.git
+git push origin master 
+git reflog
+git checkout HEAD@{1}
+```
 
 ## 获取远程地址
 
@@ -21,7 +59,9 @@ git remote -v
 
 ```shell
 # 把所有没有提交的修改暂存
-git stash 
+git stash
+# 查看所有暂存
+git stash list 
 # 获取暂存
 git stash pop
 ```
@@ -33,6 +73,8 @@ git stash pop
 git checkout . && git clean -xdf
 # 本地所有修改的。没有的提交的，都返回到原来的状态
 git checkout . 
+
+git reset --hard
 
 # 返回到某个节点，不保留修改
 git reset --hard HASH 
@@ -59,18 +101,14 @@ git branch -d <BranchName>
 git push origin --delete <BranchName> 
 ```
 
-## 删除Tag
+## Tag
 
 ```shell
 # 删除本地tag
 git tag -d <TagName>
 # 删除远程tag
 git push origin :refs/tags/<TagName>
-```
 
-## Tag
-
-```git
 # 查询远程tags
 git ls-remote --tags origin  
 # 列出所有tag
@@ -102,6 +140,23 @@ git fetch origin --prune
 
 ```
 
+## Git合并分支&取消合并
+
+```shell
+# 合并分支dev
+git merge dev
+# 合并远程
+git merge origin/master
+# 取消合并
+git merge --abort 
+```
+
+## 子模块
+
+```shell
+git submodule update --init --recursive
+```
+
 ## Git忽略文件
 
 创建`.gitignore`文件
@@ -123,16 +178,20 @@ UserInterfaceState.xcuserstate
 project.xcworkspace/
 xcuserdata/
 UserInterface.xcuserstate
+
+.DS_Store
+xcuserdata/
+
 ```
 
 如果存在文件，需要先清理缓存文件 git rm --cached xx
 或者找到文件后删除它，然后commit， push。
 
-## Git合并分支&取消合并
+## git代理
 
-```git
-// 合并分支dev
-git merge dev
-// 取消合并
-git merge --abort
+```shell
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
+
+查看一下gitconfig 文件 `open ~/.gitconfig`
