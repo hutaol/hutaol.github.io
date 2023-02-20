@@ -8,9 +8,15 @@ tags: iOS
 
 网络请求
 
-[AFNetworking](https://github.com/AFNetworking/AFNetworking)
+[AFNetworking](https://github.com/AFNetworking/AFNetworking) OC
+[Alamofire](https://github.com/Alamofire/Alamofire) Swift
 
-自动布局
+图片加载
+
+[SDWebImage](https://github.com/SDWebImage/SDWebImage) oc
+[Kingfisher](https://github.com/onevcat/Kingfisher) swift
+
+自动布局约束
 
 [Masonry](https://github.com/SnapKit/Masonry) OC
 [SnapKit](https://github.com/SnapKit/SnapKit) Swift
@@ -21,15 +27,16 @@ tags: iOS
 
 模型转换
 
-[MJExtension](https://github.com/CoderMJLee/MJExtension)
+[MJExtension](https://github.com/CoderMJLee/MJExtension) oc
+[JSONModel](https://github.com/jsonmodel/jsonmodel) oc
 
-[JSONModel](https://github.com/jsonmodel/jsonmodel)
+JSON解析
 
-图片加载
+[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) swift
 
-[SDWebImage](https://github.com/SDWebImage/SDWebImage)
+扩展
 
-
+[SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
 
 SVG加载库
 
@@ -212,4 +219,33 @@ UITableViewCell自动高度计算
 
 [FDTemplateLayoutCell](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell)
 
+UICollectionView的布局，将单元格向左对齐
+
+[UICollectionViewLeftAlignedLayout](https://github.com/mokagio/UICollectionViewLeftAlignedLayout)
+
+加载框
+
+[MBProgressHUD](https://github.com/jdg/MBProgressHUD)
+
+KVO
+
+[KVOController](https://github.com/facebookarchive/KVOController)
+
+键盘
+
+[IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
+
+列表空数据显示
+
+[DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
+
+崩溃记录
 Bugly
+
+双滑块范围选择器
+
+[SDRangeSlider](https://github.com/Meterwhite/SDRangeSlider)
+
+无限循环图片、文字轮播器
+
+[SDCycleScrollView](https://github.com/gsdios/SDCycleScrollView)
