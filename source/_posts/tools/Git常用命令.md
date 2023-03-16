@@ -195,3 +195,17 @@ git config --global --unset https.proxy
 ```
 
 查看一下gitconfig 文件 `open ~/.gitconfig`
+
+## 取消合并
+
+当我们使用git merge操作合并代码但还没add 时，若想取消这次合并，则使用
+
+```shell
+git merge --abort
+```
+
+但，如果你已经add 了呢，那就git log一下，查看下提交历史操作查看下你想回退到的版本，复制下那个版本的commit id，然后
+
+```shell
+git reset --hard xxxxxxx(你的commit id)
+```
