@@ -1,11 +1,12 @@
 ---
 title: iOS三方库管理工具
 date: 2022-12-22 16:22:22
-tags:
+tags: iOS
 ---
 
-
 ## CocoaPods, Carthage, Swift Package Manager
+
+<!-- more -->
 
 OC开发的话推荐使用`cocoapods`
 用swift开发的话推荐使用`carthage`

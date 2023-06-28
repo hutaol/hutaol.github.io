@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hutaol.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="iOS三方库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS三方库">
+<meta property="og:url" content="https://hutaol.github.io/2022/10/14/iOS/iOS%E4%B8%89%E6%96%B9%E5%BA%93/index.html">
+<meta property="og:site_name" content="鸟语花香">
+<meta property="og:description" content="iOS三方库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hutaol.github.io/2022/10/14/assets/svg/bg.svg">
+<meta property="og:image" content="https://hutaol.github.io/2022/10/14/assets/svg/bg.png">
+<meta property="article:published_time" content="2022-10-14T06:16:19.000Z">
+<meta property="article:modified_time" content="2023-06-28T17:45:21.537Z">
+<meta property="article:author" content="Henry">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hutaol.github.io/2022/10/14/assets/svg/bg.svg">
+
+<link rel="canonical" href="https://hutaol.github.io/2022/10/14/iOS/iOS%E4%B8%89%E6%96%B9%E5%BA%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>iOS三方库 | 鸟语花香</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鸟语花香</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">撸起袖子就是干</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hutaol.github.io/2022/10/14/iOS/iOS%E4%B8%89%E6%96%B9%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/avatar.png">
+      <meta itemprop="name" content="Henry">
+      <meta itemprop="description" content="干干干！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鸟语花香">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS三方库
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-14 14:16:19" itemprop="dateCreated datePublished" datetime="2022-10-14T14:16:19+08:00">2022-10-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-29 01:45:21" itemprop="dateModified" datetime="2023-06-29T01:45:21+08:00">2023-06-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="iOS三方库"><a href="#iOS三方库" class="headerlink" title="iOS三方库"></a>iOS三方库</h2><span id="more"></span>
+
+<p>网络请求</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> OC<br><a target="_blank" rel="noopener" href="https://github.com/Alamofire/Alamofire">Alamofire</a> Swift</p>
+<p>图片加载</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SDWebImage/SDWebImage">SDWebImage</a> oc<br><a target="_blank" rel="noopener" href="https://github.com/onevcat/Kingfisher">Kingfisher</a> swift</p>
+<p>自动布局约束</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SnapKit/Masonry">Masonry</a> OC<br><a target="_blank" rel="noopener" href="https://github.com/SnapKit/SnapKit">SnapKit</a> Swift</p>
+<p>下拉刷新上拉加载</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CoderMJLee/MJRefresh">MJRefresh</a></p>
+<p>模型转换</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CoderMJLee/MJExtension">MJExtension</a> oc<br><a target="_blank" rel="noopener" href="https://github.com/jsonmodel/jsonmodel">JSONModel</a> oc</p>
+<p>JSON解析</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SwiftyJSON/SwiftyJSON">SwiftyJSON</a> swift</p>
+<p>扩展</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SwifterSwift/SwifterSwift">SwifterSwift</a></p>
+<p>SVG加载库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SVGKit/SVGKit">SVGKit</a>  (v3.0.0某些svg图会有显示不出来问题)</p>
+<p>例如：<code>SVGKit</code>v3.0.0, 图片<img src="../../assets/svg/bg.svg" alt="背景"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SVGKImage *image = [SVGKImage imageNamed:@&quot;bg.svg&quot;];</span><br><span class="line">self.imageView.image = image.UIImage;</span><br></pre></td></tr></table></figure>
+
+<p>展示出来如下：<br><img src="../../assets/svg/bg.png" alt="显示的背景"></p>
+<p>基于GPU的图片或视频的处理框架</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/BradLarson/GPUImage">GPUImage</a></p>
+<p>引导页：  </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ealeksandrov/EAIntroView">EAIntroView</a></p>
+<p>导航栏</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/listenzz/HBDNavigationBar">HBDNavigationBar</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wangrui460/WRNavigationBar">WRNavigationBar</a></p>
+<p>选项卡</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xmartlabs/XLPagerTabStrip">XLPagerTabStrip</a> (Swift)</p>
+<p>滑动切换滚动视图</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pujiaxin33/JXCategoryView">JXCategoryView</a> (左右滑动切换)<br><a target="_blank" rel="noopener" href="https://github.com/pujiaxin33/JXPagingView">JXPagingView</a> (多页面嵌套，既可以上下滑动，也可以左右滑动切换页面)</p>
+<p>图片选择：  </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SilenceLove/HXPhotoPicker">HXPhotoPicker</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/longitachi/ZLPhotoBrowser">ZLPhotoBrowser</a> （4.0以下OC 4.0以上Swift）</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/indulgeIn/YBImageBrowser">YBImageBrowser</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/banchichen/TZImagePickerController">TZImagePickerController</a></p>
+<p>图片浏览器</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/LuKane/KNPhotoBrowser">KNPhotoBrowser</a></p>
+<p>徽章</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jkpang/PPBadgeView">PPBadgeView</a></p>
+<p>浮窗</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/zhengwenming/WMDragView">WMDragView</a></p>
+<p>弹出窗</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/LoSenTrad/LSTPopView">LSTPopView</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/lyb5834/YBPopupMenu">YBPopupMenu</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jmascia/KLCPopup">KLCPopup</a> (横屏时有缺陷)</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/LeoNatan/LNPopupController">LNPopupController</a></p>
+<p>分类集合</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pujiaxin33/JXCategoryView">JXCategoryView</a></p>
+<p>网页封装</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xiubojin/JXBWKWebView">JXBWKWebView</a></p>
+<p>表单列表</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xmartlabs/XLForm">XLForm</a> (OC)  </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xmartlabs/Eureka">Eureka</a>（Swift）</p>
+<p>TextField</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jverdi/JVFloatLabeledTextField">JVFloatLabeledTextField</a> 输入框浮动标签提示</p>
+<p>录播图</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/WenchaoD/FSPagerView">FSPagerView</a> (Swift)</p>
+<p>UICollectionView</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Instagram/IGListKit">IGListKit</a></p>
+<p>搜索历史记录</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ko1o/PYSearch">PYSearch</a></p>
+<p>内购</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bizz84/SwiftyStoreKit">SwiftyStoreKit</a> (Swift)</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/robotmedia/RMStore">RMStore</a> (OC)</p>
+<p>SwipeCell</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/SwipeCellKit/SwipeCellKit">SwipeCellKit</a> (Swift)</p>
+<p>权限</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sparrowcode/PermissionsKit">PermissionsKit</a> (Swift)</p>
+<p>GIF图</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Flipboard/FLAnimatedImage">FLAnimatedImage</a></p>
+<p>JSON</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tristanhimmelman/ObjectMapper">ObjectMapper</a> (Swift)</p>
+<p>扫描</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kingsic/SGQRCode">SGQRCode</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/MxABC/LBXScan">LBXScan</a></p>
+<p>文本</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/TTTAttributedLabel/TTTAttributedLabel">TTTAttributedLabel</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ibireme/YYText">YYText</a></p>
+<p>日历</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/search?q=FSCalendar">FSCalendar</a></p>
+<p>本地存储</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ibireme/YYCache">YYCache</a></p>
+<p>数据库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ccgus/fmdb">FMDB</a></p>
+<p>应用程序和扩展程序之间的消息传递(进程通讯)</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mutualmobile/MMWormhole">MMWormhole</a></p>
+<p>打印</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shixueqian/PrintBeautifulLog">PrintBeautifulLog</a></p>
+<p>图标库</p>
+<p><a target="_blank" rel="noopener" href="https://badgen.net/badge/icon/ios%209.0+?icon=apple&label">图片</a></p>
+<p>可调节大小，移动的视图</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/spoletto/SPUserResizableView">SPUserResizableView</a></p>
+<p>绘图视图</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/acerbetti/ACEDrawingView">ACEDrawingView</a></p>
+<p>在状态栏上显示FPS状态 检测fps滑动帧</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/joggerplus/JPFPSStatus">JPFPSStatus</a></p>
+<p>视频播放器</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/renzifeng/ZFPlayer">ZFPlayer</a></p>
+<p>WebView桥接</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavascriptBridge</a></p>
+<p>UITableViewCell自动高度计算</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell">FDTemplateLayoutCell</a></p>
+<p>UICollectionView的布局，将单元格向左对齐</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mokagio/UICollectionViewLeftAlignedLayout">UICollectionViewLeftAlignedLayout</a></p>
+<p>加载框</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a></p>
+<p>KVO</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/facebookarchive/KVOController">KVOController</a></p>
+<p>键盘</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hackiftekhar/IQKeyboardManager">IQKeyboardManager</a></p>
+<p>列表空数据显示</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dzenbot/DZNEmptyDataSet">DZNEmptyDataSet</a></p>
+<p>崩溃记录<br>Bugly</p>
+<p>双滑块范围选择器</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Meterwhite/SDRangeSlider">SDRangeSlider</a></p>
+<p>无限循环图片、文字轮播器</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gsdios/SDCycleScrollView">SDCycleScrollView</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/14/help/" rel="prev" title="help">
+      <i class="fa fa-chevron-left"></i> help
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/14/Android/Android%E4%B8%89%E6%96%B9%E5%BA%93/" rel="next" title="Android三方库">
+      Android三方库 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS%E4%B8%89%E6%96%B9%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">iOS三方库</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Henry"
+      src="/assets/img/avatar.png">
+  <p class="site-author-name" itemprop="name">Henry</p>
+  <div class="site-description" itemprop="description">干干干！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
