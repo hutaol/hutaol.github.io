@@ -6,6 +6,8 @@ tags: iOS
 
 ## 1. 改变View显示位置，2种方式 (layer的Z轴和view添加的层级)
 
+<!-- more -->
+
 + 改变layer的Z轴, 大值在上，但下层的view显示在上面，不能响应事件
 
 > view.layer.zPosition=100  
