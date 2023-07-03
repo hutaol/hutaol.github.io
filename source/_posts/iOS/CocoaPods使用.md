@@ -10,6 +10,34 @@ tags: iOS
 
 ## 安装
 
+1. 安装Homebrew
+
+```sh
+git clone https://github.com/Homebrew/brew homebrew
+
+eval "$(homebrew/bin/brew shellenv)"
+brew update --force --quiet
+chmod -R go-w "$(brew --prefix)/share/zsh"
+```
+
+验证是否成功
+
+```sh
+brew -v
+```
+
+2. 使用Homebrew安装CocosPods
+
+```sh
+brew install cocoapods 
+```
+
+验证是否成功
+
+```sh
+pod --version
+```
+
 ## 使用
 
 install时查看进度
@@ -66,3 +94,6 @@ pod install --verbose --no-repo-update
 * 解决办法
 
 > rm ~/Library/Caches/CocoaPods/search_index.json
+
+[podspec相关设置, 及其私有库常见错误记录](https://www.jianshu.com/p/5ab1e6d9ddc3)
+[CocoaPods - Podspec文件配置讲解](https://www.jianshu.com/p/743bfd8f1d72)

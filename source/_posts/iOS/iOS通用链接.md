@@ -6,11 +6,9 @@ tags:
 
 ## iOS Associated Domains
 
-
 1. 服务器配置 `apple-app-site-association`, 此文件需放在网站域名根目录或.well-known下，域名必须支持 HTTPS
 
 > iOS会先请求https://domain.com/.well-known/apple-app-site-association，如果此文件请求不到，再去请求https://domain.com/apple-app-site-association，所以如果想要避免服务器接收过多GET请求，可以直接把apple-app-site-association放在./well-known目录下
-
 
 ```f
 {
@@ -46,7 +44,6 @@ app显示包内容，找到描述文件`embedded.mobileprovision`里的applicati
 > 确保`apple-app-site-association`可以访问下载文件
 
 地址`https://domain.com/.well-known/apple-app-site-association`或者`https://domain.com/apple-app-site-association`
-
 
 2. Xcode配置Associated Domains（域名）
 
@@ -88,6 +85,3 @@ app显示包内容，找到描述文件`embedded.mobileprovision`里的applicati
 苹果指南 <https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html>
 微信接入指南 <https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/iOS.html>
 QQ接入指南 <https://wiki.connect.qq.com/>
-
-
-
