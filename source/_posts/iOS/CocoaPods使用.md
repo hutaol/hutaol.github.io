@@ -68,7 +68,11 @@ pod install --verbose --no-repo-update
 
 ### 3.创建共享库文件并上传到公有仓库
 
+创建库
 > pod lib create 库名
+
+只创建`podspec`文件
+> pod spec create 库名
 
 配置*.podspec文件
 
