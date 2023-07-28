@@ -22,3 +22,8 @@ tags: iOS
 [ios实现颜色渐变的几种方法](https://www.jianshu.com/p/3e0e25fd9b85)
 
 [iOS | H5直接调用手机的摄像头进行拍照或录像](https://www.jianshu.com/p/07262b530e56)
+
+[IOS 静态库打包](https://www.jianshu.com/p/6a3fd7410b42)
+
+[Universal Links(通用链接)详解](https://www.jianshu.com/p/f1c97d0d0d22)
+
