@@ -76,6 +76,7 @@ self.imageView.image = image.UIImage;
 
 [JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) (左右滑动切换)
 [JXPagingView](https://github.com/pujiaxin33/JXPagingView) (多页面嵌套，既可以上下滑动，也可以左右滑动切换页面)
+[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView) (Swift)
 
 图片选择：  
 

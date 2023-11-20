@@ -40,3 +40,5 @@ iTerm       终端
 Genymotion  安卓模拟器
 
 Navicat     数据库
+
+Hoppscotch  模拟网络请求

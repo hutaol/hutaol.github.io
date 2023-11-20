@@ -77,3 +77,29 @@ tags: iOS
 ### Xcode 10之后删除的libstdc++库
 
 `https://github.com/devdawei/libstdc-`
+
+### WKWebView
+
+// ios系统16.1 bounces = NO 无效
+/**
+未验证是否有效
+
+临时解决方案是将以下代码添加到全局样式中:
+
+ion-content {
+  &::part(scroll) {
+    overscroll-behavior: none;
+  }
+}
+
+*/
+
+### iOS集成UnityFramework
+
+1. IL2CPP initialization failed
+
+![Data](unity2.png)
+
+2. UnityFramework`::InitializeMemory()
+
+![禁用线程性能检查器](unity1.png)
