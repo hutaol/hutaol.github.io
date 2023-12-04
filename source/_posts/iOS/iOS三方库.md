@@ -256,3 +256,7 @@ Bugly
 标签
 
 [TTGTagCollectionView](https://github.com/zekunyan/TTGTagCollectionView)
+
+分段控制
+
+[BetterSegmentedControl](https://github.com/gmarm/BetterSegmentedControl) (Swift)
