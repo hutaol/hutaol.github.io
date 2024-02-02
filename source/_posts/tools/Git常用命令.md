@@ -74,10 +74,8 @@ git checkout . && git clean -xdf
 # 本地所有修改的。没有的提交的，都返回到原来的状态
 git checkout . 
 
-git reset --hard
-
 # 撤销 commit、撤销 git add . 操作、撤销修改代码
- git reset --hard HEAD^
+git reset --hard HEAD^
 # 撤销 commit、不撤销git add .
 git reset --soft HEAD^
 # 撤销 commit、并撤销 git add. 操作、不撤销修改代码
@@ -91,8 +89,6 @@ git clean 参数
     -f 删除 文件
     -df 删除 文件 和 目录
 ```
-
-1
 
 ## 删除分支
 
