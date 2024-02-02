@@ -76,10 +76,13 @@ git checkout .
 
 git reset --hard
 
-# 返回到某个节点，不保留修改
+# 撤销 commit、撤销 git add . 操作、撤销修改代码
 git reset --hard HASH 
-# 返回到某个节点。保留修改
+# 撤销 commit、不撤销git add .
 git reset --soft HASH
+# 撤销 commit、并撤销 git add. 操作、不撤销修改代码
+git reset --mixed HEAD^
+git reset HEAD^
 
 # 返回到某个节点
 git clean -df 
