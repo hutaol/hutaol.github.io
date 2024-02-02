@@ -77,9 +77,9 @@ git checkout .
 git reset --hard
 
 # 撤销 commit、撤销 git add . 操作、撤销修改代码
-git reset --hard HASH 
+ git reset --hard HEAD^
 # 撤销 commit、不撤销git add .
-git reset --soft HASH
+git reset --soft HEAD^
 # 撤销 commit、并撤销 git add. 操作、不撤销修改代码
 git reset --mixed HEAD^
 git reset HEAD^
