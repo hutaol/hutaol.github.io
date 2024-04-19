@@ -210,3 +210,15 @@ git merge --abort
 ```shell
 git reset --hard xxxxxxx(你的commit id)
 ```
+
+## 回滚
+
+```shell
+
+git log
+
+git reset --soft commit-id
+
+git push -f
+
+```

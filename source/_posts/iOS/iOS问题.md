@@ -103,3 +103,11 @@ ion-content {
 2. UnityFramework`::InitializeMemory()
 
 ![禁用线程性能检查器](unity1.png)
+
+### 底部延迟反应
+
+```s
+override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+    return .bottom
+}
+```

@@ -260,3 +260,11 @@ Bugly
 分段控制
 
 [BetterSegmentedControl](https://github.com/gmarm/BetterSegmentedControl) (Swift)
+
+选择器
+
+[BRPickerView](https://github.com/91renb/BRPickerView) (OC)
+
+模糊试图
+
+[DynamicBlurView](https://github.com/KyoheiG3/DynamicBlurView) （Swift）
