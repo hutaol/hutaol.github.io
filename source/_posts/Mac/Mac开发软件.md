@@ -42,3 +42,6 @@ Genymotion  安卓模拟器
 Navicat     数据库
 
 Hoppscotch  模拟网络请求
+
+easydict [翻译软件](https://github.com/tisfeng/Easydict)
+安装 `brew install --cask easydict`
