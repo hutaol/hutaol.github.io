@@ -74,11 +74,12 @@ self.imageView.image = image.UIImage;
 
 滑动切换滚动视图
 
-[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) (左右滑动切换)
-[JXPagingView](https://github.com/pujiaxin33/JXPagingView) (多页面嵌套，既可以上下滑动，也可以左右滑动切换页面)
-[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView) (Swift)
+[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) (左右滑动切换 OC)
+[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView) (左右滑动切换 Swift)
 
-图片选择：  
+[JXPagingView](https://github.com/pujiaxin33/JXPagingView) (多页面嵌套，既可以上下滑动，也可以左右滑动切换页面)
+
+图片选择
 
 [HXPhotoPicker](https://github.com/SilenceLove/HXPhotoPicker)
 
@@ -95,6 +96,7 @@ self.imageView.image = image.UIImage;
 徽章
 
 [PPBadgeView](https://github.com/jkpang/PPBadgeView)
+[BadgeHub](https://github.com/jogendra/BadgeHub) (Swift)
 
 浮窗
 
@@ -104,15 +106,12 @@ self.imageView.image = image.UIImage;
 
 [LSTPopView](https://github.com/LoSenTrad/LSTPopView)
 
-[YBPopupMenu](https://github.com/lyb5834/YBPopupMenu)
+[YBPopupMenu](https://github.com/lyb5834/YBPopupMenu) (OC)
+[PopMenu](https://github.com/CaliCastle/PopMenu) (Swift)
 
 [KLCPopup](https://github.com/jmascia/KLCPopup) (横屏时有缺陷)
 
 [LNPopupController](https://github.com/LeoNatan/LNPopupController)
-
-分类集合
-
-[JXCategoryView](https://github.com/pujiaxin33/JXCategoryView)
 
 网页封装
 
@@ -128,7 +127,9 @@ TextField
 
 [JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField) 输入框浮动标签提示
 
-录播图
+轮播图
+
+[SDCycleScrollView](https://github.com/gsdios/SDCycleScrollView) (OC)
 
 [FSPagerView](https://github.com/WenchaoD/FSPagerView) (Swift)
 
@@ -248,10 +249,6 @@ Bugly
 双滑块范围选择器
 
 [SDRangeSlider](https://github.com/Meterwhite/SDRangeSlider)
-
-无限循环图片、文字轮播器
-
-[SDCycleScrollView](https://github.com/gsdios/SDCycleScrollView)
 
 标签
 

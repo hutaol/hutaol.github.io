@@ -101,3 +101,24 @@ pod install --verbose --no-repo-update
 
 [podspec相关设置, 及其私有库常见错误记录](https://www.jianshu.com/p/5ab1e6d9ddc3)
 [CocoaPods - Podspec文件配置讲解](https://www.jianshu.com/p/743bfd8f1d72)
+
+## 创建私有Pod库
+
+https://www.jianshu.com/p/162b6da2eaec
+https://www.jianshu.com/p/aa5309163c53
+
+本地库校验
+
+`pod lib lint XX.podspec` 本地组件库校验
+`pod lib lint XX.podspec --allow-warnings` 本地组件库校验允许出现警告，也就是可以忽略警告
+`pod spec lint XX.podspec --verbose --allow-warnings` 验证过程中显示更详细的输出信息
+
+创建私有库
+
+```shell
+pod repo add CSLSpecs https://gitee.com/hate/CSLSpecs
+```
+
+```shell
+pod repo push CSLSpecs CSLView.podspec --allow-warnings
+```
