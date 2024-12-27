@@ -58,6 +58,17 @@ self.imageView.image = image.UIImage;
 
 [GPUImage](https://github.com/BradLarson/GPUImage)
 
+源码级别对GPUImage进行剖析以及尝试
+[GPUImageStudy](https://github.com/loyinglin/GPUImage)
+
+ios示例
+[iOS_Tips](https://github.com/wsl2ls/iOS_Tips) (oc)
+
+灵动岛
+[灵动岛](https://github.com/batikansosun/iOS-16-Live-Activities-Dynamic-Island) (swift)  
+[iOS16-Live-Activities](https://github.com/1998code/iOS16-Live-Activities)
+
+
 引导页：  
 
 [EAIntroView](https://github.com/ealeksandrov/EAIntroView)
@@ -91,7 +102,9 @@ self.imageView.image = image.UIImage;
 
 图片浏览器
 
-[KNPhotoBrowser](https://github.com/LuKane/KNPhotoBrowser)
+[KNPhotoBrowser](https://github.com/LuKane/KNPhotoBrowser) (oc)
+
+[GKPhotoBrowser](https://github.com/QuintGao/GKPhotoBrowser) (oc)
 
 徽章
 
@@ -104,7 +117,7 @@ self.imageView.image = image.UIImage;
 
 弹出窗
 
-[LSTPopView](https://github.com/LoSenTrad/LSTPopView)
+[LSTPopView](https://github.com/LoSenTrad/LSTPopView) (oc)
 
 [YBPopupMenu](https://github.com/lyb5834/YBPopupMenu) (OC)
 [PopMenu](https://github.com/CaliCastle/PopMenu) (Swift)
@@ -115,7 +128,7 @@ self.imageView.image = image.UIImage;
 
 网页封装
 
-[JXBWKWebView](https://github.com/xiubojin/JXBWKWebView)
+[JXBWKWebView](https://github.com/xiubojin/JXBWKWebView) (oc)
 
 表单列表
 
@@ -177,7 +190,7 @@ JSON
 
 日历
 
-[FSCalendar](https://github.com/search?q=FSCalendar)
+[FSCalendar](https://github.com/search?q=FSCalendar) (oc)
 
 本地存储
 
@@ -189,7 +202,7 @@ JSON
 
 应用程序和扩展程序之间的消息传递(进程通讯)
 
-[MMWormhole](https://github.com/mutualmobile/MMWormhole)
+[MMWormhole](https://github.com/mutualmobile/MMWormhole) (oc)
 
 打印
 
@@ -214,6 +227,8 @@ JSON
 视频播放器
 
 [ZFPlayer](https://github.com/renzifeng/ZFPlayer)
+
+[WMPlayer](https://github.com/zhengwenming/WMPlayer) (oc)
 
 WebView桥接
 
@@ -270,3 +285,69 @@ Bugly
 
 [SwiftyBluetooth](https://github.com/jordanebelanger/SwiftyBluetooth) (Swift)  
 [BabyBluetooth](https://github.com/coolnameismy/BabyBluetooth) (OC)  
+
+星级评定
+[HCSStarRatingView](https://github.com/hsousa/HCSStarRatingView) (oc)
+
+扩展
+[JKCategories](https://github.com/shaojiankui/JKCategories) (oc)
+
+侧滑
+[FWSideMenu](https://github.com/choiceyou/FWSideMenu) (swift)
+
+[SWRevealViewController](https://github.com/John-Lluch/SWRevealViewController) (oc)
+
+[SwiftSideslipLikeQQ](https://github.com/johnlui/SwiftSideslipLikeQQ) (swift)
+
+设备信息
+[GBDeviceInfo](https://github.com/lmirosevic/GBDeviceInfo) (oc)
+
+socket库
+[CocoaAsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket) (oc)
+
+wkwebview封装
+[AXWebViewController](https://github.com/devedbox/AXWebViewController) (oc)
+
+CJLabel
+[CJLabel](https://github.com/lele8446/CJLabel) (oc)
+
+颜色选择
+[MSColorPicker](https://github.com/sgl0v/MSColorPicker) (oc)
+
+列表字母索引视图
+[SCIndexView](https://github.com/TalkingJourney/SCIndexView) (oc)
+
+聊天键盘
+[XBZChatKeyBoard](https://github.com/BigKingQY/XBZChatKeyBoard) (oc)
+
+滚动
+[TOScrollBar](https://github.com/TimOliver/TOScrollBar) (oc)
+
+PDF
+[PDFViewAndDownload](https://github.com/fenglinyunshi/PDFViewAndDownload) (oc)
+
+直播
+[LFLiveKit](https://github.com/LaiFengiOS/LFLiveKit) (oc)
+
+腾讯云聊天
+[TIMSDK](https://github.com/TencentCloud/TIMSDK)
+
+文件下载
+[TYDownloadManager](https://github.com/12207480/TYDownloadManager) (oc)  
+[SRDownloadManager](https://github.com/guowilling/SRDownloadManager) (oc)
+[SODownloader](https://github.com/scfhao/SODownloader) (oc)
+[DGDownloadManager](https://github.com/liudiange/DGDownloadManager) (oc)
+
+从状态栏获取网络状态，获取wifi名，获取wifi mac地址，wifi信号强度 (不太行了)
+[DetailNetStatus](https://github.com/qianlima210210/DetailNetStatus) (oc)
+
+主题/换肤, 暗色模式
+[SwiftTheme](https://github.com/wxxsw/SwiftTheme) (swift)
+
+alert
+[SPAlertController](https://github.com/dongxiexidu/SPAlertController) (swift)
+
+[PopupDialog](https://github.com/Orderella/PopupDialog) (swift)
+
+计步
+[StepOrient](https://github.com/lioilwin/StepOrient)

@@ -62,3 +62,21 @@ ImageView缩放
 热修复框架
 
 [Tinker](https://github.com/Tencent/tinker)
+
+仿微信录音的库
+
+[WXSoundRecord](https://github.com/zhuguohui/WXSoundRecord)
+
+视频播放器
+
+[GSYVideoPlayer](https://github.com/CarGuo/GSYVideoPlayer)
+
+[JZVideo](https://github.com/Jzvd/JZVideo)
+
+保活
+
+[KeepAlivePerfect](https://github.com/Pangu-Immortal/KeepAlivePerfect)
+
+Tag
+
+[AndroidTagGroup](https://github.com/2dxgujun/AndroidTagGroup)

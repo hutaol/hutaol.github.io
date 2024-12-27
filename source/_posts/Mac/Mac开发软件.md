@@ -9,7 +9,7 @@ categories: Mac
 
 <!-- more -->
 
-SmartPush   测试苹果推送
+SmartPush   测试苹果推送 (https://github.com/shaojiankui/SmartPush)
 
 JSONExport  json转模型（oc,swift,java）
 
@@ -49,3 +49,18 @@ easydict [翻译软件](https://github.com/tisfeng/Easydict)
 Proxyman    抓包神器
 
 lemon-cleaner  柠檬清理 (https://github.com/Tencent/lemon-cleaner)
+
+Matrix 是微信中使用的 APM（应用程序性能管理），用于监控、定位和分析性能问题。它是一种插件式的非侵入性解决方案，目前可在 iOS、macOS 和 Android 上使用。
+matrix (https://github.com/Tencent/matrix)
+
+Mac 的 GUI 图像优化器
+ImageOptim (https://github.com/ImageOptim/ImageOptim)
+
+基于Mach-O的ObjC & Swift无用类、无用协议、无用资源检测，包大小分析，点对点崩溃解析。
+WBBlades(https://github.com/wuba/WBBlades)
+
+支持视频号、小程序、抖音、快手、小红书、酷狗、QQ音乐等网络资源下载!
+res-downloader https://github.com/putyy/res-downloader
+
+PDManer元数建模，是一款多操作系统开源免费的桌面版关系数据库模型建模工具
+pdmaner https://gitee.com/robergroup/pdmaner
